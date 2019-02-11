@@ -1,0 +1,215 @@
+.form {
+    $root: &;
+    $fs: 12;
+    
+    a {
+        color: currentColor;
+    }
+    
+    textarea {
+        resize: vertical;
+        height: rem(126px);
+    }
+    
+    &__field {
+        @include fs(12);
+        margin: 0 0 (15em / $fs);
+        
+        label {
+            @include font(robsla);
+            display: block;
+            margin-bottom: (7em / $fs);
+        }
+        
+        .wpcf7-text,
+        .wpcf7-textarea {
+            @include font(roboto);
+            background: white;
+            border: none;
+            border-radius: (7em / $fs);
+            box-sizing: border-box;
+            box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset;
+            color: black;
+            font-size: inherit;
+            line-height: (16 / $fs);
+            padding: (13em / $fs) (15em / $fs);
+            width: 100%;
+        }
+        
+        .wpcf7-textarea {
+            margin-bottom: (15em / $fs);
+        }
+    }
+    
+    &__filename {
+        @include font(roboto);
+        display: block;
+    }
+    
+    &__submit {
+        //@include fluid-size((
+        //    $wmin: 10,
+        //    $wm: $body-size,
+        //));
+        //@include font(roboto, 500, $ls: (1.75em / $body-size));
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        //color: inherit;
+        //display: inline-block;
+        margin-top: rem(10px);
+        padding: 0;
+        //position: relative;
+        //text-transform: uppercase;
+        //top: (20em / $fs);
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        @include visually-hidden();
+
+        + * {
+            display: block;
+            padding-left: ((30em + 15em) / $fs);
+            padding-top: rem(6em);
+            position: relative;
+
+            &::before,
+            &::after {
+                border-radius: 50%;
+                content: '';
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+            }
+            &::before {
+                border: 1px solid currentColor;
+                font-size: (30em / $fs);
+                height: 1em;
+                left: 0;
+                top: 0;
+                width: 1em;
+            }
+            &::after {
+                background: currentColor;
+                font-size: (14em / $fs);
+                height: 1em;
+                left: (8em / 14);
+                top: (8em / 14);
+                transition: transform 150ms;
+                transform: scale(0);
+                transform-origin: center;
+                width: 1em;
+            }
+        }
+
+        &:checked + *::after {
+            transform: scale(1);
+        }
+
+        //noinspection CssOverwrittenProperties
+        &:focus + * {
+            outline: 1px dotted #212121;
+            outline: 5px auto -webkit-focus-ring-color;
+        }
+    }
+    
+    &__privacy {
+        $fs: 13;
+        margin: (30em / $fs) 0;
+        
+        label {
+            @include font(roboto);
+            @include fs($fs);
+            line-height: (18 / $fs);
+        }
+        
+        //.wpcf7-list-item-label {
+        //}
+        //
+        //input {
+        //    @include visually-hidden();
+        //    
+        //    &:checked + .wpcf7-list-item-label::after {
+        //        transform: scale(1);
+        //    }
+        //
+        //    //noinspection CssOverwrittenProperties
+        //    &:focus + .wpcf7-list-item-label {
+        //    }
+        //}
+    }
+    
+    &__notice {
+        @include font(roboto);
+        @include fs(10);
+        line-height: (13 / 10);
+    }
+    
+    .js-on & {
+        &__field--type-file {
+            min-height: (30em / $fs);
+
+            //noinspection CssOverwrittenProperties
+            &:focus-within {
+                outline: 1px dotted #212121;
+                outline: 5px auto -webkit-focus-ring-color;
+            }
+            
+            label {
+                margin-bottom: (3em / $fs);
+                padding-left: rem(30px + 15px);
+                padding-top: (4em / $fs);
+                position: relative;
+                
+                &::before,
+                &::after {
+                    background: transparent no-repeat center center;
+                    background-size: contain;
+                    height: rem(30px);
+                    width: rem(30px);
+                    content: '';
+                    display: block;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                }
+                &::before {
+                    @include icon(form-file);
+                }
+                &::after {
+                    @include icon(form-file, $fill: #000, $arrow: #fff);
+                    opacity: 0;
+                    transition: opacity 150ms;
+                }
+                
+                &:hover,
+                &:focus {
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+            }
+            
+            .wpcf7-form-control-wrap {
+                @include visually-hidden();
+            }
+        }
+    }
+    
+    @media (min-width: mqem($ws)) {
+        &__bloc {
+            align-items: flex-start;
+            display: flex;
+            flex-flow: row nowrap;
+            margin-left: rem(-$gap / 2);
+            margin-right: rem(-$gap / 2);
+            
+            #{$root}__field {
+                flex-grow: 1;
+                padding-left: rem($gap / 2);
+                padding-right: rem($gap / 2);
+            }
+        }
+    }
+}

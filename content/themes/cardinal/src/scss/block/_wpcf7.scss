@@ -1,0 +1,42 @@
+/* contact form 7 */
+.wpcf7 {
+    transition: opacity 400ms;
+    
+    &-form {
+        opacity: 1;
+        transition: opacity 500ms;
+    }
+    &-form.loading {
+        opacity: .4;
+    }
+    .ajax-loader {
+        display: none;
+    }
+
+    &-response-output {
+        @include fs(12);
+        display: block !important;
+        border: none;
+        margin: 15px 0;
+
+        &:before {
+            content: ' ';
+        }
+    }
+    &-not-valid-tip {
+        display: none;
+    }
+    &-acceptance-missing,
+    &-validation-errors {
+        color: $c-error;
+    }
+    &-form-control.wpcf7-not-valid {
+        border-color: $c-error;
+    }
+    .screen-reader-response {
+        @include visually-hidden();
+    }
+    textarea {
+        resize: vertical;
+    }
+}

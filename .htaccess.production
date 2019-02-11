@@ -1,0 +1,61 @@
+# to prevent resources directory listing
+Options -Indexes
+
+# to prevent web access to .git folder or .gitignore file
+RedirectMatch 404 /\.git
+
+# HTTPS redirection
+#<IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#</IfModule>
+
+<IfModule mod_expires.c>
+    # use Filesmatch if the If directive is unavailable,
+    # but beware that it will cache ALL static resources
+    # independently of cachebust fragment presence
+#    <Filesmatch "\.(css|gif|jpe?g|js|png|woff2?|ttf|eot|svg)$">
+        # available with apache 2.4 and above only
+        <If "-n %{ENV:REDIRECT_cache_bust}">
+            ExpiresActive On
+            ExpiresDefault "access plus 1 year"
+            Header append Cache-Control "public"
+        </If>
+#    </Filesmatch>
+</IfModule>
+
+# rewrite static resources which have a cachebust fragment
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)\.v(.+)\.(css|gif|jpe?g|js|png|woff2?|ttf|eot|svg)$ $1.$3 [L,E=cache_bust:$1]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+# maintenance page redirect
+#<IfModule mod_rewrite.c>
+#    RewriteEngine on
+#    RewriteCond %{REMOTE_ADDR} !^88\.191\.83\.104
+#    RewriteCond %{HTTP_COOKIE} !maintenance=off
+#    RewriteCond %{REQUEST_URI} !/maintenance.html$ [NC]
+#    RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
+#    RewriteRule .* /maintenance.html [L]
+# </IfModule>

@@ -1,0 +1,9 @@
+{
+    "private": true,
+    "license": "UNLICENSED",
+    "scripts": {
+        "update": "composer update && wp core update && wp plugin update --all && wp core language update && yarn --cwd content/themes/cardinal upgrade --dev",
+        "preprod": "if [ ! -f './config.php' ]; then cp './config.production.php' './config.php'; echo 'Please update ./config.php and re-run this script'; exit 1; fi; if [ ! -f 'wp-cli.yml' ]; then cp 'wp-cli.production.yml' 'wp-cli.yml'; echo 'Please wp-cli.yml and re-run this script'; exit 1; fi",
+        "prod": "composer install --no-dev --optimize-autoloader && wp rewrite flush && yarn --cwd content/themes/cardinal install --prod --frozen-lockfile && "
+    }
+}

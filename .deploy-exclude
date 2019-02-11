@@ -1,0 +1,16 @@
+.backup-exclude
+.deploy-exclude
+.git
+.gitignore
+.gitlab-ci.yml
+.yarnrc
+composer.json
+composer.lock
+content/themes/*/gulpfile.js
+content/themes/*/package.json
+content/themes/*/src
+content/themes/*/var
+content/uploads
+logs/
+package.json
+yarn.lock

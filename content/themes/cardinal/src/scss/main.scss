@@ -1,0 +1,32 @@
+@import 'font';
+@import 'setup';
+@import 'commons';
+
+html {
+    @include base-size($root-size);
+    @include wide-fs($root-size, 1600);
+}
+
+body {
+    @include font-smoothing;
+    margin: 0;
+    min-width: $wmin;
+    overflow-x: hidden;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+strong,
+em {
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+@import 'globals';
