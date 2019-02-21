@@ -1,6 +1,5 @@
 <?php $theme = CardinalTheme::get_instance() ?>
 <?php get_header() ?>
-
 <?php the_post() ?>
 
 <div class="singular container">

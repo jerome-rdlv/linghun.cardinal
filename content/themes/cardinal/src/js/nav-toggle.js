@@ -33,7 +33,9 @@ export default function init(toggle) {
     toggle.setAttribute('aria-expanded', false);
 
     nav.setAttribute('tabindex', -1);
-    nav.setAttribute('hidden', true);
+    // todo push this change in wp-skeleton
+    // nav.setAttribute('hidden', true);
+    nav.style.display = 'none';
     nav.classList.add('ready');
 
     function toggleNav() {
@@ -53,7 +55,8 @@ export default function init(toggle) {
             return Promise.resolve()
                 .then(function () {
                     return fd.mutate(function () {
-                        nav.removeAttribute('hidden');
+                        // nav.removeAttribute('hidden');
+                        nav.style.display = '';
                     });
                 })
                 .then(promiseRAF)
@@ -90,11 +93,15 @@ export default function init(toggle) {
         body.classList.remove('nav-closing');
         if (opening) {
             toggle.setAttribute('aria-expanded', true);
-            nav.focus();
+            if (document.activeElement === toggle) {
+                // focus nav only if focus is still on toggle button
+                nav.focus();
+            }
             trigger.call(toggle, 'nav-opened');
         } else {
             toggle.setAttribute('aria-expanded', false);
-            nav.setAttribute('hidden', true);
+            // nav.setAttribute('hidden', true);
+            nav.style.display = 'none';
             trigger.call(toggle, 'nav-closed');
         }
         toggle.classList.remove('loading');

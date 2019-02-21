@@ -9,7 +9,11 @@ html {
 
 body {
     @include font-smoothing;
+    @include ffs($body-size);
+    display: flex;
+    flex-flow: column nowrap;
     margin: 0;
+    min-height: 100vh;
     min-width: $wmin;
     overflow-x: hidden;
     padding: 0;
@@ -27,6 +31,10 @@ em {
 
 a {
     text-decoration: none;
+}
+
+:focus {
+    outline-color: $c-red;
 }
 
 @import 'globals';

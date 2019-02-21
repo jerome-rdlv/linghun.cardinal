@@ -1,3 +1,8 @@
+<?php
+
+use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
+
+?>
 <!DOCTYPE html>
 <!--suppress HtmlRequiredLangAttribute -->
 <html <?php language_attributes() ?> class="js-off fonts-on">
@@ -5,10 +10,9 @@
     <meta charset="<?php bloginfo('charset') ?>"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <?php $theme = CardinalTheme::get_instance() ?>
-    <style> html.js-off .js-on { display: none; } </style>
-    
+
     <title><?php bloginfo('title') ?></title>
     <?php wp_head() ?>
 </head>
@@ -25,6 +29,15 @@
     </button>
 </script>
 
+<script type="text/html" id="splash-backs">
+    <?php wp_nav_menu([
+        'container'      => '',
+        'items_wrap'     => '%3$s',
+        'walker'         => new MenuBackgroundsWalker(),
+        'theme_location' => CardinalTheme::MENU_MAIN,
+    ]) ?>
+</script>
+
 <header class="header header--fixed">
     <div class="header__skips skips print-off">
         <div class="skips__inner container">
@@ -38,6 +51,12 @@
                     <!--suppress HtmlUnknownAnchorTarget -->
                     <a href="#nav" class="skips__link smooth-off">
                         <?php _e('Aller à la navigation', CardinalTheme::TEXTDOMAIN) ?>
+                    </a>
+                </li>
+                <li class="skips__item">
+                    <!--suppress HtmlUnknownAnchorTarget -->
+                    <a href="#search" class="skips__link smooth-off">
+                        <?php _e('Aller à la recherche', CardinalTheme::TEXTDOMAIN) ?>
                     </a>
                 </li>
             </ul>
@@ -75,29 +94,50 @@
                 <?php endif ?>
             <?php endif ?>
         </div>
-        
-        <?php $networks = get_field('social_networks', 'options') ?>
-        <?php if ($networks && is_array($networks)): ?>
-            <!-- @formatter:off -->
-                <ul class="header__networks print-off"><!--
-                    <?php foreach ($networks as $network): ?>
-                        --><li class="header__networks-item">
-                            <?php echo $theme->get_network_link($network['url'], 'header__networks-link') ?>
-                        </li><!--
-                    <?php endforeach ?>
-                --></ul>
-                <!-- @formatter:on -->
-        <?php endif ?>
+    </div>
+</header>
 
+<nav id="nav" class="nav print-off">
+    <h2 class="visually-hidden">
+        <?php _e('Navigation principale', CardinalTheme::TEXTDOMAIN) ?>
+    </h2>
+
+    <?php wp_nav_menu([
+        'container'      => null,
+        'depth'          => 1,
+        'theme_location' => CardinalTheme::MENU_MAIN,
+    ]) ?>
+
+    <div class="nav__aside">
         <?php $contact_page = get_field('page_contact', 'options', false) ?>
         <?php if ($contact_page): ?>
-            <a href="<?php the_permalink($contact_page) ?>" class="header__contact print-off">
+            <a href="<?php the_permalink($contact_page) ?>" class="nav__contact print-off">
                 <?php echo $theme->inline_symbol('contact') ?>
                 <span class="visually-hidden">Contact</span>
             </a>
         <?php endif ?>
+
+        <div class="nav__search" id="search">
+            <?php get_search_form() ?>
+        </div>
+
+        <?php $networks = get_field('social_networks', 'options') ?>
+        <?php if ($networks && is_array($networks)): ?>
+            <p class="visually-hidden">
+                <?php _e('Suivez-nous sur', CardinalTheme::TEXTDOMAIN) ?>
+            </p>
+            <!-- @formatter:off -->
+            <ul class="nav__networks print-off"><!--
+                <?php foreach ($networks as $network): ?>
+                    --><li class="nav__networks-item">
+                        <?php echo $theme->get_network_link($network['url'], 'nav__networks-link') ?>
+                    </li><!--
+                <?php endforeach ?>
+            --></ul>
+            <!-- @formatter:on -->
+        <?php endif ?>
     </div>
-</header>
+</nav>
 
 <div class="wrapper">
     <main id="main" class="main">

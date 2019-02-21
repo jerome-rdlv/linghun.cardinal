@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c9f5f950bbafaa4167d5a27436578fb",
+    "content-hash": "ac5d463348e993a9ac06db0afd46b72f",
     "packages": [
         {
             "name": "advanced-custom-fields-pro",
@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/advanced-custom-fields-pro.git",
-                "reference": "a7d03d4b8f1ef5ec6e80ed5b27aec8295740e365"
+                "reference": "b659696285c962587f80fd6a954e472708e94ce8"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -32,7 +32,7 @@
             ],
             "description": "Fully customise WordPress edit screens with powerful fields.",
             "homepage": "http://www.advancedcustomfields.com/",
-            "time": "2019-01-23T09:50:51+00:00"
+            "time": "2019-02-12T10:48:51+00:00"
         },
         {
             "name": "allow-svg",
@@ -179,6 +179,31 @@
                 "zikula"
             ],
             "time": "2018-08-27T06:10:37+00:00"
+        },
+        {
+            "name": "cpt-parent",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/cpt-parent.git",
+                "reference": "90293fbdb34b399fa9ca631ee68edac1dd5ccde0"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "wordpress-muplugin",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jérôme Mulsant",
+                    "homepage": "https://rue-de-la-vieille.fr/"
+                }
+            ],
+            "description": "WordPress plugin to define a page as parent of a custom post type",
+            "homepage": "https://github.com/jerome-rdlv/cpt-parent",
+            "time": "2019-01-29T15:11:04+00:00"
         },
         {
             "name": "dirkgroenen/pinterest-api-php",
@@ -417,16 +442,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.83",
+            "version": "v0.86",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "f443f4107d9ba001dad60d18cf1ec0cf0e7234f9"
+                "reference": "84496e256a7cac3a7817db7ba534829a370a3201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/f443f4107d9ba001dad60d18cf1ec0cf0e7234f9",
-                "reference": "f443f4107d9ba001dad60d18cf1ec0cf0e7234f9",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/84496e256a7cac3a7817db7ba534829a370a3201",
+                "reference": "84496e256a7cac3a7817db7ba534829a370a3201",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +475,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-01-30T22:06:40+00:00"
+            "time": "2019-02-20T02:10:11+00:00"
         },
         {
             "name": "google/auth",
@@ -1525,6 +1550,26 @@
             "homepage": "https://wordpress.org/plugins/inazo-flamingo-automatically-delete-old-messages/"
         },
         {
+            "name": "wpackagist-plugin/redirection",
+            "version": "3.7.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/redirection/",
+                "reference": "tags/3.7.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.7.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/redirection/"
+        },
+        {
             "name": "wpackagist-plugin/w3-total-cache",
             "version": "0.9.7.2",
             "source": {
@@ -1546,15 +1591,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "9.5",
+            "version": "9.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/9.5"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.9.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.zip?timestamp=1549963880",
                 "reference": null,
                 "shasum": null
             },
@@ -1884,7 +1929,8 @@
         "social-network": 20,
         "allow-svg": 20,
         "php-instagram-api/php-instagram-api": 20,
-        "disable-comments": 20
+        "disable-comments": 20,
+        "cpt-parent": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

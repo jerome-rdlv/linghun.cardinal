@@ -16,17 +16,6 @@ import * as sscroll from './smooth-scroll';
 var body = document.body;
 var html = document.documentElement;
 
-function initSkipLinks() {
-    var main = document.getElementById('main');
-    main.addEventListener('blur', function () {
-        main.removeAttribute('tabindex');
-    });
-    listen.call(document, 'click', 'a[href="#main"]', function () {
-        main.setAttribute('tabindex', -1);
-        main.focus();
-    });
-}
-
 function initSmoothScroll() {
     sscroll.setDefaultOffset(86);
     
@@ -49,7 +38,7 @@ function initSmoothScroll() {
 
 function init() {
     // create nav toggle button
-    document.querySelector('.Header-inner').insertAdjacentHTML(
+    document.querySelector('.header__inner').insertAdjacentHTML(
         'beforeend',
         document.getElementById('nav-toggle-tpl').innerText.trim()
     );
@@ -70,12 +59,34 @@ function init() {
         }
     });
     
+    // #nav link
     listen.call(document, 'click', 'a[href="#nav"]', function (e) {
         e.preventDefault();
         trigger.call(navToggle, 'click');
     });
     
-    initSkipLinks();
+    // #main link
+    var main = document.getElementById('main');
+    main.addEventListener('blur', function () {
+        main.removeAttribute('tabindex');
+    });
+    listen.call(document, 'click', 'a[href="#main"]', function (e) {
+        e.preventDefault();
+        main.setAttribute('tabindex', -1);
+        main.focus();
+    });
+    
+    // #search link
+    var search = document.getElementById('search');
+    listen.call(document, 'click', 'a[href="#search"]', function (e) {
+        e.preventDefault();
+        
+        // display nav if mobile mode and hidden
+        trigger.call(navToggle, 'click');
+        
+        search.querySelector('input[name="s"]').focus();
+    });
+    
     initSmoothScroll();
     body.classList.remove('loading');
 }

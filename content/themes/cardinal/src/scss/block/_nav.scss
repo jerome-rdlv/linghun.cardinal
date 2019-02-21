@@ -1,0 +1,23 @@
+.nav {
+    background: $c-dark;
+    color: white;
+    position: relative;
+
+    .menu-item-image {
+        display: none;
+        height: 100vh;
+        max-width: 100%;
+        opacity: 1;
+        transition: opacity 0ms linear 300ms;
+        width: 100%;
+    }
+
+    a {
+        color: inherit;
+    }
+    
+    .menu {
+        list-style: none;
+        padding-left: 0;
+    }
+}

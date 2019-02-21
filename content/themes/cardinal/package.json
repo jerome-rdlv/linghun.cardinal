@@ -5,6 +5,14 @@
         "gulpfile": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git#master"
     },
     "dependencies": {
+        "bezier-easing": "gre/bezier-easing#^2.1",
+        "fastdom": "wilsonpage/fastdom#^1.0",
+        "focusable": "jkup/focusable#>=2.0",
+        "fontfaceobserver": "bramstein/fontfaceobserver#>=2.0",
+        "jquery": "jquery/jquery-dist#>=3.2",
+        "mobile-detect": "hgoebl/mobile-detect.js",
+        "objectFitPolyfill": "constancecchen/object-fit-polyfill#>=2.1",
+        "tarteaucitronjs": "AmauriC/tarteaucitron.js#*",
         "web/bezier-easing": "gre/bezier-easing#^2.1",
         "web/fastdom": "wilsonpage/fastdom#^1.0",
         "web/focusable": "jkup/focusable#>=2.0",
@@ -19,7 +27,7 @@
         "yarn": ">= 1.0.0"
     },
     "scripts": {
-        "postinstall": "rm -rf node_modules/gulpfile && git clone ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git node_modules/gulpfile || exit 0"
+        "postinstall": "dir=/tmp/`date +%s`; mkdir $dir; git clone ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git $dir; rsync -a $dir/.git node_modules/gulpfile/; rm -rf $dir;"
     },
     "eslintConfig": {
         "env": {

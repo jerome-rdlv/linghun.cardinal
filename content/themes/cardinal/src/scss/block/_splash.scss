@@ -1,0 +1,27 @@
+.splash {
+    position: relative;
+    height: (400 / 1300 * 100vw);
+    
+    &::before {
+        background: transparentize(black, .7);
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    //@media (max-width: mqem($wx)) {
+    //    min-height: (1 / 3 / vh);
+    //}
+    @media (min-width: mqem($ww)) {
+        height: rem(400px);
+    }
+    
+    body.home & {
+        height: 100vh;
+    }
+}

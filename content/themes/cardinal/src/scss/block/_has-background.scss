@@ -1,0 +1,25 @@
+.has-background {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    position: relative;
+    
+    &__inner {
+        position: relative;
+    }
+    
+    &__image {
+        display: block;
+        height: 100%;
+        left: 0;
+        max-width: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        user-select: none;
+        width: 100%;
+        
+        @media print {
+            display: none;
+        }
+    }
+}

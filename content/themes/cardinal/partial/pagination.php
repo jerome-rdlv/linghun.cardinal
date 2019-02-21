@@ -5,10 +5,12 @@
     'mid_size'  => 3,
 ]) ?>
 <?php if ($pagination): ?>
-    <div class="pagination">
+    <?php global $wp_query ?>
+    <div class="pagination" data-url-next="<?php next_posts($wp_query->max_num_pages) ?>">
         <h2 class="visually-hidden print-off"><?php _e('Pagination', CardinalTheme::TEXTDOMAIN) ?></h2>
         <p class="visually-hidden">
-            <?php global $wp_query;
+            <?php global $wp_query ?>
+            <?php $paged = get_query_var('paged') ?>
             <?php printf(
                 __('Page <strong>%s</strong> / %s', CardinalTheme::TEXTDOMAIN),
                 $paged ? $paged : '1',

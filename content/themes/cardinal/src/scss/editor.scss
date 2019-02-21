@@ -5,6 +5,18 @@ html {
 	@include base-size($root-size);
 }
 
+.content {
+	&__cta {
+		a {
+			border: 1px solid currentColor;
+			color: inherit;
+            display: inline-block;
+            padding: .5em 1em !important;
+			text-decoration: none;
+		}
+	}
+}
+
 body {
 	@include font-smoothing;
 	@include commons;
@@ -20,7 +32,7 @@ body {
 			text-align: center;
 
 			&::after {
-				@include font(roboto);
+				//@include font(roboto);
 				@include fs(10);
 				background: white;
 				content: 'Saut de section';

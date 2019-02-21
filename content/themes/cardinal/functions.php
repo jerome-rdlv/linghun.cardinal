@@ -13,7 +13,7 @@ class CardinalTheme
         }
         return self::$instance;
     }
-    
+
     const TEXTDOMAIN = 'cardinal';
 
     const SCRIPT_INC_HEAD = 'head';
@@ -23,7 +23,7 @@ class CardinalTheme
     const IMG_PORTRAIT_RATIO = 568 / 320;
     const IMG_PORTRAIT_MAX_WIDTH = 800;
     const IMG_MAX_WIDTH = 2800;
-    
+
     const MENU_MAIN = 'main';
     const MENU_ASIDE = 'aside';
     const MENU_FOR_EDIT_LINK = 'aside';
@@ -35,6 +35,7 @@ class CardinalTheme
     ];
 
     private $symbols = [
+        'logo',
 //        'contact',
 //        'facebook',
 //        'twitter',
@@ -43,7 +44,7 @@ class CardinalTheme
     ];
 
     private $bodyClass = [];
-    
+
     public function __construct()
     {
         add_action('init', [$this, 'init']);
@@ -66,27 +67,36 @@ class CardinalTheme
 //        add_filter('wpcf7_load_js', '__return_false');
         add_filter('wpcf7_load_css', '__return_false');
         add_action('wp_enqueue_scripts', [$this, 'dequeue_cf7']);
-        
+
         add_action('add_body_class', [$this, 'add_body_class']);
         add_filter('body_class', [$this, 'body_class']);
 
         add_filter('wpseo_breadcrumb_output', [$this, 'fix_breadcrumb']);
-        
+
         // menu
         register_nav_menus([
-            self::MENU_MAIN   => 'Principal',
+            self::MENU_MAIN  => 'Principal',
             self::MENU_ASIDE => 'Secondaire',
         ]);
+        add_filter('nav_menu_item_args', [$this, 'main_menu_item'], 10, 2);
+        add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
+        add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
 
         // images
         $this->generic_image_sizes();
         add_filter('max_srcset_image_width', function () {
             return self::IMG_MAX_WIDTH;
         });
-        
+
         // content
-        add_filter('get_the_excerpt', [$this, 'excerpt_filter'], 10, 2);
-        add_filter('the_excerpt', [$this, 'the_excerpt_filter']);
+        add_filter('excerpt_length', function () {
+            return 12;
+        });
+        add_filter('excerpt_more', function () {
+            return '…';
+        });
+        add_filter('the_excerpt', [$this, 'excerpt_remove_paragraphs']);
+        add_action('pre_get_posts', [$this, 'realisations_per_page']);
 
         // forms
         if (function_exists('wpcf7_remove_form_tag')) {
@@ -100,8 +110,8 @@ class CardinalTheme
         }
 
         // styles
-        wp_register_style('critical', $this->dist_url('/css/critical.css'), []);
-        wp_styles()->add_data('critical', 'critical', true);
+//        wp_register_style('critical', $this->dist_url('/css/critical.css'), []);
+//        wp_styles()->add_data('critical', 'critical', true);
         wp_register_style('main', $this->dist_url('/css/main.css'), []);
         wp_register_style('print', $this->dist_url('/css/print.css'), [], false, 'print');
 
@@ -109,17 +119,17 @@ class CardinalTheme
         wp_register_script('font-face-observer', get_template_directory_uri() . '/node_modules/web/fontfaceobserver/fontfaceobserver.js', [], false, true);
         wp_register_script('fonts', $this->dist_url('/js/fonts.js'), ['font-face-observer'], false, true);
         wp_localize_script('fonts', 'webfonts', [
-            ['family' => 'Roboto', 'opts' => ['weight' => '300', 'style' => 'italic']],
-            ['family' => 'Roboto', 'opts' => ['weight' => '400']],
-            ['family' => 'Roboto', 'opts' => ['weight' => '500']],
-            ['family' => 'Roboto Slab', 'opts' => ['weight' => '300']],
-            ['family' => 'Roboto Slab', 'opts' => ['weight' => '400']],
-            ['family' => 'Roboto Slab', 'opts' => ['weight' => '700']],
+//            ['family' => 'Roboto', 'opts' => ['weight' => '300', 'style' => 'italic']],
+//            ['family' => 'Roboto', 'opts' => ['weight' => '400']],
+//            ['family' => 'Roboto', 'opts' => ['weight' => '500']],
+//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '300']],
+//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '400']],
+//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '700']],
         ]);
         wp_scripts()->add_data('fonts', 'critical', true);
 
         // slick
-        wp_register_script('slick', get_template_directory_uri() .'/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
+        wp_register_script('slick', get_template_directory_uri() . '/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
         wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
 
         // ePD (tarteaucitron / TaC)
@@ -205,7 +215,7 @@ class CardinalTheme
 
         return $field;
     }
-    
+
     public function body_top_script()
     {
         printf(
@@ -230,29 +240,66 @@ class CardinalTheme
     {
         // landscape / original format
         $inc = 80;
-        for ($i = 320; $i <= self::IMG_MAX_WIDTH; $i += $inc) {
+        for ($width = 320; $width <= self::IMG_MAX_WIDTH; $width += $inc) {
             add_image_size(
-                $i == self::IMG_MAX_WIDTH - $inc ? 'full-l' : 'img-' . $i,
-                $i,
-                $i,
+                $width == self::IMG_MAX_WIDTH - $inc ? 'full-l' : 'img-' . $width,
+                $width,
+                $width,
                 false
             );
-            if ($i >= 800) {
+            if ($width >= 800) {
                 $inc = 200;
             }
         }
 
-        // forced portrait format
-        /*
-        for ($i = 320; $i <= self::IMG_PORTRAIT_MAX_WIDTH; $i += 80) {
-            add_image_size(
-                $i == self::IMG_PORTRAIT_MAX_WIDTH ? 'full-p' : 'img-p-' . $i,
-                $i,
-                $i * self::IMG_PORTRAIT_RATIO,
-                true
-            );
+        // portrait sizes for splash
+        $height = 568;
+        for ($width = 320, $inc = 40; $width <= 720; $width += $inc, $inc += 40) {
+            for ($density = 1; $density <= 3; ++$density) {
+                add_image_size(
+                    'p-' . $width . '-x' . $density,
+                    $width * $density,
+                    $height * $density,
+                    true
+                );
+            }
         }
-        */
+    }
+
+    public function aside_menu_logo($title, $item, $args)
+    {
+        if ($args->theme_location === self::MENU_ASIDE) {
+            if (trailingslashit($item->url) === trailingslashit(get_home_url())) {
+                $logo = $this->get_symbol('logo', [
+                    'class' => 'footer__logo',
+                ]);
+                $title = $logo . '<span class="visually-hidden">' . $title . '</span>';
+            }
+        }
+        return $title;
+    }
+
+    public function aside_menu_classes($classes, $item, $args)
+    {
+        if ($args->theme_location === self::MENU_ASIDE) {
+            if (trailingslashit($item->url) === trailingslashit(get_home_url())) {
+                $classes[] = 'footer__home';
+            }
+        }
+        return $classes;
+    }
+
+    public function main_menu_item($args, $item)
+    {
+        if ($args->theme_location === self::MENU_MAIN) {
+            // add item picto
+            $picto = get_field('picto', $item)['url'];
+            $args->link_before = $this->inline_svg($picto, [
+                'aria-hidden' => 'true',
+                'class'       => 'menu-item-picto',
+            ]);
+        }
+        return $args;
     }
 
     public function add_symbol($key)
@@ -282,6 +329,7 @@ class CardinalTheme
         if ($this->symbols) {
             echo '<svg style="display:none;" hidden>' . "\n";
             foreach ($this->symbols as $symbol) {
+                /** @noinspection PhpIncludeInspection */
                 include $this->dist_path('/svg/' . $symbol . '.symbol.svg');
                 echo "\n";
             }
@@ -383,7 +431,7 @@ class CardinalTheme
             $url,
             $class,
             $key,
-            $this->inline_svg($this->dist_url('/svg/'. $key .'.svg')),
+            $this->inline_svg($this->dist_url('/svg/' . $key . '.svg')),
             ucfirst($key)
         );
     }
@@ -398,7 +446,7 @@ class CardinalTheme
                     $edit_url,
                     __('Éditer', self::TEXTDOMAIN)
                 );
-                $items = $item . $items;
+                $items .= $item;
             }
         }
         return $items;
@@ -446,7 +494,7 @@ class CardinalTheme
     public function enqueue_scripts()
     {
         wp_dequeue_style('wp-block-library');
-        
+
         wp_enqueue_style('critical');
         wp_enqueue_style('main');
         wp_enqueue_style('print');
@@ -458,30 +506,20 @@ class CardinalTheme
         wp_enqueue_script('fonts');
     }
 
-    public function the_excerpt_filter($excerpt)
+    public function excerpt_remove_paragraphs($excerpt)
     {
         return preg_replace('/(<p[^>]*>|<\/p>)/', '', $excerpt);
     }
 
-    public function excerpt_filter(
-        /** @noinspection PhpUnusedParameterInspection */
-        $text, $post = null)
+    public function realisations_per_page(WP_Query $query)
     {
-        if ($post === null) {
-            global $post;
+        if (is_admin() || !$query->is_main_query()) {
+            return;
         }
-        $text = get_post_meta($post->ID, 'excerpt', true);
-        if (!$text) {
-            $text = strip_shortcodes($post->post_content);
+        if ($query->get('post_type') !== 'cardinal_real') {
+            return;
         }
-        $text = apply_filters('the_content', $text);
-        $text = str_replace(']]>', ']]&gt;', $text);
-
-        $excerpt_length = $post->post_type === 'quote' ? 42 : 42;
-
-        $text = wp_trim_words($text, $excerpt_length, '…');
-
-        return $text;
+        $query->set('posts_per_page', 16);
     }
 
     public function form_render($form_id)
@@ -490,23 +528,25 @@ class CardinalTheme
             $form = wpcf7_contact_form($form_id);
             echo apply_filters('acf_form', $form->form_html(), $form);
         }
-     }
+    }
 
     public function acf_wysiwyg_classes()
     {
         echo '<script src="' . get_template_directory_uri() . '/dist/js/acf-wysiwyg-styling.js' . '"></script>';
     }
 
-    private function get_editor_buttons($editor_id = null)
+    private function get_editor_buttons(
+        /** @noinspection PhpUnusedParameterInspection */
+        $editor_id = null)
     {
         $buttons = [
             'styleselect',
-//            'bold',
+            'bold',
 //            'italic',
 //            'bullist',
             'link',
             'unlink',
-//            'hr',
+            'hr',
             'removeformat',
 //            'alignleft',
 //            'alignright',
@@ -517,6 +557,47 @@ class CardinalTheme
         ];
 
         return $buttons;
+    }
+
+    public function front_actu()
+    {
+        if (get_field('display_selection') === 'selection') {
+            $actu_id = get_field('selection', false, false);
+            query_posts([
+                'post__in'       => [$actu_id],
+                'post_type'      => 'any',
+                'posts_per_page' => 1,
+            ]);
+        } else {
+            query_posts([
+                'order'          => 'DESC',
+                'orderby'        => 'post_date',
+                'post_type'      => 'post',
+                'posts_per_page' => 1,
+            ]);
+        }
+    }
+
+    public function archive_page()
+    {
+        if (is_search()) {
+            return false;
+        }
+        $post_type = get_post_type();
+        $post_type = $post_type === 'post' ? 'posts' : $post_type;
+        $archive_page_id = get_option('page_for_' . $post_type);
+        if ($archive_page_id) {
+            query_posts([
+                'post__in'       => [$archive_page_id],
+                'post_type'      => 'any',
+                'posts_per_page' => 1,
+            ]);
+            if (have_posts()) {
+                the_post();
+                return true;
+            }
+        }
+        return false;
     }
 
     /** @noinspection PhpUnusedPrivateMethodInspection */
@@ -572,13 +653,19 @@ class CardinalTheme
             [
                 'title'   => 'Titre',
                 'block'   => 'h2',
-                'classes' => 'Content-title',
+                'classes' => 'content__title',
                 'wrapper' => false,
             ],
             [
                 'title'   => 'Emphase',
                 'inline'  => 'strong',
-                'classes' => 'Content-em',
+                'classes' => 'content__em',
+                'wrapper' => false,
+            ],
+            [
+                'title'   => 'Lien CTA',
+                'block'   => 'p',
+                'classes' => 'content__cta',
                 'wrapper' => false,
             ],
         ];
