@@ -8,8 +8,9 @@
     <?php the_post() ?>
     <div class="front-actu has-background">
         <?php the_post_thumbnail('large', [
-            'class' => 'front-actu__thumb has-background__image',
-            'sizes' => '100vw',
+            'class'           => 'front-actu__thumb has-background__image',
+            'data-object-fit' => 'cover',
+            'sizes'           => '100vw',
         ]) ?>
         <div class="front-actu__inner has-background__inner">
             <h2 class="visually-hidden">
@@ -41,8 +42,5 @@
             <?php the_content() ?>
         </div>
     </div>
-
-<?php the_title() ?>
-
 
 <?php get_footer() ?>

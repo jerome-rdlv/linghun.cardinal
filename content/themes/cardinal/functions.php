@@ -119,6 +119,10 @@ class CardinalTheme
         wp_register_script('font-face-observer', get_template_directory_uri() . '/node_modules/web/fontfaceobserver/fontfaceobserver.js', [], false, true);
         wp_register_script('fonts', $this->dist_url('/js/fonts.js'), ['font-face-observer'], false, true);
         wp_localize_script('fonts', 'webfonts', [
+            ['family' => 'DINProCond'],
+            ['family' => 'DINProCondBold'],
+            ['family' => 'GothamBook'],
+            ['family' => 'GothamMedium'],
 //            ['family' => 'Roboto', 'opts' => ['weight' => '300', 'style' => 'italic']],
 //            ['family' => 'Roboto', 'opts' => ['weight' => '400']],
 //            ['family' => 'Roboto', 'opts' => ['weight' => '500']],

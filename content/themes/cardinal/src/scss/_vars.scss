@@ -5,10 +5,11 @@ $body-size: 14;
 
 
 // fonts (key: font-name alt-font alt-weight alt-style)
-// todo: use https://meowni.ca/font-style-matcher/ and adapt font mixin
 $fonts: (
-    bra-thin: brandon_grotesquethin sans-serif 300 normal,
-    bra-light: brandon_grotesquelight sans-serif 300 normal
+    din: DINProCond sans-serif,
+    dinbo: DINProCondBold sans-serif,
+    go: GothamBook sans-serif,
+    gomed: GothamMedium sans-serif,
 );
 
 $sizes: (
@@ -26,6 +27,7 @@ $sizes: (
 // colors
 $c-red: #B81818;
 $c-dark: #171717;
+$c-grey: #979797;
 $c-error: $c-red;
 
 // widths

@@ -10,6 +10,7 @@ html {
 body {
     @include font-smoothing;
     @include ffs($body-size);
+    @include font(go);
     display: flex;
     flex-flow: column nowrap;
     margin: 0;

@@ -1,0 +1,44 @@
+.front-content {
+    padding-bottom: rem(20px);
+
+    &__inner {
+        @include fluid-size((
+            $wmin: 0,
+            $wmax: 60,
+        ), padding-top, padding-bottom);
+        max-width: rem(945px + $gap);
+    }
+
+    .content__title {
+        $fs: 36;
+        @include font(din);
+        @include ffs($fs);
+        letter-spacing: (3em / $fs);
+        margin: (30em / $fs) 0;
+        text-transform: uppercase;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:not(:nth-of-type(1)) {
+            &::before {
+                border-top: 1px solid $c-grey;
+                content: '';
+                display: block;
+                margin-bottom: (30em / $fs);
+                max-width: (555em / $fs);
+                width: 42%;
+            }
+        }
+    }
+
+    @media (min-width: mqem($ws)) {
+        text-align: center;
+        
+        .content__title::before {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

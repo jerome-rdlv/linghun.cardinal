@@ -1,4 +1,49 @@
 .footer {
+    $root: &;
     background: black;
     color: white;
+    padding: rem(15px) 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        padding: (15em / $body-size) 0;
+        color: inherit;
+    }
+    
+    .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-item {
+        display: inline-block;
+
+        &::before {
+            content: '•';
+            display: inline-block;
+            margin: 0 .8em 0 .5em;
+        }
+    }
+
+    .menu-item:first-child,
+    &__home,
+    &__home + .menu-item {
+        &::before {
+            content: none;
+        }
+    }
+
+    &__home {
+        margin-bottom: rem(15px);
+        width: 100%;
+    }
+
+    &__logo {
+        display: block;
+        height: (46px);
+        margin: 0 auto;
+        width: rem(165px);
+    }
 }
