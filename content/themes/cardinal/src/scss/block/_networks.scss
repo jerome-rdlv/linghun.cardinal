@@ -1,34 +1,45 @@
 .networks {
+    $fs: 22px;
+    @include fs($fs);
     display: flex;
     flex-flow: row nowrap;
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     &__item {
         display: inline-block;
-        margin: 0 rem(5px);
+        margin: 0 (5em / $fs);
     }
+
     &__link {
-        $width: 22px;
         --front-color: white;
         --back-color: transparent;
         display: block;
-        height: rem($width);
+        height: 1em;
         outline: none;
-        width: rem($width);
-        
+        width: 1em;
+
         svg {
             display: block;
             height: 100%;
             width: 100%;
         }
-        
-        &:hover,
-        &:focus,
-        &:active {
-            --front-color: black;
-            --back-color: currentColor;
+
+        @supports (--front-color: black) {
+            .back {
+                fill: var(--back-color, transparent) !important;
+            }
+            .icon {
+                fill: var(--front-color, currentColor) !important;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                --front-color: black;
+                --back-color: currentColor;
+            }
         }
     }
 }
