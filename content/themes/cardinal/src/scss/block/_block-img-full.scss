@@ -1,0 +1,9 @@
+.block-img-full {
+    margin-bottom: rem($gap);
+    
+    &__image {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+}

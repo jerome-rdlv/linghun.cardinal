@@ -5,7 +5,8 @@
             <?php if (!empty($images[0])) {
                 echo wp_get_attachment_image($images[0]['ID'], 'medium', false, [
                     'class' => 'block-img-cols__image',
-                    'sizes' => '',
+                    'data-object-fit' => 'cover',
+                    'sizes' => '(min-width: 1170px) 55.5rem, (min-width: 460px) 50vw, 100vw',
                 ]);
             } ?>
         </p>
@@ -13,13 +14,13 @@
             <?php if (!empty($images[1])) {
                 echo wp_get_attachment_image($images[1]['ID'], 'medium', false, [
                     'class' => 'block-img-cols__image',
-                    'sizes' => '',
+                    'sizes' => '(min-width: 1170px) 55.5rem, (min-width: 460px) 50vw, 100vw',
                 ]);
             } ?>
             <?php if (!empty($images[2])) {
                 echo wp_get_attachment_image($images[2]['ID'], 'medium', false, [
                     'class' => 'block-img-cols__image',
-                    'sizes' => '',
+                    'sizes' => '(min-width: 1170px) 55.5rem, (min-width: 460px) 50vw, 100vw',
                 ]);
             } ?>
         </p>

@@ -1,0 +1,28 @@
+.block-img-left {
+    &__image {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+    
+    &__left,
+    &__right {
+        margin: 0 0 rem($gap);
+    }
+    
+    @media (min-width: mqem($ws)) {
+        align-items: flex-start;
+        display: flex;
+        margin-left: rem(-$gap / 2);
+        margin-right: rem(-$gap / 2);
+        flex-flow: row nowrap;
+        
+        &__left,
+        &__right {
+            box-sizing: border-box;
+            padding-left: rem($gap / 2);
+            padding-right: rem($gap / 2);
+            width: 50%;
+        }
+    }
+}

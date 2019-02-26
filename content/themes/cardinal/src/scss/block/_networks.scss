@@ -1,5 +1,5 @@
 .networks {
-    $fs: 22px;
+    $fs: 22;
     @include fs($fs);
     display: flex;
     flex-flow: row nowrap;

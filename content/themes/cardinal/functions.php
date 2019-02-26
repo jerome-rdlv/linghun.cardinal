@@ -98,6 +98,7 @@ class CardinalTheme
         });
         add_filter('the_excerpt', [$this, 'excerpt_remove_paragraphs']);
         add_action('pre_get_posts', [$this, 'realisations_per_page']);
+        add_filter('the_content', [$this, 'transform_cta']);
 
         // forms
         if (function_exists('wpcf7_remove_form_tag')) {
@@ -306,7 +307,7 @@ class CardinalTheme
         }
         return $args;
     }
-    
+
     public function main_menu_add_item_id($atts, $item, $args)
     {
         if ($args->theme_location === self::MENU_MAIN) {
@@ -541,6 +542,15 @@ class CardinalTheme
             $form = wpcf7_contact_form($form_id);
             echo apply_filters('acf_form', $form->form_html(), $form);
         }
+    }
+
+    public function transform_cta($content)
+    {
+        return preg_replace(
+            '/(<p class="content__cta"><a.*?)>(.*?)(<\/a><\/p>)/',
+            '\1class="cta"><span>\2</span>\3',
+            $content
+        );
     }
 
     public function acf_wysiwyg_classes()

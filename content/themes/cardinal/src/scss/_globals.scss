@@ -1,4 +1,10 @@
 // generics
+@import 'block/block-img-cols';
+@import 'block/block-img-full';
+@import 'block/block-img-left';
+@import 'block/block-img-row';
+@import 'block/block-text';
+@import 'block/block-video';
 @import 'block/container';
 @import 'block/content';
 @import 'block/cta';
@@ -9,6 +15,7 @@
 @import 'block/wpcf7';
 
 // specifics
+@import 'block/flex-page';
 @import 'block/footer';
 @import 'block/front-actu';
 @import 'block/front-content';

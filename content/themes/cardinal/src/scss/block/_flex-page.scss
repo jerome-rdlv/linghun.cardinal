@@ -1,0 +1,25 @@
+.flex-page {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-top, padding-bottom);
+
+    &__accroche {
+        $fs: 36;
+        @include ffs($fs);
+        @include font(din);
+        letter-spacing: (3em / $fs);
+        line-height: (40 / $fs);
+        margin: 0 0 (60em / $fs);
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    :not(.block-text) + .block-text,
+    .block-text + :not(.block-text) {
+        @include fluid-size((
+            $wmin: 30,
+            $wmax: 60,
+        ), margin-top);
+    }
+}
