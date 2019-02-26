@@ -7,7 +7,7 @@ image: web:latest
 before_script:
     - eval $(ssh-agent -s)
     # to connect staging server and be allowed to clone ACF on GitLab
-    - echo "$CI_PRIVATE_KEY"
+    - echo "$STAGING_URL"
     - echo "$CI_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
     - echo "$CI_KNOWN_HOSTS" > ~/.ssh/known_hosts
