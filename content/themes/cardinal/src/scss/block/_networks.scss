@@ -1,0 +1,34 @@
+.networks {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    &__item {
+        display: inline-block;
+        margin: 0 rem(5px);
+    }
+    &__link {
+        $width: 22px;
+        --front-color: white;
+        --back-color: transparent;
+        display: block;
+        height: rem($width);
+        outline: none;
+        width: rem($width);
+        
+        svg {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        
+        &:hover,
+        &:focus,
+        &:active {
+            --front-color: black;
+            --back-color: currentColor;
+        }
+    }
+}

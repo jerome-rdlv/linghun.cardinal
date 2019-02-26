@@ -1,27 +1,35 @@
 .splash {
+    background: black;
+    box-sizing: border-box;
     position: relative;
-    height: (400 / 1300 * 100vw);
-    
-    &::before {
-        background: transparentize(black, .7);
-        content: '';
-        display: block;
-        height: 100%;
+    height: (400px / $header-breakpoint * 100vw);
+    width: 100%;
+
+    &__image {
+        opacity: .7;
+    }
+
+    body.home & {
+        height: 100vh;
+        min-height: rem($splash-min-height);
+    }
+
+    @media (max-width: mqem($header-breakpoint - 1)) {
+        .js-off & {
+            @include fluid-size((
+                $wmin: 170,
+                $header-breakpoint: 240,
+            ), height);
+            top: rem(30px);
+            position: absolute;
+        }
+
+    }
+
+    @media (min-width: mqem($header-breakpoint)) {
+        height: rem(400px);
         left: 0;
         position: absolute;
         top: 0;
-        width: 100%;
-        z-index: 1;
-    }
-    
-    //@media (max-width: mqem($wx)) {
-    //    min-height: (1 / 3 / vh);
-    //}
-    @media (min-width: mqem($ww)) {
-        height: rem(400px);
-    }
-    
-    body.home & {
-        height: 100vh;
     }
 }

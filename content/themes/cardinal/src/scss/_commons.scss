@@ -1,5 +1,15 @@
 @mixin commons {
-  // for secure inclusion in style.scss
+    // for secure inclusion in style.scss
+    p {
+        margin: 0 0 (20em / $body-size);
+    }
+    
+    :first-child {
+        margin-top: 0 !important;
+    }
+    :last-child {
+        margin-bottom: 0 !important;
+    }
 }
 
 // specific selectors

@@ -32,7 +32,7 @@ $c-error: $c-red;
 
 // widths
 $gap: 30px;
-$wmin: 260px;
+$wmin: 320px;
 $wz: 0px;
 $wx: 400px;
 $ws: 600px;
@@ -40,4 +40,16 @@ $wm: 900px;
 $wl: 1140px;
 $ww: 1300px;
 $wmax: $wl;
-$header-breakpoint: $wm;
+$header-breakpoint: 1030px;
+$splash-min-height: 540px;
+
+// transitions
+$nav-open-dur: 300ms;
+$nav-close-dur: 300ms;
+$nav-back-dur: 500ms;
+
+// depths
+$depth-skips: 30;
+$depth-nav: 20;
+$depth-header: 10;
+$depth-nav-back: 9;

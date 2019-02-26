@@ -1,0 +1,45 @@
+.nav-aside {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    
+    &__contact {
+        display: inline-block;
+
+        svg {
+            display: block;
+        }
+    }
+    
+    @media (max-width: mqem($header-breakpoint - 1)) {
+        border-top: 1px solid white;
+        justify-content: center;
+        margin: 0 rem(30px);
+        padding: rem(30px) 0;
+        
+        &__search {
+            margin-top: rem(15px);
+            order: 1;
+            width: 100%;
+        }
+        &__contact {
+            margin-left: auto;
+            margin-right: rem(15px);
+        }
+        &__networks {
+            margin-right: auto;
+        }
+    }
+    @media (min-width: mqem($header-breakpoint)) {
+        justify-content: flex-end;
+        flex-flow: row nowrap;
+        
+        &__contact {
+            margin-right: rem(20px);
+        }
+        &__search {
+            margin-right: rem(15px);
+            //margin-top: -.15em;
+        }
+    }
+}

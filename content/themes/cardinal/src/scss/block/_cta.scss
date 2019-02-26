@@ -1,0 +1,24 @@
+.cta {
+    $tr-dur: 150ms;
+    $fs: 18;
+    @include ffs($fs);
+    @include font(dinbo);
+    background: transparent;
+    border: 1px solid currentColor;
+    @include var(color, --front-color, inherit);
+    display: inline-block;
+    line-height: (22 / $fs);
+    min-width: (165em / $fs);
+    padding: (13em / $fs) (20em / $fs) (15em / $fs) (20em / $fs);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color $tr-dur ease-in-out, background-color $tr-dur ease-in-out;
+    
+    &:hover,
+    &:focus,
+    &:active {
+        @include var(background, --front-color, white);
+        color: var(--back-color, black);
+    }
+}

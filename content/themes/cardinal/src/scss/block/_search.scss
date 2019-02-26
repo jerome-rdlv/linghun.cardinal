@@ -1,0 +1,125 @@
+.search-form {
+    $root: &;
+    
+    &__inner {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        margin: 0 auto;
+        max-width: 100%;
+        width: rem(260px);
+    }
+
+    $height: 26;
+    &__label {
+        display: inline-block;
+        height: rem($height);
+        padding-right: rem(15px);
+        vertical-align: top;
+        width: rem(22px);
+        
+        svg {
+            margin-top: .2em;
+        }
+    }
+
+    &__input,
+    &__submit {
+        @include fs(11);
+        //noinspection CssUnknownProperty
+        appearance: none;
+        background-color: transparentize(black, .7);
+        border: 1px solid transparentize(white, .7);
+        box-sizing: border-box;
+        color: inherit;
+        font-family: inherit;
+        height: rem($height);
+        outline: none;
+        transition: border-color 150ms;
+        vertical-align: top;
+        
+        &:focus,
+        &:active {
+            border-color: white;
+        }
+    }
+
+    &__input {
+        border-radius: rem(5px) 0 0 rem(5px);
+        //border-right-color: transparentize(white, .75);
+        flex-grow: 1;
+        line-height: (12 / 11);
+        padding: rem(($height - 12 - 2) / 2) rem(15px);
+        padding-right: rem(5px);
+        width: 100%;
+    }
+
+    &__submit {
+        border-radius: 0 rem(5px) rem(5px) 0;
+        //border-right: 1px solid white;
+        //border-left-color: transparentize(white, .85);
+        flex: 0 0;
+        left: -1px;
+        margin: 0;
+        position: relative;
+        transition: color 150ms, background-color 150ms;
+        
+        &:hover,
+        &:focus,
+        &:active {
+            background: var(--front-color) !important;
+            color: var(--back-color);
+        }
+    }
+    
+    @media (min-width: mqem($header-breakpoint)) {
+        $tr-dur: 300ms;
+        overflow: hidden;
+        padding-right: 1px;
+        transition: width $tr-dur ease-in-out 500ms;
+        width: rem(25px);
+
+        &__input,
+        &__submit {
+            opacity: 0;
+            transition: opacity (1 / 3 * $tr-dur) linear ((1 / 3 * $tr-dur) + 500ms);
+        }
+        
+        &__inner {
+            width: 100%;
+        }
+        
+        &:focus-within & {
+            &__input,
+            &__submit {
+                background-color: transparentize(black, .3);
+            }
+        }
+        
+        #search:target &,
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &--filled {
+            // half width - half logo - contact button - networks
+            //max-width: rem(260px);
+            width: calc(50vw - #{rem(165px / 2 + $gap * 2 + 60px + 130px)});
+            transition-delay: 0ms;
+            
+            #{$root}__input,
+            #{$root}__submit {
+                opacity: 1;
+                transition-delay: (1 / 3 * $tr-dur);
+            }
+        }
+    }
+    
+    @media (min-width: mqem($wl + 60px)) {
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &--filled {
+            width: rem(260px);
+        }
+    }
+}

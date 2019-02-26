@@ -1,0 +1,75 @@
+.front-actu {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-top, padding-bottom);
+    --back-color: black;
+    --front-color: white;
+    background: black;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    @media (max-width: mqem($header-breakpoint - 1)) {
+        .js-on & {
+            min-height: 100vh;
+            padding-top: rem(60px + 15px + 30px);
+            padding-bottom: rem(45px);
+            position: relative;
+        }
+    }
+
+    @media (min-width: mqem($header-breakpoint)) {
+        height: 100vh;
+        //left: 0;
+        min-height: rem($splash-min-height);
+        padding-top: rem(60px + 15px + 30px);
+        padding-bottom: rem(80px + 15px + 30px);
+        //padding-bottom: rem(45px);
+        //position: absolute;
+        //top: 0;
+        width: 100%;
+    }
+
+    .has-background__image {
+        opacity: .7;
+    }
+
+    $fs: 36;
+
+    &__title,
+    &__excerpt {
+        @include ffs($fs);
+        max-width: (680em / $fs);
+        margin: 0 auto;
+
+        small {
+            @include fs($body-size);
+            display: block;
+            margin-top: (15em / $body-size);
+        }
+    }
+
+    &__title {
+        @include font(dinbo);
+        text-transform: uppercase;
+        margin-bottom: (7em / $fs);
+    }
+
+    &__excerpt {
+        line-height: 1;
+    }
+
+    &__more {
+        margin: 0;
+    }
+    &__link {
+        margin: (60em / 18) 0 0;
+    }
+
+    @media (min-width: mqem($ws)) {
+        text-align: center;
+    }
+}

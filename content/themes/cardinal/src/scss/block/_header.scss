@@ -1,8 +1,64 @@
 .header {
-    background: $c-dark;
     color: white;
+    position: relative;
+    width: 100%;
+    //z-index: 10;
     
+    .js-on & {
+        position: absolute;
+    }
+
     a {
         color: inherit;
+    }
+    
+    &__title {
+        margin: 0;
+        position: relative;
+        z-index: $depth-header;
+    }
+
+    &__inner {
+        @include fluid-size((
+            $wmin: 5,
+            $header-breakpoint: 20,
+        ), padding-top, padding-bottom);
+    }
+    
+    &__logo {
+        display: block;
+        margin: 0 auto;
+        padding: rem(10px);
+        width: rem(165px);
+    }
+
+    &__icon {
+        display: block;
+        height: rem(46px);
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    &__nav-toggle {
+        @include fluid-size((
+            $wmin: 5,
+            $header-breakpoint: 20,
+        ), top, left);
+    }
+    
+    @media (max-width: mqem($header-breakpoint - 1)) {
+        .js-off body:not(.home) & {
+            @include fluid-size((
+                $wmin: 170,
+                $header-breakpoint: 240,
+            ), min-height);
+        }
+    }
+    
+    @media (min-width: mqem($header-breakpoint)) {
+        //.home & {
+            position: absolute;
+            //z-index: 10;
+        //}
     }
 }

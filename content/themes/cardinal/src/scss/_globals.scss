@@ -1,15 +1,21 @@
 // generics
 @import 'block/container';
+@import 'block/content';
+@import 'block/cta';
 @import 'block/form';
 @import 'block/has-background';
+@import 'block/networks';
+@import 'block/search';
 @import 'block/wpcf7';
 
 // specifics
 @import 'block/footer';
+@import 'block/front-actu';
 @import 'block/front-content';
 @import 'block/header';
 @import 'block/main';
 @import 'block/nav';
+@import 'block/nav-aside';
 @import 'block/skips';
 @import 'block/splash';
 @import 'block/wrapper';

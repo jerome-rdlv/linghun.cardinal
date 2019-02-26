@@ -1,3 +1,17 @@
 .main {
+    --back-color: white;
+    --front-color: black;
+    background: white;
+    color: black;
     flex-grow: 1;
+    
+    .js-on .home & {
+        //margin-top: 100vh;
+    }
+    
+    //@media (min-width: mqem($header-breakpoint)) {
+    //    .home & {
+    //        margin-top: 100vh;
+    //    }
+    //}
 }

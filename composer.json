@@ -31,7 +31,8 @@
         "installer-paths": {
             "content/mu-plugins/{$name}/": [
                 "type:wordpress-muplugin",
-                "wpackagist-plugin/acf-code-field"
+                "wpackagist-plugin/acf-code-field",
+                "wpackagist-plugin/imagefocuspoint"
             ],
             "content/plugins/{$name}/": [
                 "type:wordpress-plugin"

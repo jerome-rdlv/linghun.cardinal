@@ -79,6 +79,7 @@ class CardinalTheme
             self::MENU_ASIDE => 'Secondaire',
         ]);
         add_filter('nav_menu_item_args', [$this, 'main_menu_item'], 10, 2);
+        add_filter('nav_menu_link_attributes', [$this, 'main_menu_add_item_id'], 10, 4);
         add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
         add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
 
@@ -304,6 +305,14 @@ class CardinalTheme
             ]);
         }
         return $args;
+    }
+    
+    public function main_menu_add_item_id($atts, $item, $args)
+    {
+        if ($args->theme_location === self::MENU_MAIN) {
+            $atts['data-id'] = $item->object_id;
+        }
+        return $atts;
     }
 
     public function add_symbol($key)

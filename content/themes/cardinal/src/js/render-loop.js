@@ -35,6 +35,7 @@ export default function loop(render) {
             }
         },
         then: function (cb) {
+            console.warn('Deprecated: loop.then() should be replaced with an outer promise construct.');
             endCb = cb;
         }
     };

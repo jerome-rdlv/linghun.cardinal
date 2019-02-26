@@ -2,6 +2,7 @@
     background: white;
     color: $c-dark;
     position: relative;
+    z-index: $depth-skips;
 
     .js-on & {
         height: 0;
@@ -27,6 +28,7 @@
         color: inherit;
         display: block;
         line-height: rem(30px);
+        outline: none;
         padding: 0 rem(15px);
 
         &:hover,

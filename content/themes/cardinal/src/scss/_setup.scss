@@ -14,9 +14,11 @@
 @function rem($px) {
     @return (strip-unit($px) / $root-size) * 1rem;
 }
+
 @function em($px, $ref: $body-size) {
     @return (strip-unit($px) / $ref) * 1em;
 }
+
 @function mqem($px) {
     @return em($px, $browser-size);
 }
@@ -37,9 +39,20 @@
 
 // mixins
 
-@mixin base-size($base-size) {
-	font-size: ($base-size / $browser-size * 100%);
+@mixin var($prop, $expr, $fallback) {
+    @if str-index($expr, '--') == 1 {
+        #{$prop}: $fallback;
+        #{$prop}: #{var($expr, $fallback)};
+    } @else {
+        #{$prop}: $fallback;
+        #{$prop}: $expr;
+    }
 }
+
+@mixin base-size($base-size) {
+    font-size: ($base-size / $browser-size * 100%);
+}
+
 @mixin fs($size, $lh: null) {
     font-size: ($size / $root-size * 1rem);
 
@@ -73,8 +86,8 @@
     // interpolated size through breakpoints
     @for $i from 1 through ($length - 1) {
 
-        $key1: nth($keys,$i);
-        $key2: nth($keys,($i + 1));
+        $key1: nth($keys, $i);
+        $key2: nth($keys, ($i + 1));
         $value1: map-get($map, $key1);
         $value2: map-get($map, $key2);
 
@@ -95,7 +108,7 @@
     }
 
     // maxmimum size
-    @media (min-width:nth($keys,$length)) {
+    @media (min-width: nth($keys, $length)) {
         @each $property in $properties {
             #{$property}: (map-get($map, nth($keys, $length)) / $root-size) * 1rem;
         }
@@ -106,8 +119,7 @@
     $settings: map_get($sizes, $size);
     @if not $settings {
         @warn "Size "+ $size +" does not exists in $sizes map";
-    }
-    @else {
+    } @else {
         @include fluid-size((
             $wmin: nth($settings, 1),
             $wmax: nth($settings, 2),
@@ -126,9 +138,9 @@
     @if map-has-key($fonts, $name) {
         $font: map-get($fonts, $name);
         font-family: unquote(nth($font, 2));
-        
+
         @if length($font) > 2 {
-            
+
             // if weight null, get first preset weight
             @if $weight == null {
                 $keys: map-keys(nth($font, 3));
@@ -136,12 +148,12 @@
                     $weight: nth($keys, 1);
                 }
             }
-            
-            @if $weight  {
+
+            @if $weight {
                 @if map-has-key(nth($font, 3), $weight) {
                     $params: map-get(nth($font, 3), $weight);
                     font-weight: $weight;
-                    
+
                     // letter-spacing
                     @if map-has-key($params, letter-spacing) {
                         letter-spacing: ($ls + map-get($params, letter-spacing));
@@ -151,7 +163,7 @@
                     } @else if ($ls != 0) {
                         @warn "No letter-spacing preset for #{$name} at weight #{$weight}. Use letter-spacing directly if needed.";
                     }
-        
+
                     // line-height
                     @if map-has-key($params, line-height) {
                         line-height: ($lh + map-get($params, line-height));
@@ -161,21 +173,18 @@
                     } @else if ($lh != 1) {
                         @warn 'No line-height preset for #{$name} at weight  #{$weight}. Use line-height directly if needed.';
                     }
-                }
-                @else {
+                } @else {
                     @warn '#{$name} has no preset for weight #{$weight}.';
                 }
             }
-        }
-        @else if $weight != null {
+        } @else if $weight != null {
             @warn 'No preset for #{$name}. Use font-weight directly if needed.';
         }
-        
+
         .fonts-on & {
             font-family: nth($font, 1), unquote(nth($font, 2));
         }
-    }
-    @else {
+    } @else {
         @warn 'Font #{$name} does not exists'
     }
 }
@@ -184,27 +193,30 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
 }
+
 @mixin overflow-scroll($direction: vertical) {
     @if $direction == vertical {
         overflow-x: hidden;
         overflow-y: auto;
-    }
-    @else {
+    } @else {
         overflow-x: auto;
         overflow-y: hidden;
     }
     overflow-scrolling: touch;
     -webkit-overflow-scrolling: touch;
 }
+
 @mixin desaturate() {
     filter: grayscale(100%);
 }
+
 @mixin button-disabled {
     box-shadow: none;
     pointer-events: none;
     opacity: .4;
     @include desaturate;
 }
+
 @mixin visually-hidden {
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
@@ -214,31 +226,33 @@
     position: absolute;
     width: 1px;
 }
+
 @mixin visually-hidden-alt {
     direction: ltr;
     text-align: left;
     text-indent: -9999em;
 }
+
 @mixin to-content-link($background, $color) {
-	background: $background;
-	color: $color;
-	display: inline-block;
-	left: 50%;
+    background: $background;
+    color: $color;
+    display: inline-block;
+    left: 50%;
     min-width: 12em;
-	padding: .8em;
-	position: absolute;
-	text-decoration: none;
-	text-transform: uppercase;
+    padding: .8em;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
     top: 0;
     text-align: center;
-	transition: transform 800ms;
-	transform: translate(-50%, -100%);
-	will-change: transform;
+    transition: transform 800ms;
+    transform: translate(-50%, -100%);
+    will-change: transform;
 
-	&:focus {
-		transition: transform 200ms;
-		transform: translate(-50%, 0);
-	}
+    &:focus {
+        transition: transform 200ms;
+        transform: translate(-50%, 0);
+    }
 }
 
 @mixin br-disable($threshold: $wl) {

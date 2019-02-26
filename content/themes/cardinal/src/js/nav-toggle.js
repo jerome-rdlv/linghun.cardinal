@@ -2,6 +2,7 @@
 
 import transitionEnd from './transition-end-polyfill';
 import tcObserve from './transition-ctrl-observer';
+import focus from './focus-element';
 import listen from './delegate-event-listener';
 import jailFocus from './jail-focus';
 import {trigger} from './create-event';
@@ -13,7 +14,7 @@ export default function init(toggle) {
     var target = toggle.getAttribute('data-target');
     var nav = document.querySelector(target);
 
-    tcObserve('navTransCtrl', {
+    tcObserve('nav-trans-ctrl', {
         toggle: onTransitionEnd
     });
 
@@ -95,7 +96,7 @@ export default function init(toggle) {
             toggle.setAttribute('aria-expanded', true);
             if (document.activeElement === toggle) {
                 // focus nav only if focus is still on toggle button
-                nav.focus();
+                focus.call(nav);
             }
             trigger.call(toggle, 'nav-opened');
         } else {
