@@ -1,0 +1,231 @@
+@import 'setup';
+
+$gap: 10px;
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0 0 4em;
+    width: 100%;
+}
+
+body {
+    font-size: 10pt;
+    line-height: (16 / 10);
+    background: white;
+    color: #444;
+}
+
+body {
+    counter-reset: counter-h2;
+}
+
+h2 {
+    counter-increment: counter-h2;
+    position: relative;
+    //text-indent: -.3em;
+
+    &::before {
+        $width: 60px;
+        content: counter(counter-h2) ".";
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: rem(12px);
+        font-weight: normal;
+        margin-left: rem(-$width);
+        padding-right: rem(10px);
+        opacity: .75;
+        text-align: right;
+        width: rem($width);
+    }
+
+    ul &,
+    ol &,
+    blockquote & {
+        counter-increment: none !important;
+
+        &::before {
+            content: none !important;
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    br {
+        display: none;
+    }
+
+}
+
+//@for $i from 1 through 3 {
+//    h#{$i} {
+//        $counter-reset: '';
+//        @for $j from ($i + 1) through 6 {
+//            $counter-reset: #{$counter-reset +' counter-h'+ $j +' 0'};
+//        }
+//        counter-reset: $counter-reset;
+//        counter-increment: #{'counter-h' + $i};
+//
+//        &::before {
+//            $counter: '"\0000a0\0000a0"';
+//            @for $j from $i through 1 {
+//                $counter: #{'counter(counter-h' + $j +')"."' + $counter};
+//            }
+//            content: $counter;
+//            //@if $i + 1 <= 6 {
+//            //    counter-reset: #{'counter-h' + ($i + 1)};
+//            //}
+//        }
+//    }
+//}
+//body.home h1::before {
+//    content: none;
+//}
+
+h2, h3, h4 {
+    page-break-after: avoid;
+}
+
+.print-off {
+    display: none;
+}
+
+.visually-hidden {
+    //@include visually-hidden();
+}
+
+.scrollmagic-pin-spacer {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    > * {
+        position: relative !important;
+    }
+}
+
+img {
+    //display: none;
+    display: block;
+    height: auto;
+    max-width: 12cm;
+    page-break-inside: avoid;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+blockquote {
+    border-left: 1px solid currentColor;
+    font-style: italic;
+    margin-left: 0;
+    padding-left: 1em;
+}
+
+blockquote,
+p,
+ul,
+footer {
+    max-width: 40em;
+}
+
+footer {
+    left: -2em;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    position: relative;
+}
+
+main a[href]::after {
+    content: "(" attr(href) ")";
+    font-size: .9em;
+    margin-left: .4em;
+    text-decoration: underline;
+}
+
+h2, h3 {
+    a[href]::after {
+        content: none;
+    }
+}
+
+// specifics (font, logo, footer, etc.)
+footer {
+    margin: 6em auto 0;
+    opacity: .7;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    box-shadow: -1px 1px 0 currentColor;
+    box-sizing: border-box;
+    color: inherit;
+    font-size: 14pt;
+    border: none;
+    opacity: .75;
+    //border-bottom: 1px solid currentColor;
+    display: block;
+    margin-top: 1em;
+    max-width: 100%;
+    padding: 0;
+}
+
+.form__privacy,
+.g-recaptcha,
+.grecaptcha-badge,
+input[type="file"],
+button[type="submit"],
+input[type="submit"] {
+    display: none !important;
+}
+
+// background
+.has-background {
+    &__image,
+    &__slider {
+        display: none;
+    }
+}
+
+// slider
+.slick-track {
+    align-items: stretch;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 0 rem(-$gap / 2);
+    width: 100% !important;
+    transform: none !important;
+}
+.slider {
+    .slick-cloned {
+        display: none !important;
+    }
+    &--fixed-height {
+        .slick-slide {
+            box-sizing: border-box;
+            padding: 0 rem($gap / 2);
+            margin-bottom: rem($gap);
+            width: (1 / 2 * 100%) !important;
+        }
+        img {
+            display: block !important;
+            max-width: none !important;
+        }
+    }
+}
+.slick-dots {
+    display: none !important;
+}

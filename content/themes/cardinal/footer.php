@@ -10,9 +10,9 @@
 
     <?php $theme = CardinalTheme::get_instance() ?>
 
-    <footer class="footer">
+    <footer class="footer print-off">
         <div class="footer__inner container">
-            <h2 class="visually-hidden print-off">Navigation secondaire</h2>
+            <h2 class="visually-hidden">Navigation secondaire</h2>
             <?php wp_nav_menu([
                 'container'      => null,
                 'depth'          => 1,

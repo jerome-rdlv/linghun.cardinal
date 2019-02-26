@@ -24,7 +24,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
 
 <script type="text/html" id="nav-toggle-tpl">
     <button type="button" id="nav-toggle" data-target="#nav"
-            class="header__nav-toggle nav__toggle">
+            class="header__nav-toggle nav__toggle print-off">
         <?php echo $theme->inline_symbol('menu') ?>
         <span class="visually-hidden">
             <?php _e('Navigation', CardinalTheme::TEXTDOMAIN) ?>
@@ -33,7 +33,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
 </script>
 
 <script type="text/html" id="nav-backs-tpl">
-    <div class="nav__backs" id="nav-backs">
+    <div class="nav__backs print-off" id="nav-backs">
         <?php wp_nav_menu([
             'container'      => '',
             'items_wrap'     => '%3$s',
@@ -71,7 +71,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
     <div class="header__inner container">
         <div class="header__title">
             <?php $title = sprintf(
-                '%s<span class="visually-hidden">%s</span>',
+                '%s<span class="visually-hidden print-off">%s</span>',
                 $theme->get_symbol('logo', [
                     'class' => 'header__icon',
                 ]),
@@ -131,7 +131,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
             <?php if ($networks && is_array($networks)): ?>
                 <div class="nav-aside__networks print-off">
                     <p class="visually-hidden">
-                        <?php _e('Suivez-nous sur', CardinalTheme::TEXTDOMAIN) ?>
+                        <?php _e('Suivez-nous sur :', CardinalTheme::TEXTDOMAIN) ?>
                     </p>
                     <!-- @formatter:off -->
                 <ul class="networks"><!--

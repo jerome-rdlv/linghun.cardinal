@@ -113,7 +113,7 @@ class CardinalTheme
         // styles
 //        wp_register_style('critical', $this->dist_url('/css/critical.css'), []);
 //        wp_styles()->add_data('critical', 'critical', true);
-        wp_register_style('main', $this->dist_url('/css/main.css'), []);
+        wp_register_style('main', $this->dist_url('/css/main.css'), [], false, 'screen');
         wp_register_style('print', $this->dist_url('/css/print.css'), [], false, 'print');
 
         // scripts
