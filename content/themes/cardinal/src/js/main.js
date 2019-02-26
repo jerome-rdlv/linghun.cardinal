@@ -42,7 +42,7 @@ function initSmoothScroll() {
 function initNavBacks(nav) {
     var canvas, cache, links;
     var currentLoop = null;
-    var duration = 200;
+    var duration = 250;
     var focused = false;
     var overed = false;
     var currentLink = null;
