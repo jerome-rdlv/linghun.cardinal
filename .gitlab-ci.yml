@@ -7,10 +7,10 @@ image: web:latest
 before_script:
     - eval $(ssh-agent -s)
     # to connect staging server and be allowed to clone ACF on GitLab
-    - echo "$STAGING_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$CI_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    - echo "$STAGING_HOST_KEY" >> ~/.ssh/known_hosts
-    - echo "$GITLAB_HOST_KEY" >> ~/.ssh/known_hosts
+    - echo "$CI_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
 
 #cache:
 #    key: ${CI_COMMIT_REF_SLUG}
@@ -27,12 +27,12 @@ build:
     stage: build
     artifacts:
         paths:
-        - content/mu-plugins/
-        - content/plugins/
-        - content/themes/cardinal/assets/
-        - content/themes/cardinal/node_modules/
-        - vendor/
-        - wp/
+            - content/mu-plugins/
+            - content/plugins/
+            - content/themes/cardinal/assets/
+            - content/themes/cardinal/node_modules/
+            - vendor/
+            - wp/
     script:
         # install build dependencies
         - yarn --cwd content/themes/cardinal/ install --frozen-lockfile
