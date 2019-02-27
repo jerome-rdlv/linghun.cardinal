@@ -683,7 +683,7 @@ class CardinalTheme
             ],
             [
                 'title'   => 'Emphase',
-                'inline'  => 'strong',
+                'block'  => 'p',
                 'classes' => 'content__em',
                 'wrapper' => false,
             ],

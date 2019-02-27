@@ -4,6 +4,10 @@
     background: white;
     color: black;
     flex-grow: 1;
+
+    :focus {
+        outline-color: black;
+    }
     
     .js-on .home & {
         //margin-top: 100vh;

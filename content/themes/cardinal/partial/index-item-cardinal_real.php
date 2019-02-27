@@ -1,14 +1,19 @@
 <div class="card-real">
-    <h2 class="card__title">
-        <a class="card__link" href="<?php the_permalink() ?>">
-            <?php the_title() ?>
-        </a>
-    </h2>
-    <p class="card-real__place">
-        <?php the_field('place') ?>
-    </p>
+    <a class="card-real__link" href="<?php the_permalink() ?>">
+        <span class="card-real__title">
+            <?php echo wp_trim_words(get_the_title(), 6, '…') ?>
+        </span>
+        <span class="visually-hidden">-</span>
+        <span class="card-real__place">
+            <span class="visually-hidden">
+                <?php _e('Lieu :', CardinalTheme::TEXTDOMAIN) ?>
+            </span>
+            <?php the_field('place') ?>
+        </span>
+    </a>
     <?php the_post_thumbnail('medium', [
         'class' => 'card-real__thumb',
-        'sizes' => '',
+        'data-object-fit' => 'cover',
+        'sizes' => '(min-width: 1040px) 26.5rem, (min-width: 780px) 33vw, (min-width: 520px) 50vw, 100vw',
     ]) ?>
 </div>

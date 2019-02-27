@@ -1,20 +1,7 @@
 <?php $theme = CardinalTheme::get_instance() ?>
 <?php get_header() ?>
 
-    <div class="splash has-background">
-        <?php
-        $thumbnail_id = get_field('splash_img', 'options', false);
-        if ($theme->archive_page()) {
-            $thumbnail_id = get_post_thumbnail_id();
-            wp_reset_query();
-        }
-        ?>
-        <?php echo wp_get_attachment_image($thumbnail_id, 'large', false, [
-            'class'           => 'splash__image has-background__image',
-            'data-object-fit' => 'cover',
-            'sizes'           => '100vw',
-        ]) ?>
-    </div>
+    <?php get_template_part('partial/splash') ?>
 
     <div class="index container">
 
@@ -29,7 +16,7 @@
                     <?php the_title() ?>
                     <?php wp_reset_query() ?>
                 <?php else: ?>
-                    <?php get_the_archive_title() ?>
+                    <?php the_archive_title() ?>
                 <?php endif ?>
             <?php endif ?>
         </h1>

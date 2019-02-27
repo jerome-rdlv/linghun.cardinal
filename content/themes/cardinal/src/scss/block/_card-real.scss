@@ -1,0 +1,78 @@
+.card-real {
+    $root: &;
+    $fs: 24;
+    $tr-dur: 300ms;
+    //@include ffs($fs);
+    position: relative;
+    text-align: center;
+    z-index: 0;
+    
+    &__body {
+        margin: 0;
+    }
+
+    &__title,
+    &__place {
+        display: block;
+        transition: transform $tr-dur ease-in-out;
+    }
+
+    &__title {
+        margin: 0;
+        transform: translateY(-10em / $fs);
+
+        &::after {
+            border-bottom: 1px solid white;
+            content: '';
+            display: block;
+            margin: (12em / $fs) auto;
+            transform: translateY(10em / $fs);
+            transition: transform $tr-dur ease-in-out;
+            width: (60em / $fs);
+        }
+    }
+    
+    &__place {
+        transform: translateY(10em / $fs);
+    }
+    
+    &__link {
+        @include font(din);
+        align-items: center;
+        background: $c-red;
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        justify-content: center;
+        left: 0;
+        opacity: 0;
+        padding: rem(15px);
+        position: absolute;
+        text-transform: uppercase;
+        transition: opacity $tr-dur ease-in-out;
+        width: 100%;
+        z-index: 1;
+        
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: 1;
+            
+            #{$root}__title,
+            #{$root}__title::after,
+            #{$root}__place {
+                transform: translateY(0);
+            }
+        }
+    }
+    
+    &__thumb {
+        display: block;
+        height: auto;
+        min-height: (160em / $fs);
+        width: 100%;
+        z-index: 0;
+    }
+}

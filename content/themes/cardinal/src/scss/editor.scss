@@ -5,21 +5,19 @@ html {
 	@include base-size($root-fs);
 }
 
-.content {
+body {
+	@include font-smoothing;
+	@include commons;
+    
 	&__cta {
 		a {
 			border: 1px solid currentColor;
 			color: inherit;
-            display: inline-block;
-            padding: .5em 1em !important;
+			display: inline-block;
+			padding: .5em 1em !important;
 			text-decoration: none;
 		}
 	}
-}
-
-body {
-	@include font-smoothing;
-	@include commons;
 	
 	&.acf_content {
 		hr {

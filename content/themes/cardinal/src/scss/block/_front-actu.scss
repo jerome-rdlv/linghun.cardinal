@@ -11,6 +11,10 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    
+    :focus {
+        outline-color: white;
+    }
 
     @media (max-width: mqem($header-breakpoint - 1)) {
         .js-on & {

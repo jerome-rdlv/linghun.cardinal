@@ -10,10 +10,11 @@ $fonts: (
     din: DINProCond sans-serif,
     dinbo: DINProCondBold sans-serif,
     go: GothamBook sans-serif,
+    // used for: menu-item
     gomed: GothamMedium sans-serif,
-    // used only for: filter
+    // used for: filter, content__title
     //gobo: GothamBold sans-serif,
-    // used only for: front-actu excerpt
+    // used for: front-actu excerpt
     //goro: GothamRounded-Book sans-serif,
 );
 

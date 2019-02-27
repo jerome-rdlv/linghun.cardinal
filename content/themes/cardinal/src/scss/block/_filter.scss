@@ -1,21 +1,32 @@
 .filter {
+    $fs: 12;
+    @include fs($fs);
+    line-height: (14 / $fs);
+    
     &__list {
         list-style: none;
-        margin: 0;
+        margin: (-6em / $fs) 0;
         padding: 0;
     }
     
     &__item {
         display: inline-block;
+        text-transform: uppercase;
         
-        &:not(:first-child) {
-            margin-left: 1em;
+        &:not(:last-child) {
+            margin-right: 1.2em;
         }
         
         &--current {
             @include font(gomed);
             color: $c-red;
         }
+    }
+    
+    a {
+        color: inherit;
+        display: block;
+        padding: (6em / $fs) 0;
     }
     
     @media (min-width: mqem($ws)) {
