@@ -27,7 +27,7 @@
         </p>
 
         <div class="flex-page__content">
-            <?php get_template_part('partial/blocks') ?>
+            <?php get_template_part('partial/flex') ?>
         </div>
     </div>
 

@@ -15,8 +15,8 @@
         text-transform: uppercase;
     }
 
-    :not(.block-text) + .block-text,
-    .block-text + :not(.block-text) {
+    :not(.flex-text) + .flex-text,
+    .flex-text + :not(.flex-text) {
         @include fluid-size((
             $wmin: 30,
             $wmax: 60,

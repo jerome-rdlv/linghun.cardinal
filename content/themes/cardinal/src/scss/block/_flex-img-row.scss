@@ -1,38 +1,34 @@
-.block-img-cols {
-    
-    img {
+.flex-img-row {
+    &__image {
         display: block;
         height: auto;
-        margin-bottom: rem($gap);
         width: 100%;
     }
-    
-    p {
-        margin: 0;
+
+    &__item {
+        margin-bottom: rem($gap);
     }
-    
-    @media (min-width: mqem(460px)) {
+
+    @media (min-width: mqem(600px)) {
         align-items: stretch;
         display: flex;
         flex-flow: row nowrap;
         margin-bottom: rem($gap);
         margin-left: rem(-$gap / 2);
         margin-right: rem(-$gap / 2);
-        
-        img:last-child {
-            margin-bottom: 0;
-        }
-        
-        &__left,
-        &__right {
+
+        &__item {
             box-sizing: border-box;
+            flex-grow: 1;
+            flex-shrink: 1;
+            margin-bottom: 0;
             padding-left: rem($gap / 2);
             padding-right: rem($gap / 2);
-            flex: 1 1 50%;
         }
-        
-        &__left img {
+
+        &__image {
             height: 100%;
+            //width: auto;
         }
     }
 }

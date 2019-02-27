@@ -9,12 +9,12 @@
         $rowWidth += $image['nwidth'];
     }
     ?>
-    <div class="block-img-row">
+    <div class="flex-img-row">
         <?php foreach ($images as &$image): ?>
             <?php $basis = round($image['nwidth'] * 100 / $rowWidth, 4) ?>
-            <div class="block-img-row__item" style="flex-basis: <?php echo $basis ?>%;">
+            <div class="flex-img-row__item" style="flex-basis: <?php echo $basis ?>%;">
                 <?php echo wp_get_attachment_image($image['ID'], 'medium', false, [
-                    'class'           => 'block-img-row__image',
+                    'class'           => 'flex-img-row__image',
                     'data-object-fit' => 'cover',
                     'sizes'           => '(min-width: 1170px) '. round($basis / 100 * $maxWidth) .'px, (min-width: 600px) '. round($basis) .'vw, 100vw',
                 ]) ?>
