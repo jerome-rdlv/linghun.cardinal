@@ -5,8 +5,8 @@
 @import 'commons';
 
 html {
-    @include base-size($root-size);
-    @include wide-fs($root-size, 1600);
+    @include base-size($root-fs);
+    @include wide-fs($root-fs, 1600);
 }
 
 body {

@@ -9,7 +9,7 @@
     display: inline-block;
     line-height: (22 / $fs);
     min-width: (165em / $fs);
-    padding: (13em / $fs) (20em / $fs) (15em / $fs) (20em / $fs);
+    padding: (13em / $fs) ($body-lh / $fs * 1em) (15em / $fs) ($body-lh / $fs * 1em);
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;

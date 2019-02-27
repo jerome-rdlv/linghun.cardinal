@@ -1,7 +1,7 @@
 @mixin commons {
     // for secure inclusion in style.scss
     p {
-        margin: 0 0 ($body-lh / $body-size * 1em);
+        margin: 0 0 ($body-lh / $body-fs * 1em);
     }
     
     > :first-child {

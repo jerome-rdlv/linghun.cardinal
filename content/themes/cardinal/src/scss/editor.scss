@@ -2,7 +2,7 @@
 @import 'commons';
 
 html {
-	@include base-size($root-size);
+	@include base-size($root-fs);
 }
 
 .content {

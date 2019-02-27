@@ -46,9 +46,9 @@
         margin: 0 auto;
 
         small {
-            @include fs($body-size);
+            @include fs($body-fs);
             display: block;
-            margin-top: (15em / $body-size);
+            margin-top: (15em / $body-fs);
         }
     }
 

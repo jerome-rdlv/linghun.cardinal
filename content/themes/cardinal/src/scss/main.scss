@@ -3,13 +3,13 @@
 @import 'commons';
 
 html {
-    @include base-size($root-size);
-    @include wide-fs($root-size, 1600);
+    @include base-size($root-fs);
+    @include wide-fs($root-fs, 1600);
 }
 
 body {
     @include font-smoothing;
-    @include ffs($body-size);
+    @include ffs($body-fs);
     @include font(go);
     --back-color: black;
     --front-color: white;
@@ -17,7 +17,7 @@ body {
     color: white;
     display: flex;
     flex-flow: column nowrap;
-    line-height: (20 / $body-size);
+    line-height: ($body-lh / $body-fs);
     margin: 0;
     min-height: 100vh;
     min-width: rem(260px);

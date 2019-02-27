@@ -12,15 +12,15 @@
 }
 
 @function rem($px) {
-    @return (strip-unit($px) / $root-size) * 1rem;
+    @return (strip-unit($px) / $root-fs) * 1rem;
 }
 
-@function em($px, $ref: $body-size) {
+@function em($px, $ref: $body-fs) {
     @return (strip-unit($px) / $ref) * 1em;
 }
 
 @function mqem($px) {
-    @return em($px, $browser-size);
+    @return em($px, $browser-fs);
 }
 
 // from http://www.antimath.info/css/sass-sqrt-function/
@@ -50,11 +50,11 @@
 }
 
 @mixin base-size($base-size) {
-    font-size: ($base-size / $browser-size * 100%);
+    font-size: ($base-size / $browser-fs * 100%);
 }
 
 @mixin fs($size, $lh: null) {
-    font-size: ($size / $root-size * 1rem);
+    font-size: ($size / $root-fs * 1rem);
 
     @if ($lh != null) {
         line-height: ($lh / $size);
@@ -80,7 +80,7 @@
 
     // minimum size
     @each $property in $properties {
-        #{$property}: (map-get($map, nth($keys,1)) / $root-size) * 1rem;
+        #{$property}: (map-get($map, nth($keys,1)) / $root-fs) * 1rem;
     }
 
     // interpolated size through breakpoints
@@ -97,11 +97,11 @@
                 //#{$property}: linear-interpolation((nth($keys,$i): $value1, nth($keys,($i+1)): $value2));
                 $slope: (($value2 - $value1) / ((nth($keys,($i + 1)) - nth($keys,$i)) / 1px));
                 @each $property in $properties {
-                    #{$property}: #{'calc('+ ($value1 * 1rem / $root-size) +' + ((100vw - '+ (nth($keys,$i)) +') * '+ $slope +'))'};
+                    #{$property}: #{'calc('+ ($value1 * 1rem / $root-fs) +' + ((100vw - '+ (nth($keys,$i)) +') * '+ $slope +'))'};
                 }
             } @else {
                 @each $property in $properties {
-                    #{$property}: ($value1 * 1rem / $root-size);
+                    #{$property}: ($value1 * 1rem / $root-fs);
                 }
             }
         }
@@ -110,7 +110,7 @@
     // maxmimum size
     @media (min-width: nth($keys, $length)) {
         @each $property in $properties {
-            #{$property}: (map-get($map, nth($keys, $length)) / $root-size) * 1rem;
+            #{$property}: (map-get($map, nth($keys, $length)) / $root-fs) * 1rem;
         }
     }
 }
