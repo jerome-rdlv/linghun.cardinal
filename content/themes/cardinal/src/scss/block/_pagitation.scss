@@ -1,0 +1,32 @@
+.pagination {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), margin-top);
+    text-align: center;
+
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__item {
+        @include font(gomed);
+        display: inline-block;
+        letter-spacing: (2.33em / $body-fs);
+
+        a {
+            color: inherit;
+        }
+
+        .current {
+            color: $c-red;
+        }
+
+        &:not(:first-child)::before {
+            content: '•';
+            display: inline-block;
+            margin: 0 (10em / $body-fs) 0 (8em / $body-fs);
+        }
+    }
+}
