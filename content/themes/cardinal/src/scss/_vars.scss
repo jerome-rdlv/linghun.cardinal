@@ -3,6 +3,7 @@ $browser-size: 16;
 $root-size: 10;
 $body-size: 14;
 
+$body-lh: 20;
 
 // fonts (key: font-name alt-font alt-weight alt-style)
 $fonts: (
@@ -10,6 +11,10 @@ $fonts: (
     dinbo: DINProCondBold sans-serif,
     go: GothamBook sans-serif,
     gomed: GothamMedium sans-serif,
+    // used only for: filter
+    //gobo: GothamBold sans-serif,
+    // used only for: front-actu excerpt
+    //goro: GothamRounded-Book sans-serif,
 );
 
 $sizes: (

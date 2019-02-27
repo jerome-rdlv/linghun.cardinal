@@ -48,13 +48,13 @@ class CardinalTheme
     public function __construct()
     {
         add_action('init', [$this, 'init']);
+        add_action('admin_init', [$this, 'admin_init']);
     }
 
     public function init()
     {
         // misc config
         show_admin_bar(false);
-        update_option('image_default_link_type', 'none');
         remove_theme_support('post-formats');
         add_theme_support('post-thumbnails');
         add_theme_support('html5', ['search-form']);
@@ -125,12 +125,6 @@ class CardinalTheme
             ['family' => 'DINProCondBold'],
             ['family' => 'GothamBook'],
             ['family' => 'GothamMedium'],
-//            ['family' => 'Roboto', 'opts' => ['weight' => '300', 'style' => 'italic']],
-//            ['family' => 'Roboto', 'opts' => ['weight' => '400']],
-//            ['family' => 'Roboto', 'opts' => ['weight' => '500']],
-//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '300']],
-//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '400']],
-//            ['family' => 'Roboto Slab', 'opts' => ['weight' => '700']],
         ]);
         wp_scripts()->add_data('fonts', 'critical', true);
 
@@ -186,6 +180,14 @@ class CardinalTheme
             $this->scripts_inc(self::SCRIPT_INC_BODY_BOTTOM);
         }, 100);
         add_filter('acf/load_field/name=scripts', [$this, 'scripts_insert_position']);
+    }
+
+    public function admin_init()
+    {
+        $image_default_link_type = get_option('image_default_link_type');
+        if ($image_default_link_type !== 'none') {
+            update_option('image_default_link_type', 'none');
+        }
     }
 
     public function scripts_inc($position)
@@ -341,7 +343,7 @@ class CardinalTheme
     public function print_symbols()
     {
         if ($this->symbols) {
-            echo '<svg style="display:none;" hidden>' . "\n";
+            echo '<svg style="display:none;">' . "\n";
             foreach ($this->symbols as $symbol) {
                 /** @noinspection PhpIncludeInspection */
                 include $this->dist_path('/svg/' . $symbol . '.symbol.svg');

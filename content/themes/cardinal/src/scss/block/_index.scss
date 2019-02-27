@@ -1,0 +1,6 @@
+.index {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-top, padding-bottom);
+}

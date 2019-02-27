@@ -18,7 +18,7 @@
 
     <div class="index container">
 
-        <h1 class="index__title">
+        <h1 class="index__title visually-hidden">
             <?php if (is_search()): ?>
                 <?php printf(
                     __('Résultats de la recherche pour « %s »', CardinalTheme::TEXTDOMAIN),
