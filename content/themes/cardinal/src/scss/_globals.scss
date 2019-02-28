@@ -39,6 +39,55 @@
 @import 'block/splash';
 @import 'block/wrapper';
 
+.page-template-tpl-contact {
+
+    .content {
+        line-height: (24 / $body-fs);
+        text-align: center;
+
+        &__title {
+            text-transform: uppercase;
+        }
+
+        a {
+            @include font(gomed);
+            color: $c-red;
+        }
+
+        hr {
+            border: 1px solid $c-grey;
+            margin: ($gap / 1px * 1em / $body-fs) auto;
+            max-width: (555 / 1140 * 100%);
+        }
+
+        strong {
+            @include font(gobo);
+
+            a {
+                color: inherit;
+            }
+        }
+
+        hr:last-of-type ~ .content__title {
+            $fs: 30;
+            @include font(din);
+            @include ffs($fs);
+            letter-spacing: (1em / $fs);
+            line-height: (22 / $fs);
+            margin-bottom: (30em / $fs);
+        }
+
+        hr:last-of-type ~ p {
+            $fs: 16;
+            @include ffs($fs);
+            line-height: (22 / $fs);
+
+            a {
+
+            }
+        }
+    }
+}
 
 .comp-scrollbar {
     transition: width 500ms;
@@ -48,7 +97,10 @@
 .visually-hidden {
     @include visually-hidden();
 }
+
 .empty {
+    margin: 0 auto;
+    max-width: 40em;
     text-align: center;
 }
 

@@ -6,11 +6,11 @@
 
     <div class="singular container">
         <h1 class="singular__title">
-            Introuvable
+            <?php _e('Introuvable', CardinalTheme::TEXTDOMAIN) ?>
         </h1>
-        <div class="singular__content content empty">
-            <p>La page que vous recherchez n’existe pas.</p>
-        </div>
+        <p class="singular__content content empty">
+            <?php _e('La page que vous demandez n’existe pas. Vous avez pu être mené ici par un lien cassé, à moins que vous n’ayez fait une faute de frappe dans l’adresse que vous vouliez atteindre.', CardinalTheme::TEXTDOMAIN) ?>
+        </p>
     </div>
 
 <?php get_footer() ?>

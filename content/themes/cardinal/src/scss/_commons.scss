@@ -1,22 +1,26 @@
 @mixin commons {
-    // for secure inclusion in style.scss
+
+    a {
+        color: inherit;
+    }
+
     p {
         margin: 0 0 ($body-lh / $body-fs * 1em);
     }
-    
+
     > :first-child {
         margin-top: 0 !important;
     }
     > :last-child {
         margin-bottom: 0 !important;
     }
-    
+
     &__title {
         @include font(gobo);
         font-size: inherit;
         margin: ($body-lh / $body-fs * 1em) 0;
     }
-    
+
     &__em {
         $fs: 30;
         @include ffs($fs);
@@ -29,7 +33,7 @@
         padding: (14em / $fs) 0;
         text-transform: uppercase;
     }
-    
+
 }
 
 // specific selectors

@@ -5,8 +5,7 @@ html {
 	@include base-size($root-fs);
 }
 
-body {
-	@include font-smoothing;
+.content {
 	@include commons;
     
 	&__cta {
@@ -18,7 +17,11 @@ body {
 			text-decoration: none;
 		}
 	}
-	
+}
+
+body {
+	@include font-smoothing;
+    
 	&.acf_content {
 		hr {
 			color: transparentize(black, .7);

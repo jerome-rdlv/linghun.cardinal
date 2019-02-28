@@ -311,6 +311,13 @@
 
         .menu-item {
             flex-grow: 1;
+            
+            @for $i from 5 through 9 {
+                &:first-child:nth-last-child(#{$i}),
+                &:first-child:nth-last-child(#{$i}) ~ .menu-item {
+                    width: (1 / $i * 100%);
+                }
+            }
         }
 
         &__aside {
