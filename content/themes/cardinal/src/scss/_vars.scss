@@ -12,8 +12,8 @@ $fonts: (
     go: GothamBook sans-serif,
     // used for: menu-item
     gomed: GothamMedium sans-serif,
-    // used for: filter, content__title
-    //gobo: GothamBold sans-serif,
+    // used for: filter, breadcrumbs, content__title, real tech
+    gobo: GothamBold sans-serif,
     // used for: front-actu excerpt, archive actu excerpt
     //goro: GothamRounded-Book sans-serif,
 );
@@ -28,6 +28,7 @@ $sizes: (
     18: 15 18,
     16: 14 16,
     14: 12 14,
+    12: 11 12,
 );
 
 // colors

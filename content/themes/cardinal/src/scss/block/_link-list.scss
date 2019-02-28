@@ -1,0 +1,38 @@
+.link-list {
+    $fs: 12;
+    $pad: 8;
+    @include ffs($fs);
+    line-height: (14 / $fs);
+    list-style: none;
+    margin: (-$pad * 1em / $fs) 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    //text-overflow: ellipsis;
+    text-transform: uppercase;
+    
+    a {
+        color: inherit;
+    }
+
+    &__item {
+        display: inline-block;
+        max-width: 100%;
+        white-space: nowrap;
+
+        > * {
+            color: inherit;
+            display: inline-block;
+            padding: ($pad * 1em / $fs) 0;
+        }
+
+        &--current {
+            @include font(gobo);
+            color: $c-red;
+        }
+    }
+
+    @media (min-width: mqem($ws)) {
+        text-align: center;
+    }
+}

@@ -1,10 +1,15 @@
 <?php $theme = CardinalTheme::get_instance() ?>
 <div class="splash has-background">
     <?php
-    $thumbnail_id = get_field('splash_img', 'options', false);
-    if ($theme->archive_page()) {
+    if (is_singular()) {
+        $thumbnail_id = get_post_thumbnail_id();
+    }
+    elseif ($theme->archive_page()) {
         $thumbnail_id = get_post_thumbnail_id();
         wp_reset_query();
+    }
+    if (!$thumbnail_id) {
+        $thumbnail_id = get_field('splash_img', 'options', false);
     }
     ?>
     <?php echo wp_get_attachment_image($thumbnail_id, 'large', false, [

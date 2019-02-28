@@ -4,50 +4,92 @@
 <?php get_header() ?>
 <?php the_post() ?>
 
-    <div class="splash has-background">
-        <?php the_post_thumbnail('large', [
-            'class' => 'splash__image has-background__image',
-            'sizes' => '100vw',
-        ]) ?>
-    </div>
+<?php get_template_part('partial/splash') ?>
 
-    <div class="real-single container">
-        <?php $images = get_field('images') ?>
-        <div class="real-single__intro">
-            <h1 class="real-single__title">
-                <?php the_title() ?>
-            </h1>
-           
-            <time class="visually-hidden" datetime="<?php echo get_the_date('Y-m-d') ?>">
-                <?php printf(__('Publié le %s', CardinalTheme::TEXTDOMAIN), get_the_date('d M Y')) ?>
-            </time>
+    <div class="single-real container">
 
-            <div class="real-single__content">
-                <div class="real-single__desc">
-                    <?php the_field('desc') ?>
+        <ul class="single-real__breadcrumbs link-list">
+            <li class="link-list__item">
+                <?php $theme->archive_page() ?>
+                <a href="<?php the_permalink() ?>">
+                    <?php the_title() ?>
+                </a>
+                &gt;
+                <?php wp_reset_query() ?>
+            </li>
+
+            <?php $cats = get_the_terms(false, 'cardinal_real_cat') ?>
+            <?php if ($cats): ?>
+                <li class="link-list__item">
+                    <a href="<?php echo get_term_link($cats[0]) ?>">
+                        <?php echo $cats[0]->name ?>
+                    </a>
+                    &gt;
+                </li>
+            <?php endif ?>
+            <li class="link-list__item link-list__item--current">
+                <span>
+                    <?php the_title() ?>
+                </span>
+            </li>
+        </ul>
+
+        <div class="single-real__inner">
+
+            <?php $images = get_field('images') ?>
+            <div class="single-real__intro">
+                <h1 class="single-real__title">
+                    <?php the_title() ?>
+                </h1>
+
+                <p class="single-real__place">
+                    <?php the_field('place') ?>
+                </p>
+
+                <time class="visually-hidden" datetime="<?php echo get_the_date('Y-m-d') ?>">
+                    <?php printf(__('Publié le %s', CardinalTheme::TEXTDOMAIN), get_the_date('d M Y')) ?>
+                </time>
+
+                <div class="single-real__content">
+                    <div class="single-real__desc content">
+                        <?php the_field('desc') ?>
+                    </div>
+                    <div class="single-real__tech content">
+                        <?php the_field('tech') ?>
+                    </div>
                 </div>
-                <div class="real-single__tech">
-                    <?php the_field('tech') ?>
+                <?php if (isset($images[0])) {
+                    echo wp_get_attachment_image($images[0]['ID'], 'medium', false, [
+                        'class' => 'single-real__intro-img',
+                        'sizes' => '(min-width: 1170px) 46rem, (min-width: 900px) 42vw, (min-width: 600px) 50vw, 100vw',
+                    ]);
+                } ?>
+            </div>
+
+            <div class="single-real__tall">
+                <?php if (isset($images[1])) {
+                    echo wp_get_attachment_image($images[1]['ID'], 'medium', false, [
+                        'sizes' => '(min-width: 1170px) 36rem, (min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw',
+                    ]);
+                } ?>
+            </div>
+
+            <div class="single-real__duo">
+                <div class="single-real__duo-item">
+                    <?php if (isset($images[2])) {
+                        echo wp_get_attachment_image($images[2]['ID'], 'medium', false, [
+                            'sizes' => '(min-width: 1170px) 26.5rem, (min-width: 900px) 25vw, (min-width: 600px) 50vw, 100vw',
+                        ]);
+                    } ?>
+                </div>
+                <div class="single-real__duo-item">
+                    <?php if (isset($images[3])) {
+                        echo wp_get_attachment_image($images[3]['ID'], 'medium', false, [
+                            'sizes' => '(min-width: 1170px) 26.5rem, (min-width: 900px) 25vw, (min-width: 600px) 50vw, 100vw',
+                        ]);
+                    } ?>
                 </div>
             </div>
-            <?php if (isset($images[0])) {
-                echo wp_get_attachment_image($images[0]['ID'], 'medium', false, [
-                    'class' => 'real-single__image-1',
-                    'sizes' => '',
-                ]);
-            } ?>
-
-        </div>
-
-        <div class="real-single__content">
-            <?php if ($images): ?>
-                <?php for ($i = 1; $i < count($images); ++$i): ?>
-                    <?php echo wp_get_attachment_image($images[$i]['ID'], 'medium', false, [
-                        'class' => 'real-single__image-' . ($i + 1),
-                        'sizes' => '',
-                    ]) ?>
-                <?php endfor ?>
-            <?php endif ?>
         </div>
 
         <?php get_template_part('partial/pager') ?>

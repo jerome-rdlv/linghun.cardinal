@@ -1,0 +1,89 @@
+.pager {
+    $root: &;
+    border-top: 1px solid black;
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: rem($gap / 2);
+    margin: rem(30px) 0 (-13em / $body-fs);
+
+    &__arrow {
+        display: inline-block;
+        height: rem(7px);
+        position: absolute;
+        top: (18em / $body-fs);
+        transition: transform 150ms;
+        width: rem(31px);
+    }
+
+    &__label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__link {
+        @include font(dinbo);
+        color: inherit;
+        display: block;
+        line-height: (18 / $body-fs);
+        overflow: hidden;
+        padding: (13em / $body-fs) 0;
+        position: relative;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        transition-property: color;
+        white-space: nowrap;
+
+        &--prev {
+            padding-left: rem(31px + $gap / 3);
+            padding-right: rem(30px);
+        }
+
+        &--next {
+            padding-right: rem(31px + $gap / 3);
+            padding-left: rem(30px);
+        }
+
+        &--prev #{$root}__arrow {
+            left: 0;
+        }
+
+        &--next #{$root}__arrow {
+            right: 0;
+            margin-left: rem(14px);
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $c-red;
+        }
+
+        &--prev {
+            &:hover,
+            &:focus,
+            &:active {
+                #{$root}__arrow {
+                    transform: translateX(#{rem(5x)});
+                }
+            }
+        }
+
+        &--next {
+            &:hover,
+            &:focus,
+            &:active {
+                #{$root}__arrow {
+                    transform: translateX(#{rem(-5x)});
+                }
+            }
+        }
+    }
+
+    @media (min-width: mqem($ws)) {
+        flex-flow: row nowrap;
+
+        &__link--next {
+            margin-left: auto;
+        }
+    }
+}

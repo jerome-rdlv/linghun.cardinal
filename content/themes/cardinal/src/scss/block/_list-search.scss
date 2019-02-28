@@ -1,5 +1,8 @@
 .list-search {
-    margin-bottom: rem(60px);
+    @include fluid-size((
+        $wmin: 0,
+        $wmax: 20,
+    ), margin-top);
     
     &__item {
         margin-bottom: rem($gap);

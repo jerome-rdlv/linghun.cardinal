@@ -1,0 +1,128 @@
+.single-real {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-top, padding-bottom);
+
+    &__inner {
+        @include fluid-size((
+            $wmin: 30,
+            $wmax: 60,
+        ), padding-top);
+    }
+    
+    &__title,
+    &__place {
+        @include font(dinbo);
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        $fs: 48;
+        @include ffs($fs);
+        margin: 0;
+    }
+
+    &__place {
+        $fs: 30;
+        @include ffs($fs);
+        margin: (7em / $fs) 0 (30em / $fs);
+    }
+
+    &__desc {
+        margin-bottom: ($body-lh / $body-fs * 1em);
+    }
+
+    &__tech {
+        @include font(gobo);
+        margin-bottom: rem($gap);
+    }
+
+    img {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    &__intro,
+    &__tall,
+    &__duo-item {
+        margin-bottom: rem($gap);
+    }
+
+    @media (min-width: mqem($ws)) {
+        &__inner,
+        &__duo {
+            align-items: flex-end;
+            display: flex;
+            flex-flow: row wrap;
+
+            > * {
+                box-sizing: border-box;
+                margin-bottom: rem($gap);
+                padding-left: rem($gap / 2);
+                padding-right: rem($gap / 2);
+            }
+        }
+        
+        &__inner {
+            margin-left: rem(-$gap / 2);
+            margin-right: rem(-$gap / 2);
+        }
+
+        &__intro,
+        &__tall {
+            width: 50%;
+        }
+        
+        &__intro {
+            align-self: stretch;
+            align-items: stretch;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+        
+        &__content {
+            margin-bottom: auto;
+        }
+
+        &__duo {
+            margin-bottom: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        &__duo-item {
+            align-self: flex-start;
+            margin-bottom: 0;
+            width: 50%;
+        }
+    }
+    
+    @media (min-width: mqem($wm)) {
+        &__intro,
+        &__tall {
+            margin-bottom: 0;
+        }
+        &__intro {
+            width: (5 / 12 * 100%);
+        }
+        &__tall {
+            width: (4 / 12 * 100%);
+        }
+        &__duo {
+            //align-self: stretch;
+            flex-flow: column nowrap;
+            width: (3 / 12 * 100%);
+        }
+        &__duo-item {
+            height: calc(50% - #{rem($gap / 2)});
+            width: 100%;
+            
+            &:last-child {
+                margin-top: rem($gap);
+            }
+        }
+    }
+}

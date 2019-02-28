@@ -13,8 +13,8 @@
                     mb_strtolower($taxonomy->labels->singular_name)
                 ) ?>
             </p>
-            <ul class="filter__list">
-                <li class="filter__item<?php echo !$current_term ? ' filter__item--current' : '' ?>">
+            <ul class="filter__list link-list">
+                <li class="filter__item link-list__item<?php echo !$current_term ? '  link-list__item--current' : '' ?>">
                     <?php if ($current_term): ?>
                         <a href="<?php echo get_post_type_archive_link($post_type_object->name) ?>"
                            class="filter__label">
@@ -28,14 +28,13 @@
                 </li>
                 <?php foreach ($terms as $term): ?>
                     <?php $current = $current_term && $current_term->term_id === $term->term_id ?>
-                    <li class="filter__item<?php echo $current ? ' filter__item--current' : '' ?>">
+                    <li class="filter__item link-list__item<?php echo $current ? ' link-list__item--current' : '' ?>">
                         <?php if ($current): ?>
                             <span class="filter__label">
-                            <?php echo $term->name ?>
-                        </span>
+                                <?php echo $term->name ?>
+                            </span>
                         <?php else: ?>
-                            <a href="<?php echo get_term_link($term) ?>"
-                               class="filter__label">
+                            <a href="<?php echo get_term_link($term) ?>" class="filter__label">
                                 <?php echo $term->name ?>
                             </a>
                         <?php endif ?>

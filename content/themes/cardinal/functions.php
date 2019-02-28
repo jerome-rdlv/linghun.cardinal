@@ -128,6 +128,7 @@ class CardinalTheme
             ['family' => 'DINProCondBold'],
             ['family' => 'GothamBook'],
             ['family' => 'GothamMedium'],
+            ['family' => 'GothamBold'],
         ]);
         wp_scripts()->add_data('fonts', 'critical', true);
 

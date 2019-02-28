@@ -12,7 +12,7 @@
     }
     
     &__title {
-        @include font(gomed);
+        @include font(gobo);
         font-size: inherit;
         margin: ($body-lh / $body-fs * 1em) 0;
     }
