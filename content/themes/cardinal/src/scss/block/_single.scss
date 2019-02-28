@@ -1,0 +1,40 @@
+.single {
+
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-bottom);
+    
+    &__content {
+        //padding-bottom: rem($gap);
+    }
+    
+    &__title {
+        $fs: 48;
+        @include ffs($fs);
+        @include font(dinbo);
+        line-height: (44 / $fs);
+        margin: (50em / $fs) 0 (15em / $fs);
+        text-transform: uppercase;
+    }
+
+    &__chapo {
+        $fs: 30;
+        @include ffs($fs);
+        line-height: (34 / $fs);
+        margin: (15em / $fs) 0 (60em / $fs);
+    }
+    
+    @media (min-width: mqem($ws)) {
+        &__title,
+        &__chapo {
+            max-width: calc(50% - #{rem($gap / 2)});
+        }
+    }
+    
+    @media (min-width: mqem($wm)) {
+        &__chapo {
+            white-space: pre-line;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 {
     "key": "group_5c6e68bc591e0",
-    "title": "Actu \/ Single",
+    "title": "Actu & Presse \/ Single",
     "fields": [
         {
             "key": "field_5c6e691f80ba2",
@@ -50,6 +50,13 @@
                 "operator": "==",
                 "value": "post"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "cardinal_presse"
+            }
         ]
     ],
     "menu_order": 0,
@@ -62,5 +69,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1550767383
+    "modified": 1551355277
 }

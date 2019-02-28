@@ -4,7 +4,7 @@
     display: flex;
     flex-flow: row wrap;
     padding-top: rem($gap / 2);
-    margin: rem(30px) 0 (-13em / $body-fs);
+    margin: 0 0 (-13em / $body-fs);
 
     &__arrow {
         display: inline-block;

@@ -88,7 +88,7 @@
         }
 
         &__duo {
-            margin-bottom: 0;
+            //margin-bottom: 0;
             padding: 0;
             width: 100%;
         }
@@ -103,7 +103,7 @@
     @media (min-width: mqem($wm)) {
         &__intro,
         &__tall {
-            margin-bottom: 0;
+            //margin-bottom: 0;
         }
         &__intro {
             width: (5 / 12 * 100%);

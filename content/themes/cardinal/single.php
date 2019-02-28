@@ -4,6 +4,8 @@
 <?php get_header() ?>
 <?php the_post() ?>
 
+<?php get_template_part('partial/splash') ?>
+
     <div class="single container">
         <h1 class="single__title">
             <?php the_title() ?>
@@ -13,9 +15,7 @@
             <?php printf(__('Publié le %s', CardinalTheme::TEXTDOMAIN), get_the_date('d M Y')) ?>
         </time>
 
-        <p class="single__chapo">
-            <?php the_field('chapo') ?>
-        </p>
+        <p class="single__chapo"><?php the_field('chapo') ?></p>
 
         <div class="single__content">
             <?php get_template_part('partial/flex') ?>
