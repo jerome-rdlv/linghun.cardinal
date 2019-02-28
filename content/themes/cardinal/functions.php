@@ -133,8 +133,12 @@ class CardinalTheme
         wp_scripts()->add_data('fonts', 'critical', true);
 
         // slick
-        wp_register_script('slick', get_template_directory_uri() . '/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
-        wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
+//        wp_register_script('slick', get_template_directory_uri() . '/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
+//        wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
+        
+        // masonry
+        wp_deregister_script('masonry');
+        wp_register_script('masonry', get_template_directory_uri() .'/node_modules/web/masonry/dist/masonry.pkgd.min.js', [], false, true);
 
         // ePD (tarteaucitron / TaC)
         wp_register_script('tac', get_template_directory_uri() . '/node_modules/web/tarteaucitron/tarteaucitron.js', [], false, true);

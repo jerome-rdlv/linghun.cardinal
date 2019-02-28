@@ -3,6 +3,8 @@
     $fs: 24;
     $tr-dur: 300ms;
     //@include ffs($fs);
+    background-color: $c-dark;
+    overflow: hidden;
     position: relative;
     text-align: center;
     z-index: 0;
