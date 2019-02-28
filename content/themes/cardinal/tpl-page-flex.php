@@ -17,16 +17,16 @@
         ]) ?>
     </div>
 
-    <div class="flex-page container">
-        <h1 class="flex-page__title visually-hidden">
+    <div class="page-flex container">
+        <h1 class="page-flex__title visually-hidden">
             <?php the_title() ?>
         </h1>
 
-        <p class="flex-page__accroche">
+        <p class="page-flex__accroche">
             <?php the_field('accroche') ?>
         </p>
 
-        <div class="flex-page__content">
+        <div class="page-flex__content">
             <?php get_template_part('partial/flex') ?>
         </div>
     </div>

@@ -1,0 +1,48 @@
+.list-real {
+    list-style: none;
+    padding-left: 0;
+
+    $item-min-width: 260px;
+    $fs: 24;
+    $fs-min: nth(map_get($sizes, $fs), 1);
+    @include fluid-size((
+        $wmin: $fs-min,
+            ((2 * $item-min-width) - 1): $fs,
+            (2 * $item-min-width): $fs-min,
+            ((3 * $item-min-width) - 1): $fs,
+            (3 * $item-min-width): $fs-min,
+            ((4 * $item-min-width) - 1): $fs,
+            (4 * $item-min-width): $fs-min,
+        $wmax: $fs
+    ));
+
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), margin-top);
+    margin-left: rem(-$gap / 2);
+    margin-right: rem(-$gap / 2);
+
+    &__item {
+        box-sizing: border-box;
+        margin-bottom: rem($gap);
+        padding-left: rem($gap / 2);
+        padding-right: rem($gap / 2);
+    }
+
+    @media (min-width: mqem($item-min-width * 2)) {
+        align-items: flex-start;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    $count: 2;
+    @while $count * $item-min-width < $wl {
+        @media (min-width: mqem($item-min-width * $count)) {
+            &__item {
+                width: (1 / $count * 100%);
+            }
+        }
+        $count: $count + 1;
+    }
+}

@@ -1,20 +1,6 @@
 .cta {
-    $tr-dur: 150ms;
-    $fs: 18;
-    @include ffs($fs);
-    @include font(dinbo);
-    background: transparent;
-    border: 1px solid currentColor;
-    @include var(color, --front-color, inherit);
-    display: inline-block;
-    line-height: (22 / $fs);
-    min-width: (165em / $fs);
-    padding: (13em / $fs) ($body-lh / $fs * 1em) (15em / $fs) ($body-lh / $fs * 1em);
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color $tr-dur ease-in-out, background-color $tr-dur ease-in-out;
-    
+    @include cta();
+
     &:hover,
     &:focus,
     &:active {

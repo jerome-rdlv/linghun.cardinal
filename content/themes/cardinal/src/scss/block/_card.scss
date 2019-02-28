@@ -1,0 +1,74 @@
+.card {
+    $fs: 20;
+    --front-color: white;
+    --back-color: #{$c-dark};
+    background-color: $c-dark;
+    color: white;
+    display: flex;
+    min-height: 100%;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+    
+    &__inner {
+        background-color: transparentize(black, .7);
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        min-height: 100%;
+        padding: rem($gap) rem($gap / 2);
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    &__title {
+        @include font(dinbo);
+        font-size: (24em / $fs);
+        margin: 0;
+        text-transform: uppercase;
+    }
+    
+    &__excerpt {
+        @include font(go);
+        line-height: (24 / $fs);
+        margin: (7em / $fs) 0 0;
+    }
+
+    &__thumb {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+    }
+    
+    &__more {
+        margin: (30em / $fs) 0 0;
+    }
+    
+    &__link {
+        @include cta();
+        
+        &::before {
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 0;
+        }
+        
+        &:hover,
+        &:focus,
+        &:active {
+            @include var(background, --front-color, white);
+            @include var(color, --back-color, black);
+            //color: var(--back-color, black);
+        }
+    }
+}

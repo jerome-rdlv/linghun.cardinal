@@ -1,12 +1,13 @@
 .pagination {
     @include fluid-size((
-        $wmin: 30,
-        $wmax: 60,
+        $wmin: 0,
+        $wmax: 30,
     ), margin-top);
     text-align: center;
 
     &__list {
         list-style: none;
+        margin: 0;
         padding: 0;
     }
 

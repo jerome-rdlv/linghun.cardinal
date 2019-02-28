@@ -70,6 +70,9 @@ class CardinalTheme
 
         add_action('add_body_class', [$this, 'add_body_class']);
         add_filter('body_class', [$this, 'body_class']);
+        add_action('get_header', function ($name) {
+            $this->add_body_class('tpl-'. $name);
+        });
 
         add_filter('wpseo_breadcrumb_output', [$this, 'fix_breadcrumb']);
 
@@ -91,7 +94,7 @@ class CardinalTheme
 
         // content
         add_filter('excerpt_length', function () {
-            return 12;
+            return is_search() ? 60 : 12;
         });
         add_filter('excerpt_more', function () {
             return '…';
@@ -243,7 +246,12 @@ class CardinalTheme
     {
         return get_template_directory() . '/assets' . $path;
     }
-
+    
+    public function get_template_name()
+    {
+        return is_search() ? 'search' : preg_replace('/^[^_]+_/', '', get_post_type());
+    }
+    
     private function generic_image_sizes()
     {
         // landscape / original format
