@@ -71,7 +71,7 @@ class CardinalTheme
         add_action('add_body_class', [$this, 'add_body_class']);
         add_filter('body_class', [$this, 'body_class']);
         add_action('get_header', function ($name) {
-            $this->add_body_class('tpl-'. $name);
+            $this->add_body_class('tpl-' . $name);
         });
 
         add_filter('wpseo_breadcrumb_output', [$this, 'fix_breadcrumb']);
@@ -247,12 +247,12 @@ class CardinalTheme
     {
         return get_template_directory() . '/assets' . $path;
     }
-    
+
     public function get_template_name()
     {
         return is_search() ? 'search' : preg_replace('/^[^_]+_/', '', get_post_type());
     }
-    
+
     private function generic_image_sizes()
     {
         // landscape / original format
@@ -422,6 +422,23 @@ class CardinalTheme
             '<img src="%1$s"%2$s>',
             $url,
             $this->get_atts($atts)
+        );
+    }
+
+    public function video_html($iframe, $class = '')
+    {
+        $atts = [];
+        foreach (['width', 'height', 'src'] as $att) {
+            if (preg_match('/\b'. $att .'=(?<quote>["\'])(?<value>.*?)\g{quote}/', $iframe, $matches)) {
+                $atts[$att] = $matches['value'];
+            }
+        }
+        printf(
+            '<div data-src="%s" data-width="%s" data-height="%s"%s></div>',
+            $atts['src'],
+            $atts['width'],
+            $atts['height'],
+            $class ? ' class="'. $class .'"' : ''
         );
     }
 
@@ -692,7 +709,7 @@ class CardinalTheme
             ],
             [
                 'title'   => 'Emphase',
-                'block'  => 'p',
+                'block'   => 'p',
                 'classes' => 'content__em',
                 'wrapper' => false,
             ],

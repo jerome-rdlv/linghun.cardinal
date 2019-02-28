@@ -1597,10 +1597,6 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-bezier-easing@gre/bezier-easing#^2.1, web/bezier-easing@gre/bezier-easing#^2.1:
-  version "2.1.0"
-  resolved "https://codeload.github.com/gre/bezier-easing/tar.gz/b9f7a8b623c00ecdbf304c2d542adfa9e5c63872"
-
 big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
@@ -3143,6 +3139,11 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
+desandro-matches-selector@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
+  integrity sha1-cXvu1NwT59jzdi9wem1YpndCGOE=
+
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
@@ -3713,6 +3714,11 @@ etag@1.8.1, etag@^1.8.1, etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+ev-emitter@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
+  integrity sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q==
+
 event-emitter@^0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/event-emitter/-/event-emitter-0.3.5.tgz#df8c69eef1647923c7157b9ce83840610b02cc39"
@@ -3964,12 +3970,6 @@ fast-levenshtein@~2.0.4:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fastdom@wilsonpage/fastdom#^1.0, web/fastdom@wilsonpage/fastdom#^1.0:
-  version "1.0.9"
-  resolved "https://codeload.github.com/wilsonpage/fastdom/tar.gz/ec00811f2c77d9a1cede4054380e382d8226d8e0"
-  dependencies:
-    strictdom "^1.0.1"
-
 fb-watchman@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.0.tgz#54e9abf7dfa2f26cd9b1636c588c1afc05de5d58"
@@ -4164,6 +4164,13 @@ fined@^1.0.1:
     object.pick "^1.2.0"
     parse-filepath "^1.0.1"
 
+fizzy-ui-utils@^2.0.0:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz#7df45dcc4eb374a08b65d39bb9a4beedf7330505"
+  integrity sha512-CZXDVXQ1If3/r8s0T+v+qVeMshhfcuq0rqIFgJnrtd+Bu8GmDmqMjntjUePypVtjHXKJ6V4sw9zeyox34n9aCg==
+  dependencies:
+    desandro-matches-selector "^2.0.0"
+
 flagged-respawn@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/flagged-respawn/-/flagged-respawn-1.0.1.tgz#e7de6f1279ddd9ca9aac8a5971d618606b3aab41"
@@ -4196,20 +4203,12 @@ flush-write-stream@^1.0.0, flush-write-stream@^1.0.2:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-focusable@jkup/focusable#>=2.0, web/focusable@jkup/focusable#>=2.0:
-  version "2.0.0"
-  resolved "https://codeload.github.com/jkup/focusable/tar.gz/01ee6267c949734eca7147840de15c14dab62311"
-
 follow-redirects@^1.2.5:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.7.0.tgz#489ebc198dc0e7f64167bd23b03c4c19b5784c76"
   integrity sha512-m/pZQy4Gj287eNy94nivy5wchN3Kp+Q5WgUPNy5lJSZ3sgkVKSYV/ZChMAQVIgx1SqfZ2zBZtPA2YlXIWxxJOQ==
   dependencies:
     debug "^3.2.6"
-
-fontfaceobserver@bramstein/fontfaceobserver#>=2.0, web/fontfaceobserver@bramstein/fontfaceobserver#>=2.0:
-  version "2.1.0"
-  resolved "https://codeload.github.com/bramstein/fontfaceobserver/tar.gz/20e40d09331510957d238f55790c83670de40af1"
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
@@ -4383,6 +4382,11 @@ get-proxy@^2.0.0:
   integrity sha512-zmZIaQTWnNQb4R4fJUEp/FC51eZsc6EkErspy3xtIYStaq8EB/hDIWipxsal+E8rz0qD7f2sL/NA9Xee4RInJw==
   dependencies:
     npm-conf "^1.1.0"
+
+get-size@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.3.tgz#54a1d0256b20ea7ac646516756202769941ad2ef"
+  integrity sha512-lXNzT/h/dTjTxRbm9BXb+SGxxzkm97h/PCIKtlN/CBCxxmkkIVV21udumMS93MuVTDX583gqc94v3RjuHmI+2Q==
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -6259,10 +6263,6 @@ jpegtran-bin@^4.0.0:
     bin-wrapper "^4.0.0"
     logalot "^2.0.0"
 
-jquery@jquery/jquery-dist#>=3.2, web/jquery@jquery/jquery-dist#>=3.2:
-  version "3.3.1"
-  resolved "https://codeload.github.com/jquery/jquery-dist/tar.gz/9e8ec3d10fad04748176144f108d7355662ae75e"
-
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
@@ -7092,10 +7092,6 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
-mobile-detect@hgoebl/mobile-detect.js, web/mobile-detect@hgoebl/mobile-detect.js:
-  version "1.4.3"
-  resolved "https://codeload.github.com/hgoebl/mobile-detect.js/tar.gz/565480738903b9684ee365f17c888bf9092a5ca3"
-
 module-deps@^6.0.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/module-deps/-/module-deps-6.2.0.tgz#d41a2e790245ce319171e4e7c4d8c73993ba3cd5"
@@ -7605,10 +7601,6 @@ object.values@^1.1.0:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-objectFitPolyfill@constancecchen/object-fit-polyfill#>=2.1, web/objectFitPolyfill@constancecchen/object-fit-polyfill#>=2.1:
-  version "2.1.0"
-  resolved "https://codeload.github.com/constancecchen/object-fit-polyfill/tar.gz/b52728e672d2432c6951ca72fac6b0469ed5f456"
-
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -7723,6 +7715,15 @@ osenv@0, osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+outlayer@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/outlayer/-/outlayer-2.1.1.tgz#29863b6de10ea5dadfffcadfa0d728907387e9a2"
+  integrity sha1-KYY7beEOpdrf/8rfoNcokHOH6aI=
+  dependencies:
+    ev-emitter "^1.0.0"
+    fizzy-ui-utils "^2.0.0"
+    get-size "^2.0.2"
 
 p-cancelable@^0.3.0:
   version "0.3.0"
@@ -10061,10 +10062,6 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tarteaucitronjs@AmauriC/tarteaucitron.js#*, web/tarteaucitron@AmauriC/tarteaucitron.js#*:
-  version "1.0.0"
-  resolved "https://codeload.github.com/AmauriC/tarteaucitron.js/tar.gz/a50ae5602fce481d975a4ce26a2cce9f023198a2"
-
 tcomb@^2.5.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-2.7.0.tgz#10d62958041669a5d53567b9a4ee8cde22b1c2b0"
@@ -10783,6 +10780,47 @@ watchpack@^1.5.0:
     chokidar "^2.0.2"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+
+web/bezier-easing@gre/bezier-easing#^2.1:
+  version "2.1.0"
+  resolved "https://codeload.github.com/gre/bezier-easing/tar.gz/b9f7a8b623c00ecdbf304c2d542adfa9e5c63872"
+
+web/fastdom@wilsonpage/fastdom#^1.0:
+  version "1.0.9"
+  resolved "https://codeload.github.com/wilsonpage/fastdom/tar.gz/ec00811f2c77d9a1cede4054380e382d8226d8e0"
+  dependencies:
+    strictdom "^1.0.1"
+
+web/focusable@jkup/focusable#>=2.0:
+  version "2.0.0"
+  resolved "https://codeload.github.com/jkup/focusable/tar.gz/01ee6267c949734eca7147840de15c14dab62311"
+
+web/fontfaceobserver@bramstein/fontfaceobserver#>=2.0:
+  version "2.1.0"
+  resolved "https://codeload.github.com/bramstein/fontfaceobserver/tar.gz/20e40d09331510957d238f55790c83670de40af1"
+
+web/jquery@jquery/jquery-dist#>=3.2:
+  version "3.3.1"
+  resolved "https://codeload.github.com/jquery/jquery-dist/tar.gz/9e8ec3d10fad04748176144f108d7355662ae75e"
+
+web/masonry@desandro/masonry#>=0.0.2:
+  version "4.2.2"
+  resolved "https://codeload.github.com/desandro/masonry/tar.gz/3b0883cf4a4a046896719b9cf282ea74be7ffecd"
+  dependencies:
+    get-size "^2.0.2"
+    outlayer "^2.1.0"
+
+web/mobile-detect@hgoebl/mobile-detect.js:
+  version "1.4.3"
+  resolved "https://codeload.github.com/hgoebl/mobile-detect.js/tar.gz/565480738903b9684ee365f17c888bf9092a5ca3"
+
+web/objectFitPolyfill@constancecchen/object-fit-polyfill#>=2.1:
+  version "2.1.0"
+  resolved "https://codeload.github.com/constancecchen/object-fit-polyfill/tar.gz/b52728e672d2432c6951ca72fac6b0469ed5f456"
+
+web/tarteaucitron@AmauriC/tarteaucitron.js#*:
+  version "1.0.0"
+  resolved "https://codeload.github.com/AmauriC/tarteaucitron.js/tar.gz/a50ae5602fce481d975a4ce26a2cce9f023198a2"
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

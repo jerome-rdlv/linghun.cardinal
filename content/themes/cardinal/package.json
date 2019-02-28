@@ -5,19 +5,12 @@
         "gulpfile": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git#master"
     },
     "dependencies": {
-        "bezier-easing": "gre/bezier-easing#^2.1",
-        "fastdom": "wilsonpage/fastdom#^1.0",
-        "focusable": "jkup/focusable#>=2.0",
-        "fontfaceobserver": "bramstein/fontfaceobserver#>=2.0",
-        "jquery": "jquery/jquery-dist#>=3.2",
-        "mobile-detect": "hgoebl/mobile-detect.js",
-        "objectFitPolyfill": "constancecchen/object-fit-polyfill#>=2.1",
-        "tarteaucitronjs": "AmauriC/tarteaucitron.js#*",
         "web/bezier-easing": "gre/bezier-easing#^2.1",
         "web/fastdom": "wilsonpage/fastdom#^1.0",
         "web/focusable": "jkup/focusable#>=2.0",
         "web/fontfaceobserver": "bramstein/fontfaceobserver#>=2.0",
         "web/jquery": "jquery/jquery-dist#>=3.2",
+        "web/masonry": "desandro/masonry#>=0.0.2",
         "web/mobile-detect": "hgoebl/mobile-detect.js",
         "web/objectFitPolyfill": "constancecchen/object-fit-polyfill#>=2.1",
         "web/tarteaucitron": "AmauriC/tarteaucitron.js#*"
