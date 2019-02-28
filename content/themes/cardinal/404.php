@@ -6,11 +6,10 @@
 
     <div class="singular container">
         <h1 class="singular__title">
-            <?php the_title() ?>
+            Introuvable
         </h1>
-
-        <div class="singular__content content">
-            <?php the_content() ?>
+        <div class="singular__content content empty">
+            <p>La page que vous recherchez n’existe pas.</p>
         </div>
     </div>
 

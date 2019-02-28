@@ -1,0 +1,16 @@
+.singular {
+    @include fluid-size((
+        $wmin: 30,
+        $wmax: 60,
+    ), padding-top, padding-bottom);
+    
+    &__title {
+        $fs: 36;
+        @include font(din);
+        @include ffs($fs);
+        letter-spacing: (3em / $fs);
+        margin: 0 0 (60em / $fs);
+        text-align: center;
+        text-transform: uppercase;
+    }
+}

@@ -5,10 +5,6 @@
         $wmax: 60,
     ), padding-bottom);
     
-    &__content {
-        //padding-bottom: rem($gap);
-    }
-    
     &__title {
         $fs: 48;
         @include ffs($fs);
