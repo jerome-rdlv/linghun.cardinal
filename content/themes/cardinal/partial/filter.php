@@ -6,7 +6,7 @@
     ]) ?>
     <?php if ($terms && !$terms instanceof WP_Error): ?>
         <?php $current_term = get_term_by('slug', get_query_var($taxonomy->name), $taxonomy->name) ?>
-        <div class="filter">
+        <div class="filter print-off">
             <p class="filter__title visually-hidden">
                 <?php printf(
                     __('Filtrer par %s :', CardinalTheme::TEXTDOMAIN),

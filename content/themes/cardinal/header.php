@@ -92,7 +92,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
                     <?php echo $title ?>
                 </a>
                 <?php if (get_bloginfo('description')): ?>
-                    <span class="header__slogan">
+                    <span class="header__slogan visually-hidden">
                             <span class="visually-hidden">-</span>
                             <?php bloginfo('description') ?>
                         </span>

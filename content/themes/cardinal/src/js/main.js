@@ -1,3 +1,4 @@
+/* global fallback */
 'use strict';
 
 import 'web/objectFitPolyfill';
@@ -5,6 +6,7 @@ import 'web/objectFitPolyfill';
 import './skip-links';
 import './edit-key';
 import './hide-on-scroll';
+import './pagination-more';
 
 import fd from './promise-fastdom';
 import fluidCanvas from './fluid-canvas';
@@ -313,11 +315,20 @@ function init() {
     });
 
     initSmoothScroll();
+    
+    // masonry and ajax load-more
+    // listen.call(document, 'more-loaded', '.masonry', function (e) {
+    //     e.target.masonry('layout');
+    // });
+    
     body.classList.remove('loading');
 }
 
 
 if (!html.classList.contains('js-off')) {
+    if (typeof fallback === 'object') {
+        clearTimeout(fallback.id());
+    }
     if (!tcObserve('main-css-ctrl', {on: init, now: true})) {
         setTimeout(function () {
             requestAnimationFrame(init);

@@ -14,6 +14,7 @@ gulpfile({
         "js/tac-overrides.js"
     ],
     inlines: [
-        "js/body-top.js"
+        "js/body-top.js",
+        "js/init-pagination-more.js"
     ]
 });

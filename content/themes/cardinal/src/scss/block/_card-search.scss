@@ -40,15 +40,16 @@
         margin-top: (15em / 18);
         min-width: rem(85px);
         
-        &::before {
-            content: '';
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 0;
-        }
+        // disturbing in practice
+        //&::before {
+        //    content: '';
+        //    height: 100%;
+        //    left: 0;
+        //    position: absolute;
+        //    top: 0;
+        //    width: 100%;
+        //    z-index: 0;
+        //}
     }
     
     &__thumb {

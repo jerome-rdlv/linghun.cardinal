@@ -26,6 +26,7 @@
     &__item {
         box-sizing: border-box;
         margin-bottom: rem($gap);
+        outline: none;
         padding-left: rem($gap / 2);
         padding-right: rem($gap / 2);
     }

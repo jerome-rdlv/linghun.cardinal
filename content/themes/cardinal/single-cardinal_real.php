@@ -8,31 +8,36 @@
 
     <div class="single-real container">
 
-        <ul class="single-real__breadcrumbs link-list">
-            <li class="link-list__item">
-                <?php $theme->archive_page() ?>
-                <a href="<?php the_permalink() ?>">
-                    <?php the_title() ?>
-                </a>
-                &gt;
-                <?php wp_reset_query() ?>
-            </li>
-
-            <?php $cats = get_the_terms(false, 'cardinal_real_cat') ?>
-            <?php if ($cats): ?>
+        <div class="single-real__breadcrumbs">
+            <p class="visually-hidden">
+                <?php _e('Fil d’Ariane :', CardinalTheme::TEXTDOMAIN) ?>
+            </p>
+            <ul class="link-list">
                 <li class="link-list__item">
-                    <a href="<?php echo get_term_link($cats[0]) ?>">
-                        <?php echo $cats[0]->name ?>
+                    <?php $theme->archive_page() ?>
+                    <a href="<?php the_permalink() ?>">
+                        <?php the_title() ?>
                     </a>
-                    &gt;
+                    <span aria-hidden="true">&gt;</span>
+                    <?php wp_reset_query() ?>
                 </li>
-            <?php endif ?>
-            <li class="link-list__item link-list__item--current">
+
+                <?php $cats = get_the_terms(false, 'cardinal_real_cat') ?>
+                <?php if ($cats): ?>
+                    <li class="link-list__item">
+                        <a href="<?php echo get_term_link($cats[0]) ?>">
+                            <?php echo $cats[0]->name ?>
+                        </a>
+                        <span aria-hidden="true">&gt;</span>
+                    </li>
+                <?php endif ?>
+                <li class="link-list__item link-list__item--current">
                 <span>
                     <?php the_title() ?>
                 </span>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
 
         <div class="single-real__inner">
 

@@ -44,6 +44,10 @@
         padding-right: rem($gap / 2);
         width: 100%;
     }
+    
+    body.search & .pagination--more-on {
+        text-align: left;
+    }
 
     @media (min-width: mqem($bp)) {
         &__item {

@@ -5,6 +5,32 @@
     ), margin-top);
     text-align: center;
 
+    &--more-on {
+        @include fluid-size((
+            $wmin: 0,
+            $wmax: 80,
+        ), margin-top);
+    }
+
+    &__more {
+        --front-color: white;
+        --back-color: red;
+        border-color: $c-red;
+        background: $c-red;
+        
+        &.loading,
+        &:disabled {
+            border-color: $c-dark;
+            background: $c-dark;
+            opacity: .4;
+            pointer-events: none;
+        }
+        
+        &.loading {
+            
+        }
+    }
+
     &__list {
         list-style: none;
         margin: 0;

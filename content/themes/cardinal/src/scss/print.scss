@@ -18,3 +18,10 @@ h2,
 h3 {
     @include font(dinbo);
 }
+
+.masonry {
+    height: auto !important;
+}
+.masonry-brick {
+    position: static !important;
+}
