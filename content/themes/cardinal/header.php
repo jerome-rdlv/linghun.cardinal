@@ -70,33 +70,24 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
 
     <div class="header__inner container">
         <div class="header__title">
+            <?php $desc = get_bloginfo('description') ?>
             <?php $title = sprintf(
-                '%s<span class="visually-hidden print-off">%s</span>',
-                $theme->get_symbol('logo', [
+                '%s<span class="visually-hidden print-off">%s</span>%s',
+                $theme->inline_svg($theme->dist_url('/svg/logo.svg'), [
+                    'id'    => 'icon-logo',
                     'class' => 'header__icon',
                 ]),
-                get_bloginfo('name')
+                get_bloginfo('name'),
+                $desc ? '<span class="header__slogan"><span class="header__slogan-inner"><span class="visually-hidden print-off">-</span>' . $desc . '</span></span>' : ''
             ) ?>
             <?php if (is_front_page()): ?>
                 <h1 class="header__logo">
                     <?php echo $title ?>
-                    <?php if (get_bloginfo('description')): ?>
-                        <span class="header__slogan">
-                            <span class="visually-hidden">-</span>
-                            <?php bloginfo('description') ?>
-                        </span>
-                    <?php endif ?>
                 </h1>
             <?php else: ?>
                 <a class="header__logo" href="<?php echo esc_url(home_url('/')); ?>">
                     <?php echo $title ?>
                 </a>
-                <?php if (get_bloginfo('description')): ?>
-                    <span class="header__slogan visually-hidden">
-                            <span class="visually-hidden">-</span>
-                            <?php bloginfo('description') ?>
-                        </span>
-                <?php endif ?>
             <?php endif ?>
         </div>
     </div>

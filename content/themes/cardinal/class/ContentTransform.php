@@ -18,7 +18,7 @@ class ContentTransform
     /**
      * @param $transform callable|array
      */
-    public function addTransform($transform)
+    public function add_transform($transform)
     {
         $this->transforms[] = $transform;
     }
@@ -40,7 +40,7 @@ class ContentTransform
         return $doc->html();
     }
     
-    public static function unwrapElement($query)
+    public static function unwrap_element($query)
     {
         return function ($doc) use ($query) {
             /** @var Document $doc */
@@ -72,7 +72,7 @@ class ContentTransform
         };
     }
     
-    public static function addClass($query, $class)
+    public static function add_class($query, $class)
     {
         return function ($doc) use ($query, $class) {
             /** @var Document $doc */
@@ -87,30 +87,52 @@ class ContentTransform
         };
     }
     
-    public static function replaceTag($query, $tag, $class = null)
+    public static function replace_tag($query, $tag, $class = null)
     {
         return function ($doc) use ($query, $tag, $class) {
             /** @var Document $doc */
-            $nodes = $doc->find($query);
+            $elements = $doc->find($query);
 
-            /** @var Node $node */
-            foreach ($nodes as $node) {
-                $doc = $node->ownerDocument;
+            /** @var Element $element */
+            foreach ($elements as $element) {
+                $element->addClass($class);
+                ContentTransform::replace_element_tag($element, $tag);
+            }
+        };
+    }
+    
+    private static function replace_element_tag(Element $element, $tag)
+    {
+        $doc = $element->ownerDocument;
+        
+        /** @var Element $new */
+        $new = $doc->createElement($tag);
 
-                /** @var Element $new */
-                $new = $doc->createElement($tag);
-
-                foreach ($node->attributes as $attribute) {
-                    $new->setAttribute($attribute->name, $attribute->value);
-                }
-                while ($node->childNodes->length) {
-                    $new->appendChild($node->childNodes->item(0));
-                }
-                if ($class !== null) {
-                    $new->addClass($class);
-                }
-                $node->parentNode->insertBefore($new, $node);
-                $node->parentNode->removeChild($node);
+        // copy attributes
+        foreach ($element->attributes as $attribute) {
+            $new->setAttribute($attribute->name, $attribute->value);
+        }
+        
+        // copy children
+        while ($element->childNodes->length) {
+            $new->appendChild($element->childNodes->item(0));
+        }
+        
+        // replace element
+        $element->parentNode->replaceChild($new, $element);
+    }
+    
+    public static function down_headings()
+    {
+        return function ($doc) {
+            /** @var Document $doc */
+            $elements = $doc->find('h1, h2, h3, h4, h5, h6');
+            
+            /** @var Element $element */
+            foreach ($elements as $element) {
+                /** @noinspection PhpUndefinedFieldInspection */
+                preg_match('/h([0-9])/', $element->tagName, $m);
+                ContentTransform::replace_element_tag($element, 'h'. min(($m[1] + 1), 6));
             }
         };
     }

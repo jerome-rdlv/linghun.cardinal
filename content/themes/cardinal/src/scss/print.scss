@@ -19,6 +19,25 @@ h3 {
     @include font(dinbo);
 }
 
+.header {
+    &__title {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    &__icon {
+        height: rem(46px);
+        width: 100%;
+    }
+    
+    &__slogan {
+        @include font(din);
+        @include fs($body-fs);
+        display: block;
+        text-transform: uppercase;
+    }
+}
+
 .masonry {
     height: auto !important;
 }

@@ -35,7 +35,7 @@ class CardinalTheme
     ];
 
     private $symbols = [
-        'logo',
+//        'logo',
 //        'contact',
 //        'facebook',
 //        'twitter',

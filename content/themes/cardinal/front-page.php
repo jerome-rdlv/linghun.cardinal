@@ -18,9 +18,9 @@
                 <?php _e('Actualité du moment', CardinalTheme::TEXTDOMAIN) ?>
             </h2>
             <div class="front-actu__content">
-                <h2 class="front-actu__title">
+                <h3 class="front-actu__title">
                     <?php the_title() ?>
-                </h2>
+                </h3>
                 <p class="front-actu__excerpt">
                     <span class="visually-hidden"><?php _e('Extrait :', CardinalTheme::TEXTDOMAIN) ?></span>
                     <?php the_excerpt() ?>

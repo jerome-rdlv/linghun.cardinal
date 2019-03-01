@@ -1,9 +1,10 @@
 .header {
+    $root: &;
     color: white;
     position: relative;
     width: 100%;
     //z-index: 10;
-    
+
     .js-on & {
         position: absolute;
     }
@@ -11,7 +12,7 @@
     a {
         color: inherit;
     }
-    
+
     &__title {
         margin: 0;
         position: relative;
@@ -24,11 +25,12 @@
             $header-breakpoint: 20,
         ), padding-top, padding-bottom);
     }
-    
+
     &__logo {
         display: block;
         margin: 0 auto;
         padding: rem(10px);
+        position: relative;
         width: rem(165px);
     }
 
@@ -39,13 +41,17 @@
         width: 100%;
     }
     
+    &__slogan-inner {
+        transform: translateX(-100%);
+    }
+
     &__nav-toggle {
         @include fluid-size((
             $wmin: 5,
             $header-breakpoint: 20,
         ), top, left);
     }
-    
+
     @media (max-width: mqem($header-breakpoint - 1)) {
         .js-off body:not(.home) & {
             @include fluid-size((
@@ -54,11 +60,76 @@
             ), min-height);
         }
     }
-    
+
     @media (min-width: mqem($header-breakpoint)) {
         //.home & {
-            position: absolute;
-            //z-index: 10;
+        position: absolute;
+        //z-index: 10;
         //}
+    }
+
+    $slogan-bp: 1200px;
+    @media (max-width: mqem($slogan-bp - 1)) {
+        &__slogan {
+            @include visually-hidden();
+        }
+    }
+    
+    @media (min-width: mqem($slogan-bp)) {
+        $tr-dur: 350ms;
+
+        &__slogan {
+            $fs: 22;
+            @include font(din);
+            @include fs($fs);
+            color: white;
+            display: block;
+            left: rem(105px);
+            letter-spacing: (-.5em / $fs);
+            line-height: 1;
+            overflow: hidden;
+            position: absolute;
+            text-transform: uppercase;
+            top: rem(14x);
+            white-space: nowrap;
+        }
+
+        &__slogan-inner {
+            display: block;
+            padding-left: .5em;
+            transform: translateX(-100%);
+            transition: transform $tr-dur ease-in-out;
+        }
+
+        body:not(.search) & a {
+            .square {
+                transition: fill $tr-dur ease-in-out;
+            }
+            
+            .name {
+                transition: opacity $tr-dur ease-in-out;
+            }
+            
+            &:hover,
+            &:focus,
+            &:active {
+                .square {
+                    fill: $c-red !important;
+                    transition-duration: (2 / 3 * $tr-dur);
+                }
+                
+                .name {
+                    opacity: 0;
+                    transition-duration: (2 / 3 * $tr-dur);
+                }
+
+                #{$root}__slogan-inner {
+                    transform: translateX(0);
+                    transition-duration: (2 / 3 * $tr-dur);
+                    transition-delay: (1 / 4 * $tr-dur);
+                }
+            }
+        }
+
     }
 }
