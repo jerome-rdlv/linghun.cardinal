@@ -23,4 +23,11 @@
     text-decoration: none;
     text-transform: uppercase;
     transition: color $tr-dur ease-in-out, background-color $tr-dur ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        @include var(background, --front-color, white);
+        color: var(--back-color, black);
+    }
 }

@@ -1,10 +1,3 @@
 .cta {
     @include cta();
-
-    &:hover,
-    &:focus,
-    &:active {
-        @include var(background, --front-color, white);
-        color: var(--back-color, black);
-    }
 }

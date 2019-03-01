@@ -6,7 +6,10 @@ export function trigger(type, detail) {
 export function createEvent(type, data) {
     var event;
     if (window.CustomEvent) {
-        event = new CustomEvent(type, {detail: data});
+        event = new CustomEvent(type, {
+            bubbles: true,
+            detail: data
+        });
     } else {
         event = document.createEvent('CustomEvent');
         event.initCustomEvent(type, true, true, data);

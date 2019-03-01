@@ -26,6 +26,6 @@
     <?php the_post_thumbnail('medium', [
         'class'           => 'card__thumb',
         'data-object-fit' => 'cover',
-        'sizes'           => '(min-width: 1170px) 55.5rem, (min-width: 780px) 50, 100vw',
+        'sizes'           => '(min-width: 1170px) 55.5rem, (min-width: 780px) 50vw, 100vw',
     ]) ?>
 </div>

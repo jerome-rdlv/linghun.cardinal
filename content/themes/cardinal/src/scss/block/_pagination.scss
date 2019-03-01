@@ -13,6 +13,7 @@
     }
 
     &__more {
+        @include cta();
         --front-color: white;
         --back-color: red;
         border-color: $c-red;
@@ -20,14 +21,11 @@
         
         &.loading,
         &:disabled {
+            color: white;
             border-color: $c-dark;
             background: $c-dark;
             opacity: .4;
             pointer-events: none;
-        }
-        
-        &.loading {
-            
         }
     }
 

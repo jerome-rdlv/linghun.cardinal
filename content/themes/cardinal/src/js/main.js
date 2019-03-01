@@ -1,4 +1,4 @@
-/* global fallback */
+/* global fallback, jQuery */
 'use strict';
 
 import 'web/objectFitPolyfill';
@@ -317,9 +317,12 @@ function init() {
     initSmoothScroll();
     
     // masonry and ajax load-more
-    // listen.call(document, 'more-loaded', '.masonry', function (e) {
-    //     e.target.masonry('layout');
-    // });
+    listen.call(document, 'moreloaded', '.masonry', function (e) {
+        var list = e.target;
+        if (typeof jQuery === 'function' && typeof jQuery(list).masonry === 'function') {
+            jQuery(list).masonry('appended', list.querySelectorAll('.masonry-brick ~ :not(.masonry-brick)'));
+        }
+    });
     
     body.classList.remove('loading');
 }
