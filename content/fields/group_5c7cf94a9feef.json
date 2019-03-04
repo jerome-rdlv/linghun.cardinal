@@ -1,0 +1,48 @@
+{
+    "key": "group_5c7cf94a9feef",
+    "title": "Alternative mobile",
+    "fields": [
+        {
+            "key": "field_5c7cf99122ab9",
+            "label": "Image",
+            "name": "splash_mobile",
+            "type": "image",
+            "instructions": "Dimensions recommandées de 720×1136. Cette image est utilisée sur la page d’accueil, sur mobile, où l’image d’entête est en format portrait plutôt que paysage.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_status",
+                "operator": "==",
+                "value": "publish"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1551694573
+}

@@ -3,25 +3,6 @@
     "title": "Actu & Presse \/ Single",
     "fields": [
         {
-            "key": "field_5c6e691f80ba2",
-            "label": "Chapô",
-            "name": "chapo",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 3,
-            "new_lines": ""
-        },
-        {
             "key": "field_5c6e68e1c8d47",
             "label": "Contenu",
             "name": "contenu",
@@ -69,5 +50,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1551355277
+    "modified": 1551695569
 }

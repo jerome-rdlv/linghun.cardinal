@@ -486,6 +486,27 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5c7cfa0e7da58",
+            "label": "Image d’entête mobile par défaut",
+            "name": "splash_mobile",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_5c7cf99122ab9"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         }
     ],
     "location": [
@@ -505,5 +526,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550762503
+    "modified": 1551694426
 }

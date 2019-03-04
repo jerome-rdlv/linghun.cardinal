@@ -15,7 +15,7 @@ class MenuBackgroundsWalker extends Walker
         }
 
         $background = '';
-//        $background = '<picture>';
+        
 //        $portraits = [];
 //        foreach (wp_get_additional_image_sizes() as $key => $size) {
 //            if (preg_match('/p-([0-9]+)-x1/', $key)) {
@@ -37,7 +37,15 @@ class MenuBackgroundsWalker extends Walker
             'id'              => 'item-back-' . $element->object_id,
             'sizes'           => '(min-width: 920px) 100vw, 920px',
         ]);
-//        $background .= '</picture>';
+
+//        $mobile_image = get_field('splash_mobile', $element->object_id, false);
+//        if ($mobile_image) {
+//            $background = sprintf(
+//                '<picture><source media="(max-aspect-ratio: 320/320)" srcset="%s">%s</picture>',
+//                wp_get_attachment_image_srcset($mobile_image),
+//                $background
+//            );
+//        }
 
         $output .= $background;
     }

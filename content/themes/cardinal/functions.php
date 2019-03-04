@@ -567,6 +567,11 @@ class CardinalTheme
         }
         $query->set('posts_per_page', 16);
     }
+    
+    public function splash_img()
+    {
+        
+    }
 
     public function form_render($form_id)
     {

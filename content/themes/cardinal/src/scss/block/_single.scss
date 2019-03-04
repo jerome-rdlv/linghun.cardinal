@@ -27,10 +27,10 @@
             max-width: calc(50% - #{rem($gap / 2)});
         }
     }
-    
-    @media (min-width: mqem($wm)) {
-        &__chapo {
-            white-space: pre-line;
-        }
-    }
+    //
+    //@media (min-width: mqem($wm)) {
+    //    &__chapo {
+    //        white-space: pre-line;
+    //    }
+    //}
 }

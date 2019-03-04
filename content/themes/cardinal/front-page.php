@@ -7,12 +7,20 @@
 <?php if (have_posts()): ?>
     <?php the_post() ?>
     <div class="front-actu has-background">
-        <?php the_post_thumbnail('large', [
+        <?php $mobileImg = get_field('splash_mobile', false, false) ?>
+        <?php $splashImg = get_the_post_thumbnail(null, 'large', [
             'class'           => 'front-actu__thumb has-background__image',
             'data-object-fit' => 'cover',
             'sizes'           => '100vw',
-            'style'           => 'object-position: 70% 26%',
         ]) ?>
+        <?php if ($mobileImg): ?>
+        <picture>
+            <source media="(max-aspect-ratio: 320/320)" srcset="<?php echo wp_get_attachment_image_srcset($mobileImg) ?>">
+            <?php echo $splashImg ?>
+        </picture>
+        <?php else: ?>
+            <?php echo $splashImg ?>
+        <?php endif ?>
         <div class="front-actu__inner has-background__inner container">
             <h2 class="visually-hidden">
                 <?php _e('Actualité du moment', CardinalTheme::TEXTDOMAIN) ?>

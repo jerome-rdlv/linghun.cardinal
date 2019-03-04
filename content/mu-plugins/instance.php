@@ -61,7 +61,7 @@ add_action('init', function () {
         return [
         ];
     });
-    
+
     // display search page field on reading settings page
 //    add_action('admin_init', function () {
 //        $option_name = 'page_for_search';
@@ -83,8 +83,8 @@ add_action('init', function () {
 //            'reading'
 //        );
 //    });
-    
-    
+
+
     add_filter('cpt_has_parent_page', function ($has_parent, $post_type) {
         return array_search($post_type, ['cardinal_presse', 'cardinal_real']) !== false ? true : $has_parent;
     }, 10, 2);
@@ -114,6 +114,7 @@ add_action('init', function () {
         'supports'    => [
             'title',
 //            'editor',
+            'excerpt',
             'author',
             'thumbnail',
             'revisions',
@@ -127,7 +128,7 @@ add_action('init', function () {
             'cardinal_presse_cat',
         ],
     ]);
-    
+
     $reals_page = get_option('page_for_cardinal_real');
     register_taxonomy('cardinal_real_cat', 'cardinal_real', [
         'labels'            => [
