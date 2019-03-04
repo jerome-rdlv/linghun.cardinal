@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a287cf83f0f7b5c19d85fb083bbc09b2",
+    "content-hash": "d5b4f28aa7fa562ef0ba47888771a60e",
     "packages": [
         {
             "name": "advanced-custom-fields-pro",
@@ -1551,15 +1551,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.7.3",
+            "version": "4.0.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.7.3"
+                "reference": "tags/4.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.7.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.4.0.1.zip",
                 "reference": null,
                 "shasum": null
             },

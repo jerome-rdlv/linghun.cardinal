@@ -23,7 +23,7 @@
         "php-instagram-api/php-instagram-api": "@dev",
         "disable-comments": "dev-master",
         "scotteh/php-dom-wrapper": ">=0.7",
-        "wpackagist-plugin/redirection": "^3.7",
+        "wpackagist-plugin/redirection": ">=3.7",
         "cpt-parent": "dev-master"
     },
     "extra": {
