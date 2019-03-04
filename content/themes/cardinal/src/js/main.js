@@ -115,9 +115,9 @@ function initNavBacks(nav) {
         if (currentLoop) {
             currentLoop.stop();
         }
-        
+
         return new Promise(function (resolve) {
-            
+
             if (canvas.width === 0) {
                 resolve();
                 return;
@@ -126,7 +126,7 @@ function initNavBacks(nav) {
             // cache current canvas
             cache._ctx.clearRect(0, 0, canvas.width, canvas.height);
             cache._ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
-            
+
             var progress = 0;
             currentLoop = loop(function (delta) {
                 progress += delta;
@@ -315,15 +315,21 @@ function init() {
     });
 
     initSmoothScroll();
-    
+
     // masonry and ajax load-more
     listen.call(document, 'moreloaded', '.masonry', function (e) {
         var list = e.target;
         if (typeof jQuery === 'function' && typeof jQuery(list).masonry === 'function') {
-            jQuery(list).masonry('appended', list.querySelectorAll('.masonry-brick ~ :not(.masonry-brick)'));
+            var $list = jQuery(list);
+            $list.masonry('appended', list.querySelectorAll('.masonry-brick ~ :not(.masonry-brick)'));
+            setTimeout(function () {
+                requestAnimationFrame(function () {
+                    $list.masonry('layout');
+                });
+            }, 500);
         }
     });
-    
+
     body.classList.remove('loading');
 }
 
