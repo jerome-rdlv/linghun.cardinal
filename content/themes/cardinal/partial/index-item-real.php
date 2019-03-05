@@ -1,4 +1,4 @@
-<div class="card-real">
+<div class="card-real fade-in fade-in--hidden">
     <a class="card-real__link" href="<?php the_permalink() ?>">
         <span class="card-real__title">
             <?php echo wp_trim_words(get_the_title(), 6, '…') ?>

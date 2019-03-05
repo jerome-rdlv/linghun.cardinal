@@ -7,7 +7,7 @@
 
     a {
         display: inline-block;
-        padding: (15em / $body-fs) 0;
+        padding: (10em / $body-fs) 0;
         color: inherit;
     }
     
@@ -45,5 +45,11 @@
         height: (46px);
         margin: 0 auto;
         width: rem(165px);
+    }
+    
+    @media (min-width: mqem($ws)) {
+        a {
+            padding: (15em / $body-fs) 0;
+        }
     }
 }

@@ -15,6 +15,6 @@ gulpfile({
     ],
     inlines: [
         "js/body-top.js",
-        "js/init-pagination-more.js"
+        "js/init-*.js",
     ]
 });

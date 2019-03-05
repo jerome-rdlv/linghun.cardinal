@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card fade-in fade-in--hidden">
     <div class="card__inner">
         <h2 class="card__title">
             <?php the_title() ?>

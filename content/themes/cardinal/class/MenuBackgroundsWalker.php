@@ -38,14 +38,14 @@ class MenuBackgroundsWalker extends Walker
             'sizes'           => '(min-width: 920px) 100vw, 920px',
         ]);
 
-//        $mobile_image = get_field('splash_mobile', $element->object_id, false);
-//        if ($mobile_image) {
-//            $background = sprintf(
-//                '<picture><source media="(max-aspect-ratio: 320/320)" srcset="%s">%s</picture>',
-//                wp_get_attachment_image_srcset($mobile_image),
-//                $background
-//            );
-//        }
+        $mobile_image = get_field('splash_mobile', $element->object_id, false);
+        if ($mobile_image) {
+            $background = sprintf(
+                '<picture><source media="(max-width: 600px)" srcset="%s">%s</picture>',
+                wp_get_attachment_image_srcset($mobile_image),
+                $background
+            );
+        }
 
         $output .= $background;
     }

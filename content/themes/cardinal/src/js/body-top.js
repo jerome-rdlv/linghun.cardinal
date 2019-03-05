@@ -26,13 +26,17 @@ var fallback = (function () {
         }
     }, 3000);
     return {
-        id: function () {
-            return timeoutId;
+        cancel: function () {
+            clearTimeout(timeoutId);
         },
         add: function (init, cancel) {
             if (!jsOff) {
-                init.call();
-                cancels.unshift(cancel);
+                if (typeof init === 'function') {
+                    init.call();
+                }
+                if (typeof cancel === 'function') {
+                    cancels.unshift(cancel);
+                }
             }
         }
     };
@@ -47,14 +51,14 @@ var print = (function () {
             callbacks[i].call();
         }
     }
+
     function toggle(before) {
         if (before) {
             if (!printing) {
                 printing = true;
                 execute(beforeCallbacks);
             }
-        }
-        else {
+        } else {
             if (printing) {
                 printing = false;
                 execute(afterCallbacks);
@@ -77,7 +81,9 @@ var print = (function () {
 
     return {
         add: function (before, after) {
-            beforeCallbacks.push(before);
+            if (typeof before === 'function') {
+                beforeCallbacks.push(before);
+            }
             if (typeof after === 'function') {
                 afterCallbacks.push(after);
             }

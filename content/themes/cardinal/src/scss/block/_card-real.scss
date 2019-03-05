@@ -8,6 +8,11 @@
     position: relative;
     text-align: center;
     z-index: 0;
+
+    .fade-in__anchor {
+        position: absolute;
+        top: 50%;
+    }
     
     &__body {
         margin: 0;

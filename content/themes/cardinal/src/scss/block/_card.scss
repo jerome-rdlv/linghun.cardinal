@@ -11,6 +11,11 @@
     width: 100%;
     z-index: 0;
     
+    .fade-in__anchor {
+        position: absolute;
+        top: 50%;
+    }
+    
     &__inner {
         background-color: transparentize(black, .7);
         box-sizing: border-box;

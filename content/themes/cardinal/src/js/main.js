@@ -1,4 +1,4 @@
-/* global fallback, jQuery */
+/* global fallback, jQuery, imagesLoaded */
 'use strict';
 
 import 'web/objectFitPolyfill';
@@ -8,6 +8,7 @@ import './edit-key';
 import './hide-on-scroll';
 import './pagination-more';
 
+import fadeIn from './fade-in';
 import fd from './promise-fastdom';
 import fluidCanvas from './fluid-canvas';
 import focus from './focus-element';
@@ -316,19 +317,33 @@ function init() {
 
     initSmoothScroll();
 
-    // masonry and ajax load-more
-    listen.call(document, 'moreloaded', '.masonry', function (e) {
-        var list = e.target;
-        if (typeof jQuery === 'function' && typeof jQuery(list).masonry === 'function') {
-            var $list = jQuery(list);
-            $list.masonry('appended', list.querySelectorAll('.masonry-brick ~ :not(.masonry-brick)'));
-            setTimeout(function () {
-                requestAnimationFrame(function () {
-                    $list.masonry('layout');
-                });
-            }, 500);
-        }
+    // init reveal with load-more
+    listen.call(document, 'moreloaded', '.list-real,.list-search', function (e) {
+        fadeIn.initNodes(Array.prototype.map.call(e.detail, function (item) {
+            return item.querySelector('.fade-in');
+        }));
     });
+
+    // masonry and ajax load-more
+    if (typeof jQuery === 'function') {
+        if (typeof imagesLoaded === 'function') {
+            Array.prototype.forEach.call(document.querySelectorAll('[data-masonry]'), function (list) {
+                imagesLoaded(list).on('progress', function () {
+                    jQuery(list).masonry('layout');
+                });
+            });
+        }
+
+        listen.call(document, 'moreloaded', '.masonry', function (e) {
+            imagesLoaded(e.target).on('progress', function () {
+                jQuery(e.target).masonry('layout');
+            });
+            var $list = jQuery(e.target);
+            if (typeof $list.masonry === 'function') {
+                $list.masonry('appended', e.detail);
+            }
+        });
+    }
 
     body.classList.remove('loading');
 }
@@ -336,7 +351,7 @@ function init() {
 
 if (!html.classList.contains('js-off')) {
     if (typeof fallback === 'object') {
-        clearTimeout(fallback.id());
+        fallback.cancel();
     }
     if (!tcObserve('main-css-ctrl', {on: init, now: true})) {
         setTimeout(function () {

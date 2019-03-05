@@ -96,9 +96,11 @@ function initLoadMoreList(list) {
             options = getOptions(respList, respPagination);
 
             // add new items
+            var respItems = [];
             var responseItems = fragment.querySelectorAll('#' + id + ' > *');
             if (responseItems.length) {
                 Array.prototype.forEach.call(responseItems, function (item) {
+                    respItems.push(item);
                     list.appendChild(item);
                 });
 
@@ -126,7 +128,7 @@ function initLoadMoreList(list) {
             live.textContent = options.loadingSuccess;
 
             // trigger success event
-            trigger.call(list, 'moreloaded');
+            trigger.call(list, 'moreloaded', respItems);
         };
         xhr.send();
     });

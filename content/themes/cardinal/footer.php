@@ -10,6 +10,8 @@
 
     <?php $theme = CardinalTheme::get_instance() ?>
 
+    <script><?php include $theme->dist_path('/js/init-fade-in.js') ?></script>
+    
     <footer class="footer print-off">
         <div class="footer__inner container">
             <h2 class="visually-hidden">Navigation secondaire</h2>
