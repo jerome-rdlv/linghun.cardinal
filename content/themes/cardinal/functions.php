@@ -473,7 +473,7 @@ class CardinalTheme
     {
         $key = $this->get_network_key($url);
         return sprintf(
-            '<a href="%1$s" class="%2$s %2$s--%3$s">%4$s<span class="visually-hidden">%5$s</span></a>',
+            '<a href="%1$s" class="%2$s %2$s--%3$s" target="_blank">%4$s<span class="visually-hidden">%5$s</span></a>',
             $url,
             $class,
             $key,
