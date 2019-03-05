@@ -319,6 +319,9 @@ function init() {
 
     // init reveal with load-more
     listen.call(document, 'moreloaded', '.list-real,.list-search', function (e) {
+        setTimeout(function () {
+            sscroll.scrollTo(e.detail.item(0));
+        }, 300);
         fadeIn.initNodes(Array.prototype.map.call(e.detail, function (item) {
             return item.querySelector('.fade-in');
         }));

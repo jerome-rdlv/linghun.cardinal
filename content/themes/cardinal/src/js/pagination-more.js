@@ -1,7 +1,6 @@
 'use strict';
 
 import focus from './focus-element';
-import * as sscroll from './smooth-scroll';
 import {trigger} from './create-event';
 
 function getOptions(list, pagination) {
@@ -96,21 +95,11 @@ function initLoadMoreList(list) {
             options = getOptions(respList, respPagination);
 
             // add new items
-            var respItems = [];
-            var responseItems = fragment.querySelectorAll('#' + id + ' > *');
-            if (responseItems.length) {
-                Array.prototype.forEach.call(responseItems, function (item) {
-                    respItems.push(item);
+            var respItems = fragment.querySelectorAll('#' + id + ' > *');
+            if (respItems.length) {
+                Array.prototype.forEach.call(respItems, function (item) {
                     list.appendChild(item);
                 });
-
-                // focus first item
-                (function (firstItem) {
-                    requestAnimationFrame(function () {
-                        focus.call(firstItem, true);
-                        sscroll.scrollTo(firstItem);
-                    });
-                })(responseItems[0]);
             }
             
             if (options.url) {
@@ -129,6 +118,13 @@ function initLoadMoreList(list) {
 
             // trigger success event
             trigger.call(list, 'moreloaded', respItems);
+
+            // focus first item
+            (function (firstItem) {
+                requestAnimationFrame(function () {
+                    focus.call(firstItem, true);
+                });
+            })(respItems.item(0));
         };
         xhr.send();
     });
