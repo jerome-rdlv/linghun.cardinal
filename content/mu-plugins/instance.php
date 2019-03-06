@@ -62,31 +62,11 @@ add_action('init', function () {
         ];
     });
 
-    // display search page field on reading settings page
-//    add_action('admin_init', function () {
-//        $option_name = 'page_for_search';
-//        register_setting('reading', $option_name, array(
-//            'type' => 'integer',
-//        ));
-//        add_settings_field(
-//            $option_name,
-//            '<label for="' . $option_name . '">Parent page for search</label>',
-//            function () use ($option_name) {
-//                echo wp_dropdown_pages(array(
-//                    'name'             => $option_name,
-//                    'id'               => $option_name,
-//                    'echo'             => 0,
-//                    'show_option_none' => '— Select —',
-//                    'selected'         => get_option($option_name),
-//                ));
-//            },
-//            'reading'
-//        );
-//    });
-
-
     add_filter('cpt_has_parent_page', function ($has_parent, $post_type) {
-        return array_search($post_type, ['cardinal_presse', 'cardinal_real']) !== false ? true : $has_parent;
+        return array_search($post_type, [
+            'cardinal_presse',
+            'cardinal_real',
+        ]) !== false ? true : $has_parent;
     }, 10, 2);
 
     // CPT
@@ -100,7 +80,7 @@ add_action('init', function () {
         'show_admin_column' => true,
         'hierarchical'      => true,
         'rewrite'           => [
-            'slug'       => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'cat',
+            'slug'       => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'category',
             'with_front' => false,
         ],
     ]);
@@ -130,6 +110,8 @@ add_action('init', function () {
     ]);
 
     $reals_page = get_option('page_for_cardinal_real');
+    $reals_slug = $reals_page ? get_page_uri($reals_page) : 'realisations';
+    $reals_permalink_struct = '/' . $reals_slug . '/%cardinal_real_cat%/%postname%';
     register_taxonomy('cardinal_real_cat', 'cardinal_real', [
         'labels'            => [
             'name'          => 'Catégories',
@@ -139,7 +121,7 @@ add_action('init', function () {
         'show_admin_column' => true,
         'hierarchical'      => true,
         'rewrite'           => [
-            'slug'       => ($reals_page ? get_page_uri($reals_page) . '/' : '') . 'cat',
+            'slug'       => ($reals_page ? get_page_uri($reals_page) . '/' : '') . 'categorie',
             'with_front' => false,
         ],
     ]);
@@ -152,7 +134,6 @@ add_action('init', function () {
         'has_archive' => true,
         'supports'    => [
             'title',
-//            'editor',
             'author',
             'thumbnail',
             'revisions',
@@ -166,6 +147,38 @@ add_action('init', function () {
             'cardinal_real_cat',
         ],
     ]);
+//
+//    add_rewrite_rule(
+//        $reals_slug . '/[^/]+/([^/]+)/page/?([0-9]{1,})/?$',
+//        'index.php?cardinal_real=$matches[1]&paged=$matches[2]'
+//    );
+
+    add_filter('cardinal_real_rewrite_rules', function ($rules) use ($reals_slug) {
+        $new_rules = [];
+        foreach ($rules as $key => $rule) {
+            $new_rules[$key] = $rule;
+            if ($rule === 'index.php?cardinal_real=$matches[1]&page=$matches[2]') {
+                // add category
+                $new_rules[preg_replace('/^([^\/]+\/)(.*)$/', '\1[^/]+/\2', $key)] = $rule;
+            }
+        }
+
+        return $new_rules;
+    });
+
+    // @see https://wordpress.stackexchange.com/questions/5308/custom-post-types-taxonomies-and-permalinks
+    add_filter('post_type_link', function ($permalink, $post) use ($reals_permalink_struct) {
+        if ($post->post_type === 'cardinal_real' && get_option('permalink_structure')) {
+            $permalink = home_url(str_replace('%postname%', $post->post_name, $reals_permalink_struct));
+            if ($terms = get_the_terms($post->ID, 'cardinal_real_cat')) {
+                $permalink = str_replace('%cardinal_real_cat%', current($terms)->slug, $permalink);
+            }
+            else {
+                $permalink = str_replace('%cardinal_real_cat%/', '', $permalink);
+            }
+        }
+        return $permalink;
+    }, 10, 2);
 });
 
 /**
