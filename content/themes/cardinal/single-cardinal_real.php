@@ -97,6 +97,10 @@
             </div>
         </div>
 
+        <div class="single__content">
+            <?php get_template_part('partial/flex') ?>
+        </div>
+
         <?php get_template_part('partial/pager') ?>
     </div>
 
