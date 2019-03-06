@@ -81,7 +81,8 @@ class CardinalTheme
             self::MENU_MAIN  => 'Principal',
             self::MENU_ASIDE => 'Secondaire',
         ]);
-        add_filter('nav_menu_item_args', [$this, 'main_menu_item'], 10, 2);
+        add_filter('nav_menu_item_title', [$this, 'prefix_current_menu_item'], 10, 2);
+        add_filter('nav_menu_item_title', [$this, 'add_menu_item_picto'], 10, 3);
         add_filter('nav_menu_link_attributes', [$this, 'main_menu_add_item_id'], 10, 4);
         add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
         add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
@@ -135,10 +136,10 @@ class CardinalTheme
         // slick
 //        wp_register_script('slick', get_template_directory_uri() . '/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
 //        wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
-        
+
         // masonry
         wp_deregister_script('masonry');
-        wp_register_script('masonry', get_template_directory_uri() .'/node_modules/web/masonry/dist/masonry.pkgd.min.js', [], false, true);
+        wp_register_script('masonry', get_template_directory_uri() . '/node_modules/web/masonry/dist/masonry.pkgd.min.js', [], false, true);
 
         // ePD (tarteaucitron / TaC)
         wp_register_script('tac', get_template_directory_uri() . '/node_modules/web/tarteaucitron/tarteaucitron.js', [], false, true);
@@ -310,17 +311,28 @@ class CardinalTheme
         return $classes;
     }
 
-    public function main_menu_item($args, $item)
+    public function prefix_current_menu_item($title, $item)
+    {
+        if ($item->current) {
+            $title = sprintf(
+                    '<span class="visually-hidden">%s</span>',
+                    __('Page courante : ', self::TEXTDOMAIN)
+                ) . $title;
+        }
+        return $title;
+    }
+
+    public function add_menu_item_picto($title, $item, $args)
     {
         if ($args->theme_location === self::MENU_MAIN) {
             // add item picto
             $picto = get_field('picto', $item)['url'];
-            $args->link_before = $this->inline_svg($picto, [
-                'aria-hidden' => 'true',
-                'class'       => 'menu-item-picto',
-            ]);
+            $title = $this->inline_svg($picto, [
+                    'aria-hidden' => 'true',
+                    'class'       => 'menu-item-picto',
+                ]) . $title;
         }
-        return $args;
+        return $title;
     }
 
     public function main_menu_add_item_id($atts, $item, $args)
@@ -433,7 +445,7 @@ class CardinalTheme
     {
         $atts = [];
         foreach (['width', 'height', 'src'] as $att) {
-            if (preg_match('/\b'. $att .'=(?<quote>["\'])(?<value>.*?)\g{quote}/', $iframe, $matches)) {
+            if (preg_match('/\b' . $att . '=(?<quote>["\'])(?<value>.*?)\g{quote}/', $iframe, $matches)) {
                 $atts[$att] = $matches['value'];
             }
         }
@@ -442,7 +454,7 @@ class CardinalTheme
             $atts['src'],
             $atts['width'],
             $atts['height'],
-            $class ? ' class="'. $class .'"' : ''
+            $class ? ' class="' . $class . '"' : ''
         );
     }
 
@@ -567,10 +579,10 @@ class CardinalTheme
         }
         $query->set('posts_per_page', 16);
     }
-    
+
     public function splash_img()
     {
-        
+
     }
 
     public function form_render($form_id)

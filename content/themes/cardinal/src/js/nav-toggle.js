@@ -33,9 +33,6 @@ export default function init(toggle) {
     toggle.classList.remove('loading');
     toggle.setAttribute('aria-expanded', false);
 
-    nav.setAttribute('tabindex', -1);
-    // todo push this change in wp-skeleton
-    // nav.setAttribute('hidden', true);
     nav.style.display = 'none';
     nav.classList.add('ready');
 
