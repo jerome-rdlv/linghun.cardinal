@@ -11,13 +11,13 @@ export default function observe(nodes, inCB, outCB) {
     }
 
     if (typeof IntersectionObserver === 'function') {
-        const observer = new IntersectionObserver(function (nodes) {
+        var observer = new IntersectionObserver(function (nodes) {
             nodes.forEach(function (node) {
                 node.isIntersecting ? callback(inCB, node.target) : callback(outCB, node.target);
             });
         });
 
-        for (let i = 0; i < nodes.length; ++i) {
+        for (var i = 0; i < nodes.length; ++i) {
             observer.observe(nodes[i]);
         }
     }
@@ -34,10 +34,10 @@ export default function observe(nodes, inCB, outCB) {
     }
     
     function updateNodesState() {
-        const vh = window.innerHeight;
-        for (let i = 0; i < nodes.length; ++i) {
-            const rect = nodes[i].getBoundingClientRect();
-            const intersect = rect.top < vh && rect.top + rect.height > 0;
+        var vh = window.innerHeight;
+        for (var i = 0; i < nodes.length; ++i) {
+            var rect = nodes[i].getBoundingClientRect();
+            var intersect = rect.top < vh && rect.top + rect.height > 0;
             if (intersect !== nodes[i].ioIntersect) {
                 nodes[i].ioIntersect = intersect;
                 intersect ? callback(inCB, nodes[i]) : callback(outCB, nodes[i]);

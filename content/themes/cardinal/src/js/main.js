@@ -60,7 +60,7 @@ function initNavBacks(nav) {
 
     function loadNaturalSize(img) {
         img._naturalSizePromise = new Promise(function (resolve, reject) {
-            const cimg = new Image();
+            var cimg = new Image();
             cimg.addEventListener('load', function () {
                 img._width = cimg.naturalWidth;
                 img._height = cimg.naturalHeight;
