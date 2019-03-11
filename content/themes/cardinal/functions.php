@@ -745,9 +745,21 @@ class CardinalTheme
         // formats
         $formats = [
             [
-                'title'   => 'Titre',
+                'title'   => 'Titre niveau 2',
                 'block'   => 'h2',
                 'classes' => 'content__title',
+                'wrapper' => false,
+            ],
+            [
+                'title'   => 'Titre niveau 3',
+                'block'   => 'h3',
+                'classes' => 'content__subtitle',
+                'wrapper' => false,
+            ],
+            [
+                'title'   => 'Titre niveau 4',
+                'block'   => 'h4',
+                'classes' => 'content__subsubtitle',
                 'wrapper' => false,
             ],
             [
