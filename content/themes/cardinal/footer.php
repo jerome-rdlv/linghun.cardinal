@@ -11,10 +11,20 @@
     <?php $theme = CardinalTheme::get_instance() ?>
 
     <script><?php include $theme->dist_path('/js/init-fade-in.js') ?></script>
-    
+
     <footer class="footer print-off">
         <div class="footer__inner container">
-            <p class="visually-hidden">Navigation secondaire</p>
+            <h2 class="visually-hidden">Navigation secondaire</h2>
+            <p>
+                <a href="<?php echo home_url() ?>" class="footer__home"
+                   aria-label="<?php _e('Retour à l’accueil', CardinalTheme::TEXTDOMAIN) ?>">
+                    <?php echo $theme->get_symbol('logo', [
+                        'aria-hidden' => true,
+                        'class'       => 'footer__logo',
+                    ]) ?>
+                    <?php the_field('footer_slogan', 'options') ?>
+                </a>
+            </p>
             <?php wp_nav_menu([
                 'container'      => null,
                 'depth'          => 1,

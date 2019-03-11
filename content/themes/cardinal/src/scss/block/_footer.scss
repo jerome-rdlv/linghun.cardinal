@@ -39,11 +39,15 @@
         //margin-bottom: rem(15px);
         width: 100%;
     }
+    
+    &__home {
+        @include fs(12);
+    }
 
     &__logo {
         display: block;
         height: (46px);
-        margin: 0 auto;
+        margin: 0 auto rem($gap / 2);
         width: rem(165px);
     }
     

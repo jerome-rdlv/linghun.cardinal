@@ -507,6 +507,25 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 0
+        },
+        {
+            "key": "field_5c86410f80591",
+            "label": "Slogan du pied de page",
+            "name": "footer_slogan",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -526,5 +545,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1551694426
+    "modified": 1552302677
 }

@@ -87,8 +87,8 @@ class CardinalTheme
         add_filter('nav_menu_item_title', [$this, 'prefix_current_menu_item'], 10, 2);
         add_filter('nav_menu_item_title', [$this, 'add_menu_item_picto'], 10, 3);
         add_filter('nav_menu_link_attributes', [$this, 'main_menu_add_item_id'], 10, 4);
+//        add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
 //        add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
-        add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
 
         // images
         $this->generic_image_sizes();
