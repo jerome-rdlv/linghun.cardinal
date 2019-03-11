@@ -14,7 +14,7 @@
     
     <footer class="footer print-off">
         <div class="footer__inner container">
-            <h2 class="visually-hidden">Navigation secondaire</h2>
+            <p class="visually-hidden">Navigation secondaire</p>
             <?php wp_nav_menu([
                 'container'      => null,
                 'depth'          => 1,
@@ -22,7 +22,6 @@
             ]) ?>
         </div>
     </footer>
-
 
 </div><!-- end .wrapper -->
 

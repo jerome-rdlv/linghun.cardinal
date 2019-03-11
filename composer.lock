@@ -40,7 +40,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/allow-svg.git",
-                "reference": "038f61060459a12a669c655f5e6b9c947e660873"
+                "reference": "4afdc245a7c3f82b85dffe7c584d99701b8458da"
             },
             "require": {
                 "ext-simplexml": "*",
@@ -58,7 +58,7 @@
             ],
             "description": "Allow to upload svg files in media manager.",
             "homepage": "https://gitlab.rue-de-la-vieille.fr/jerome/allow-svg",
-            "time": "2019-02-27T15:45:08+00:00"
+            "time": "2019-03-08T14:08:27+00:00"
         },
         {
             "name": "composer/installers",
@@ -186,7 +186,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/cpt-parent.git",
-                "reference": "90293fbdb34b399fa9ca631ee68edac1dd5ccde0"
+                "reference": "d30fc5f312d13503778a20f0d135dcc706730cb6"
             },
             "require": {
                 "php": ">=5.4"
@@ -203,7 +203,7 @@
             ],
             "description": "WordPress plugin to define a page as parent of a custom post type",
             "homepage": "https://github.com/jerome-rdlv/cpt-parent",
-            "time": "2019-01-29T15:11:04+00:00"
+            "time": "2019-03-06T15:06:24+00:00"
         },
         {
             "name": "dirkgroenen/pinterest-api-php",
@@ -442,16 +442,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.88",
+            "version": "v0.89",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "1ad0a77dc28f658cf65b7146ee5342bd12cfff3f"
+                "reference": "8a285822d48df1650c4c298653aa4961049a1ee8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/1ad0a77dc28f658cf65b7146ee5342bd12cfff3f",
-                "reference": "1ad0a77dc28f658cf65b7146ee5342bd12cfff3f",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/8a285822d48df1650c4c298653aa4961049a1ee8",
+                "reference": "8a285822d48df1650c4c298653aa4961049a1ee8",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-03-04T00:22:51+00:00"
+            "time": "2019-03-10T00:23:16+00:00"
         },
         {
             "name": "google/auth",
@@ -1007,16 +1007,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.14",
+            "version": "2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478"
+                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8ebfcadbf30524aeb75b2c446bc2519d5b321478",
-                "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
+                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
                 "shasum": ""
             },
             "require": {
@@ -1095,7 +1095,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2019-01-27T19:37:29+00:00"
+            "time": "2019-03-10T16:53:45+00:00"
         },
         {
             "name": "post-order",

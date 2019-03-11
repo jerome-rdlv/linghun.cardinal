@@ -41,7 +41,6 @@
 
         <div class="single-real__inner">
 
-            <?php $images = get_field('images') ?>
             <div class="single-real__intro">
                 <h1 class="single-real__title">
                     <?php the_title() ?>
@@ -63,38 +62,56 @@
                         <?php the_field('tech') ?>
                     </div>
                 </div>
-                <?php if (isset($images[0])) {
-                    echo wp_get_attachment_image($images[0]['ID'], 'medium', false, [
-                        'class' => 'single-real__intro-img',
-                        'sizes' => '(min-width: 1170px) 46rem, (min-width: 900px) 42vw, (min-width: 600px) 50vw, 100vw',
-                    ]);
-                } ?>
+                <?php $img1 = get_field('img_1', false, false) ?>
+                <?php if ($img1) echo wp_get_attachment_image($img1, 'medium', false, [
+                    'class' => 'single-real__intro-img',
+                    'sizes' => '(min-width: 1170px) 46rem, (min-width: 900px) 42vw, (min-width: 600px) 50vw, 100vw',
+                ]) ?>
             </div>
 
-            <div class="single-real__tall">
-                <?php if (isset($images[1])) {
-                    echo wp_get_attachment_image($images[1]['ID'], 'medium', false, [
+            <?php $mode = get_field('mode') ?>
+            <?php if ($mode === 'single' || $mode === 'duo'): ?>
+                <?php $img2 = get_field('img_duo_2', false, false) ?>
+                <div class="single-real__single single-real__single--<?php echo $img2 ? 'img' : 'logo' ?>">
+                    <?php if ($img2): ?>
+                        <?php echo wp_get_attachment_image($img2, 'medium', false, [
+                            'class'           => 'single-real__single-img',
+                            'data-object-fit' => 'cover',
+                            'sizes'           => '(min-width: 1170px) 65.5rem, (min-width: 900px) 58vw, (min-width: 600px) 50vw, 100vw',
+                        ]) ?>
+                    <?php else: ?>
+                        <?php echo $theme->inline_svg($theme->dist_url('/svg/logo_slogan.svg'), [
+                            'alt'    => '',
+                            'class'  => 'single-real__single-logo',
+                            'height' => '115',
+                            'width'  => '360',
+                        ]) ?>
+                    <?php endif ?>
+                </div>
+            <?php else: ?>
+                <?php $img2 = get_field('img_full_2', false, false) ?>
+                <div class="single-real__tall">
+                    <?php if ($img2) echo wp_get_attachment_image($img2, 'medium', false, [
                         'sizes' => '(min-width: 1170px) 36rem, (min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw',
-                    ]);
-                } ?>
-            </div>
+                    ]) ?>
+                </div>
 
-            <div class="single-real__duo">
-                <div class="single-real__duo-item">
-                    <?php if (isset($images[2])) {
-                        echo wp_get_attachment_image($images[2]['ID'], 'medium', false, [
+                <div class="single-real__duo">
+                    <div class="single-real__duo-item">
+                        <?php $img3 = get_field('img_full_3', false, false) ?>
+                        <?php if ($img3) echo wp_get_attachment_image($img3, 'medium', false, [
                             'sizes' => '(min-width: 1170px) 26.5rem, (min-width: 900px) 25vw, (min-width: 600px) 50vw, 100vw',
-                        ]);
-                    } ?>
-                </div>
-                <div class="single-real__duo-item">
-                    <?php if (isset($images[3])) {
-                        echo wp_get_attachment_image($images[3]['ID'], 'medium', false, [
+                        ]) ?>
+                    </div>
+                    <div class="single-real__duo-item">
+                        <?php $img4 = get_field('img_full_4', false, false) ?>
+                        <?php if ($img4) echo wp_get_attachment_image($img4, 'medium', false, [
                             'sizes' => '(min-width: 1170px) 26.5rem, (min-width: 900px) 25vw, (min-width: 600px) 50vw, 100vw',
-                        ]);
-                    } ?>
+                        ]) ?>
+                    </div>
                 </div>
-            </div>
+
+            <?php endif ?>
         </div>
 
         <div class="single__content">

@@ -76,10 +76,10 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_5c6e70766ef5b",
+            "key": "field_5c862ff60d790",
             "label": "Images",
-            "name": "images",
-            "type": "gallery",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -88,9 +88,177 @@
                 "class": "",
                 "id": ""
             },
-            "min": 4,
-            "max": 4,
-            "insert": "append",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5c862d6cfe780",
+            "label": "Images",
+            "name": "mode",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "single": "Image unique",
+                "duo": "Deux images",
+                "full": "Quatre images"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5c862da8fe781",
+            "label": "Première image",
+            "name": "img_1",
+            "type": "image",
+            "instructions": "Format paysage.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c862dbefe782",
+            "label": "Deuxième image",
+            "name": "img_duo_2",
+            "type": "image",
+            "instructions": "Dimensions idéales, paysage : 760×660 ; à défaut le ratio doit au moins être respecté.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c862d6cfe780",
+                        "operator": "==",
+                        "value": "duo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c862e5afe783",
+            "label": "Deuxième image",
+            "name": "img_full_2",
+            "type": "image",
+            "instructions": "Dimensions idéales, portrait : 1120×1730 ; à défaut le ratio doit au moins être respecté.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c862d6cfe780",
+                        "operator": "==",
+                        "value": "full"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c862eb6fe784",
+            "label": "Troisième image",
+            "name": "img_full_3",
+            "type": "image",
+            "instructions": "Dimensions idéales, carré : 1120×1120 ; à défaut le ratio doit au moins être respecté.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c862d6cfe780",
+                        "operator": "==",
+                        "value": "full"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c862fc9fe785",
+            "label": "Quatrième image",
+            "name": "img_full_4",
+            "type": "image",
+            "instructions": "Dimensions idéales, carré : 1120×1120 ; à défaut le ratio doit au moins être respecté.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c862d6cfe780",
+                        "operator": "==",
+                        "value": "full"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -157,5 +325,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1551884217
+    "modified": 1552302028
 }

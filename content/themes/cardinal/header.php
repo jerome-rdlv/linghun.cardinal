@@ -95,9 +95,9 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
 
 <nav id="nav" class="nav print-off">
     <div class="nav__inner">
-        <h2 class="visually-hidden">
+        <p class="visually-hidden">
             <?php _e('Navigation principale', CardinalTheme::TEXTDOMAIN) ?>
-        </h2>
+        </p>
 
         <?php wp_nav_menu([
             'container'      => null,

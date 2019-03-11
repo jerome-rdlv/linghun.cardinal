@@ -43,6 +43,9 @@ class CardinalTheme
 //        'viadeo',
     ];
 
+    private $theme_url = null;
+    private $theme_path = null;
+
     private $bodyClass = [];
 
     public function __construct()
@@ -84,7 +87,7 @@ class CardinalTheme
         add_filter('nav_menu_item_title', [$this, 'prefix_current_menu_item'], 10, 2);
         add_filter('nav_menu_item_title', [$this, 'add_menu_item_picto'], 10, 3);
         add_filter('nav_menu_link_attributes', [$this, 'main_menu_add_item_id'], 10, 4);
-        add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
+//        add_filter('nav_menu_item_title', [$this, 'aside_menu_logo'], 10, 3);
         add_filter('nav_menu_css_class', [$this, 'aside_menu_classes'], 10, 3);
 
         // images
@@ -122,7 +125,8 @@ class CardinalTheme
         wp_register_style('print', $this->dist_url('/css/print.css'), [], false, 'print');
 
         // scripts
-        wp_register_script('font-face-observer', get_template_directory_uri() . '/node_modules/web/fontfaceobserver/fontfaceobserver.js', [], false, true);
+        wp_register_script('font-face-observer',
+            $this->theme_url('/node_modules/web/fontfaceobserver/fontfaceobserver.js'), [], false, true);
         wp_register_script('fonts', $this->dist_url('/js/fonts.js'), ['font-face-observer'], false, true);
         wp_localize_script('fonts', 'webfonts', [
             ['family' => 'DINProCond'],
@@ -134,15 +138,17 @@ class CardinalTheme
         wp_scripts()->add_data('fonts', 'critical', true);
 
         // slick
-//        wp_register_script('slick', get_template_directory_uri() . '/node_modules/web/slick/slick/slick.min.js', ['jquery'], false, true);
+//        wp_register_script('slick', $this->theme_url('/node_modules/web/slick/slick/slick.min.js'), ['jquery'], false, true);
 //        wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
 
         // masonry
         wp_deregister_script('masonry');
-        wp_register_script('masonry', get_template_directory_uri() . '/node_modules/web/masonry/dist/masonry.pkgd.min.js', [], false, true);
+        wp_register_script('masonry', $this->theme_url('/node_modules/web/masonry/dist/masonry.pkgd.min.js'), [], false,
+            true);
 
         // ePD (tarteaucitron / TaC)
-        wp_register_script('tac', get_template_directory_uri() . '/node_modules/web/tarteaucitron/tarteaucitron.js', [], false, true);
+        wp_register_script('tac', $this->theme_url('/node_modules/web/tarteaucitron/tarteaucitron.js'), [], false,
+            true);
         wp_add_inline_script('tac', sprintf('tarteaucitron.init(%s);', json_encode([
             'privacyUrl'     => get_privacy_policy_url(),
             'orientation'    => 'bottom',
@@ -243,14 +249,30 @@ class CardinalTheme
         );
     }
 
+    public function theme_url($path = '')
+    {
+        if ($this->theme_url === null) {
+            $this->theme_url = get_template_directory_uri();
+        }
+        return $this->theme_url . $path;
+    }
+
+    public function theme_path($path = '')
+    {
+        if ($this->theme_path === null) {
+            $this->theme_path = get_template_directory();
+        }
+        return $this->theme_path . $path;
+    }
+
     public function dist_url($path = '')
     {
-        return get_template_directory_uri() . '/assets' . $path;
+        return $this->theme_url('/assets' . $path);
     }
 
     public function dist_path($path = '')
     {
-        return get_template_directory() . '/assets' . $path;
+        return $this->theme_path('/assets' . $path);
     }
 
     public function get_template_name()
@@ -558,7 +580,7 @@ class CardinalTheme
         wp_enqueue_style('print');
 
         wp_deregister_script('jquery');
-        wp_register_script('jquery', get_template_directory_uri() . '/node_modules/web/jquery/dist/jquery.min.js', [], false, true);
+        wp_register_script('jquery', $this->theme_url('/node_modules/web/jquery/dist/jquery.min.js'), [], false, true);
 
         wp_enqueue_script('main');
         wp_enqueue_script('fonts');
@@ -604,13 +626,13 @@ class CardinalTheme
 
     public function acf_wysiwyg_classes()
     {
-        echo '<script src="' . get_template_directory_uri() . '/dist/js/acf-wysiwyg-styling.js' . '"></script>';
+        echo '<script src="' . $this->theme_url('/dist/js/acf-wysiwyg-styling.js') . '"></script>';
     }
 
     private function get_editor_buttons(
         /** @noinspection PhpUnusedParameterInspection */
-        $editor_id = null)
-    {
+        $editor_id = null
+    ) {
         $buttons = [
             'styleselect',
             'bold',
@@ -786,7 +808,8 @@ class CardinalTheme
     {
         if (!is_front_page() && function_exists('yoast_breadcrumb')) {
             yoast_breadcrumb(
-                '<nav class="Breadcrumbs"><span class="visually-hidden">' . __('Vous êtes ici :', self::TEXTDOMAIN) . '</span> ',
+                '<nav class="Breadcrumbs"><span class="visually-hidden">' . __('Vous êtes ici :',
+                    self::TEXTDOMAIN) . '</span> ',
                 '</nav>'
             );
         }

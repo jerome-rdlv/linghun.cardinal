@@ -172,8 +172,7 @@ add_action('init', function () {
             $permalink = home_url(str_replace('%postname%', $post->post_name, $reals_permalink_struct));
             if ($terms = get_the_terms($post->ID, 'cardinal_real_cat')) {
                 $permalink = str_replace('%cardinal_real_cat%', current($terms)->slug, $permalink);
-            }
-            else {
+            } else {
                 $permalink = str_replace('%cardinal_real_cat%/', '', $permalink);
             }
         }
