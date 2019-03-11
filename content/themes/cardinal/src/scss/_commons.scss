@@ -16,19 +16,16 @@
     }
 
     &__title {
+        $fs: 24;
         @include font(dinbo);
-        @include ffs(24);
-        //font-size: (em / $body-fs);
-        margin: ($body-lh / $body-fs * (16em / $body-fs)) 0;
+        @include ffs($fs);
+        margin: ($body-lh / $fs * 1em) 0;
     }
     
     &__subtitle {
         @include font(dinbo);
         @include ffs(18);
-        //@include font(gobo);
-        //font-size: (18em / $body-fs);
-        //font-size: inherit;
-        margin: ($body-lh / $body-fs * 1em) 0;
+        margin: ($body-lh / 18 * 1em) 0;
     }
     
     &__subsubtitle {
