@@ -244,6 +244,10 @@ add_action('wp_footer', function () {
     ]));
 });
 
+add_filter('paginate_links', function ($link) {
+    return untrailingslashit($link);
+});
+
 // google map api key
 //add_action('acf/init', function () {
 //    acf_update_setting('google_api_key', get_field('google_map_api_key', 'option'));
