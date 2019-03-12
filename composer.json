@@ -24,7 +24,8 @@
         "disable-comments": "dev-master",
         "scotteh/php-dom-wrapper": ">=0.7",
         "wpackagist-plugin/redirection": ">=3.7",
-        "cpt-parent": "dev-master"
+        "cpt-parent": "dev-master",
+        "wpackagist-plugin/wp-page-duplicator": "^0.1.1"
     },
     "extra": {
         "wordpress-install-dir": "wp",
