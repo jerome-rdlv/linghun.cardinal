@@ -61,7 +61,7 @@ add_action('init', function () {
         return [
         ];
     });
-
+    
     add_filter('cpt_has_parent_page', function ($has_parent, $post_type) {
         return array_search($post_type, [
             'cardinal_presse',
@@ -168,6 +168,9 @@ add_action('init', function () {
 
     // @see https://wordpress.stackexchange.com/questions/5308/custom-post-types-taxonomies-and-permalinks
     add_filter('post_type_link', function ($permalink, $post) use ($reals_permalink_struct) {
+        if (is_admin()) {
+            return $permalink;
+        }
         if ($post->post_type === 'cardinal_real' && get_option('permalink_structure')) {
             $permalink = home_url(str_replace('%postname%', $post->post_name, $reals_permalink_struct));
             if ($terms = get_the_terms($post->ID, 'cardinal_real_cat')) {
