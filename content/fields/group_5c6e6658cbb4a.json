@@ -19,9 +19,33 @@
                 "5c6e66abee226": {
                     "key": "5c6e66abee226",
                     "name": "img-left",
-                    "label": "Vis à vis photo à gauche \/ text à droite",
+                    "label": "Vis à vis image et texte",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5c921d80cdb99",
+                            "label": "Alignement de l’image",
+                            "name": "image_align",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Gauche",
+                                "right": "Droite"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "left",
+                            "layout": "horizontal",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
                         {
                             "key": "field_5c6e676ed6326",
                             "label": "Image",
@@ -275,5 +299,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1550766393
+    "modified": 1553079845
 }

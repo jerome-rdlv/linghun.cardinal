@@ -1,4 +1,4 @@
-<div class="flex-img-left">
+<div class="flex-img-left flex-img-left--<?php the_sub_field('image_align') ?>">
     <div class="flex-img-left__left">
         <?php echo wp_get_attachment_image(get_sub_field('image', false), 'medium', false, [
             'class' => 'flex-img-left__image',

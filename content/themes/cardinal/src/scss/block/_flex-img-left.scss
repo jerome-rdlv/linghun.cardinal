@@ -17,6 +17,10 @@
         margin-right: rem(-$gap / 2);
         flex-flow: row nowrap;
         
+        &--right &__left {
+            order: 1;
+        }
+        
         &__left,
         &__right {
             box-sizing: border-box;
