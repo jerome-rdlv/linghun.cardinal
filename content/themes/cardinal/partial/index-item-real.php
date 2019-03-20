@@ -11,9 +11,15 @@
             <?php the_field('place') ?>
         </span>
     </a>
-    <?php the_post_thumbnail('medium', [
-        'class' => 'card-real__thumb',
+    <?php
+    $thumbnail_id = get_field('thumbnail_alt', false, false);
+    if ($thumbnail_id === null) {
+        $thumbnail_id = get_post_thumbnail_id();
+    }
+    ?>
+    <?php echo wp_get_attachment_image($thumbnail_id, 'medium', false, [
+        'class'           => 'card-real__thumb',
         'data-object-fit' => 'cover',
-        'sizes' => '(min-width: 1040px) 26.5rem, (min-width: 780px) 33vw, (min-width: 520px) 50vw, 100vw',
+        'sizes'           => '(min-width: 1040px) 26.5rem, (min-width: 780px) 33vw, (min-width: 520px) 50vw, 100vw',
     ]) ?>
 </div>
