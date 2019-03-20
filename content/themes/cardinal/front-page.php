@@ -50,6 +50,10 @@
         <div class="front-content__inner content container">
             <?php the_content() ?>
         </div>
+        
+        <div class="front-content__flex container">
+            <?php get_template_part('partial/flex') ?>
+        </div>
     </div>
 
 <?php get_footer() ?>

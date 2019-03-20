@@ -12,6 +12,10 @@
         <div class="singular__content content">
             <?php the_content() ?>
         </div>
+
+        <div class="singular__flex">
+            <?php get_template_part('partial/flex') ?>
+        </div>
     </div>
 
 <?php get_footer() ?>

@@ -34,7 +34,10 @@
     }
 
     @media (min-width: mqem($ws)) {
-        text-align: center;
+        
+        &__inner {
+            text-align: center;
+        }
         
         .content__title::before {
             margin-left: auto;
