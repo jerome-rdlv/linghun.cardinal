@@ -30,6 +30,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "tpl-page-flex.php"
             }
         ]
     ],
@@ -41,5 +46,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1553079136
+    "modified": 1553190555
 }

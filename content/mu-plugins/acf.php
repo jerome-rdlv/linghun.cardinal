@@ -32,7 +32,7 @@ add_filter('site_transient_update_plugins', function ($value) {
 });
 
 // saving and loading fields
-add_filter('acf/settings/save_json', function ($path) {
+add_filter('acf/settings/save_json', function () {
     return WP_CONTENT_DIR . '/fields';
 });
 add_filter('acf/settings/load_json', function ($paths) {
@@ -59,7 +59,7 @@ add_action('acf/save_post', function ($post_id) {
         return array_unique($text_values);
     };
 
-    update_post_meta($post_id, '_search_texts', implode(' ', $get_text_values($_POST['acf'])));
+    update_post_meta($post_id, '_acf_texts', implode(' ', $get_text_values($_POST['acf'])));
 
 }, 20);
 
@@ -72,7 +72,7 @@ add_filter('wp_loaded', function () {
             global $wpdb;
             $join .= " LEFT JOIN $wpdb->postmeta $alias";
             $join .= " ON $wpdb->posts.ID = $alias.post_id";
-            $join .= " AND $alias.meta_key = '_search_texts'";
+            $join .= " AND $alias.meta_key = '_acf_texts'";
         }
         return $join;
     });
@@ -91,6 +91,22 @@ add_filter('wp_loaded', function () {
     });
 
 });
+
+// complement excerpt with ACF texts
+add_filter('get_the_excerpt', function ($text) {
+    // @see wp_trim_excerpt (wp/wp-includes/formatting.php:37)
+    if ($text == '') {
+        $text = get_the_content('');
+        $text .= get_post_meta(get_the_ID(), '_acf_texts', true);
+        $text = strip_shortcodes($text);
+        $text = excerpt_remove_blocks($text);
+
+        /** This filter is documented in wp-includes/post-template.php */
+        $text = apply_filters('the_content', $text);
+        $text = str_replace(']]>', ']]&gt;', $text);
+    }
+    return $text;
+}, 9);
 
 // add field name to input field classes in admin
 add_action('acf/input/admin_footer', function () {

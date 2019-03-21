@@ -61,7 +61,7 @@ add_action('init', function () {
         return [
         ];
     });
-    
+
     add_filter('cpt_has_parent_page', function ($has_parent, $post_type) {
         return array_search($post_type, [
             'cardinal_presse',
@@ -198,6 +198,21 @@ add_filter('acf_form', function ($html) {
         ],
         $html
     );
+});
+
+add_filter('get_the_excerpt', function ($text) {
+
+    /* This filter is documented in wp-includes/formatting.php */
+    $excerpt_length = apply_filters('excerpt_length', 55);
+
+    /* This filter is documented in wp-includes/formatting.php */
+    $excerpt_more = apply_filters('excerpt_more', ' ' . '[&hellip;]');
+    
+    $text = strip_tags($text);
+
+    $text = wp_trim_words($text, $excerpt_length, $excerpt_more);
+    
+    return $text;
 });
 
 /**
