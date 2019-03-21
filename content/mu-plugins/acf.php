@@ -33,64 +33,63 @@ add_filter('site_transient_update_plugins', function ($value) {
 
 // saving and loading fields
 add_filter('acf/settings/save_json', function ($path) {
-    return WP_CONTENT_DIR .'/fields';
+    return WP_CONTENT_DIR . '/fields';
 });
 add_filter('acf/settings/load_json', function ($paths) {
     unset($paths[0]);
-    $paths[] = WP_CONTENT_DIR .'/fields';
+    $paths[] = WP_CONTENT_DIR . '/fields';
     return $paths;
 });
 
 // add search capability to custom fields
-add_filter('wp_loaded', function () {
-    $fields = apply_filters('acf_search_fields', []);
-    if ($fields) {
-        $alias = uniqid('meta_');
-        
-        // join post_meta on given fields
-        add_filter('posts_join', function ($join) use ($alias, $fields) {
-            if (is_search() && is_main_query()) {
-                global $wpdb;
-                $join .= " LEFT JOIN $wpdb->postmeta $alias ON ";
-                $join .= " $wpdb->posts.ID = $alias.post_id AND ";
-//                $join .= "$alias.meta_key NOT LIKE '\_%' AND (";
-                foreach ($fields as $index => $field) {
-                    if ($index > 0) {
-                        $join .= " OR ";
-                    }
-                    $check = preg_replace('/\\\\[_%]/', '', $field);
-                    if (strpos($check, '%') !== false || strpos($check, '_') !== false) {
-//                        $join .= "$alias.meta_key LIKE '". str_replace('_', '\_', $field) ."'";
-                        $join .= "$alias.meta_key LIKE '". $field ."'";
-                    }
-                    else {
-                        $join .= "$alias.meta_key = '$field'";
-                    }
-                }
-//                $join .= ")";
-            }
-            return $join;
-
-        });
-        
-        // add meta_value comparison
-        add_filter('posts_search', function ($where) use ($alias, $fields) {
-            if (is_search() && is_main_query()) {
-                global $wpdb;
-                $where = preg_replace(
-                    "/\($wpdb->posts.post_content\s+LIKE\s*(('|\").*?\\2)\s*\)/",
-                    "$0 OR ($alias.meta_value LIKE $1)",
-                    $where
-                );
-            }
-            return $where;
-        });
-        
-        // distinct (because join may lead to duplication)
-        add_filter('posts_distinct', function ($distinct) {
-            return is_search() ? 'DISTINCT' : $distinct;
-        });
+add_action('acf/save_post', function ($post_id) {
+    if (empty($_POST['acf'])) {
+        return;
     }
+
+    $get_text_values = function ($raw_values, &$text_values = []) use (&$get_text_values) {
+        foreach ($raw_values as $key => $raw_value) {
+            if (is_array($raw_value)) {
+                $get_text_values($raw_value, $text_values);
+            } elseif (is_string($key) && ($field = get_field_object($key)) && in_array($field['type'],
+                    ['text', 'textarea', 'wysiwyg', 'email'])) {
+                $text_values[] = strip_tags($raw_value);
+            }
+        }
+        return array_unique($text_values);
+    };
+
+    update_post_meta($post_id, '_search_texts', implode(' ', $get_text_values($_POST['acf'])));
+
+}, 20);
+
+add_filter('wp_loaded', function () {
+    $alias = uniqid('search_');
+
+    // join post_meta on given fields
+    add_filter('posts_join', function ($join) use ($alias) {
+        if (is_search() && is_main_query()) {
+            global $wpdb;
+            $join .= " LEFT JOIN $wpdb->postmeta $alias";
+            $join .= " ON $wpdb->posts.ID = $alias.post_id";
+            $join .= " AND $alias.meta_key = '_search_texts'";
+        }
+        return $join;
+    });
+
+    // add meta_value comparison
+    add_filter('posts_search', function ($where) use ($alias) {
+        if (is_search() && is_main_query()) {
+            global $wpdb;
+            $where = preg_replace(
+                "/\($wpdb->posts.post_content\s+LIKE\s*(('|\").*?\\2)\s*\)/",
+                "$0 OR ($alias.meta_value LIKE $1)",
+                $where
+            );
+        }
+        return $where;
+    });
+
 });
 
 // add field name to input field classes in admin
