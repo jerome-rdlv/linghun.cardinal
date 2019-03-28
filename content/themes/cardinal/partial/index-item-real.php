@@ -13,7 +13,7 @@
     </a>
     <?php
     $thumbnail_id = get_field('thumbnail_alt', false, false);
-    if ($thumbnail_id === null) {
+    if (!$thumbnail_id) {
         $thumbnail_id = get_post_thumbnail_id();
     }
     ?>
