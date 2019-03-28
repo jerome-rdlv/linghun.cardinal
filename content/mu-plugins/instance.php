@@ -43,8 +43,8 @@ add_action('init', function () {
 
     add_filter('xmlrpc_enabled', '__return_false');
 
-    unregister_taxonomy_for_object_type('post_tag', 'post');
-    unregister_taxonomy_for_object_type('category', 'post');
+//    unregister_taxonomy_for_object_type('post_tag', 'post');
+//    unregister_taxonomy_for_object_type('category', 'post');
 
     if (function_exists('acf_add_options_page')) {
         acf_add_options_page(array(
