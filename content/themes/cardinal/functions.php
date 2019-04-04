@@ -646,8 +646,11 @@ class CardinalTheme
             'alignleft',
             'alignright',
             'aligncenter',
-//            'undo',
+            'alignjustify',
+            'forecolor',
+            'undo',
             'redo',
+            'fullscreen',
             'code',
         ];
 
@@ -778,6 +781,10 @@ class CardinalTheme
         ];
 
         $init['style_formats'] = json_encode($formats);
+        
+        $init['textcolor_map'] = '["B81918", "Rouge", "FF6600", "Orange"]';
+        $init['textcolor_rows'] = 1;
+        $init['theme_advanced_more_colors'] = true;
 
         global $post;
         if ($post) {
