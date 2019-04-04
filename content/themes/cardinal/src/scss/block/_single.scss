@@ -21,6 +21,10 @@
         margin: (15em / $fs) 0 (60em / $fs);
     }
     
+    &__content {
+        margin-bottom: rem($gap);
+    }
+    
     @media (min-width: mqem($ws)) {
         &__title,
         &__chapo {

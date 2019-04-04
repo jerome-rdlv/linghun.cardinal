@@ -21,6 +21,10 @@
             <?php get_template_part('partial/flex') ?>
         </div>
 
+        <div class="single__content content">
+            <?php the_content() ?>
+        </div>
+
         <?php get_template_part('partial/pager') ?>
     </div>
 
