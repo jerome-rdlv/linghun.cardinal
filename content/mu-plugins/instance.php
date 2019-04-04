@@ -207,11 +207,11 @@ add_filter('get_the_excerpt', function ($text) {
 
     /* This filter is documented in wp-includes/formatting.php */
     $excerpt_more = apply_filters('excerpt_more', ' ' . '[&hellip;]');
-    
+
     $text = strip_tags($text);
 
     $text = wp_trim_words($text, $excerpt_length, $excerpt_more);
-    
+
     return $text;
 });
 
@@ -271,3 +271,7 @@ add_filter('paginate_links', function ($link) {
 //    acf_update_setting('google_api_key', get_field('google_map_api_key', 'option'));
 //});
 
+add_filter('wp_get_attachment_image_attributes', function ($attr, $attachment, $size) {
+    $attr['title'] = $attachment->post_title;
+    return $attr;
+}, 10, 3);
