@@ -56,7 +56,7 @@
 
                 <div class="single-real__content">
                     <div class="single-real__desc content">
-                        <?php the_field('desc') ?>
+                        <?php echo apply_filters('the_content', get_field('desc')) ?>
                     </div>
                     <div class="single-real__tech content">
                         <?php the_field('tech') ?>
