@@ -153,7 +153,7 @@
             width: (7 / 12 * 100%);
         }
         &__duo-item {
-            height: calc(50% - #{rem($gap / 2)});
+            //height: calc(50% - #{rem($gap / 2)});
             width: 100%;
 
             &:last-child {
