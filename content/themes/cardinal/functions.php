@@ -599,7 +599,9 @@ class CardinalTheme
         if ($query->get('post_type') !== 'cardinal_real') {
             return;
         }
-        $query->set('posts_per_page', 16);
+        $archive_page_id = get_option('page_for_cardinal_real');
+        $realisations_per_page = get_field('realisations_per_page', $archive_page_id);
+        $query->set('posts_per_page', $realisations_per_page ? $realisations_per_page : 16);
     }
 
     public function splash_img()

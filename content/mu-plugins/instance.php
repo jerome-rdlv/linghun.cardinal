@@ -93,7 +93,7 @@ add_action('init', function () {
         'has_archive' => true,
         'supports'    => [
             'title',
-//            'editor',
+            'editor',
             'excerpt',
             'author',
             'thumbnail',
