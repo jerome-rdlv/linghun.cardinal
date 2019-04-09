@@ -4,6 +4,10 @@
         color: inherit;
     }
 
+    strong {
+        @include font(gobo);
+    }
+
     p {
         margin: 0 0 ($body-lh / $body-fs * 1em);
     }
@@ -21,13 +25,13 @@
         @include ffs($fs);
         margin: ($body-lh / $fs * 1em) 0;
     }
-    
+
     &__subtitle {
         @include font(dinbo);
         @include ffs(18);
         margin: ($body-lh / 18 * 1em) 0;
     }
-    
+
     &__subsubtitle {
         @include font(gobo);
         font-size: inherit;
@@ -35,16 +39,43 @@
         margin: ($body-lh / $body-fs * 1em) 0;
     }
 
+    blockquote,
+    &__em {
+        border-top: 1px solid $c-grey;
+        border-bottom: 1px solid $c-grey;
+        margin: rem(15px) 0 !important;
+        padding: rem(15px) 0;
+    }
+
+    blockquote {
+        $fs: 22;
+        @include ffs($fs);
+        @include font(gobo);
+        letter-spacing: (-.46em / $fs);
+        line-height: (28 / $fs);
+        
+        p::before {
+            content: '« ';
+        }
+        p::after {
+            content: ' »';
+        }
+
+        p {
+            margin-bottom: rem(15px);
+           
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
     &__em {
         $fs: 30;
         @include ffs($fs);
         @include font(din);
-        border-top: 1px solid $c-grey;
-        border-bottom: 1px solid $c-grey;
         letter-spacing: (1em / $fs);
         line-height: (34 / $fs);
-        margin: (15em / $fs) 0 !important;
-        padding: (14em / $fs) 0;
         text-transform: uppercase;
     }
 

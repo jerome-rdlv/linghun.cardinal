@@ -643,6 +643,7 @@ class CardinalTheme
             'numlist',
             'link',
             'unlink',
+            'blockquote',
             'hr',
             'removeformat',
             'alignleft',
@@ -653,7 +654,6 @@ class CardinalTheme
             'undo',
             'redo',
             'fullscreen',
-            'code',
         ];
 
         return $buttons;
@@ -788,11 +788,13 @@ class CardinalTheme
         $init['textcolor_rows'] = 1;
         $init['theme_advanced_more_colors'] = true;
 
+        if (!isset($init['body_class'])) {
+            $init['body_class'] = '';
+        }
+        $init['body_class'] .= ' content';
+
         global $post;
         if ($post) {
-            if (!isset($init['body_class'])) {
-                $init['body_class'] = '';
-            }
             $init['body_class'] .= ' page-template-' . preg_replace('/\.php$/', '', $post->page_template);
             if ($post->ID == get_option('page_on_front')) {
                 $init['body_class'] .= ' front-page';

@@ -13,6 +13,36 @@
     .js-on .home & {
         //margin-top: 100vh;
     }
+
+    &__top-link {
+        $fs: 50;
+        @include fs($fs);
+        background: linear-gradient(to bottom, #3d3d3d, #000000);
+        display: block;
+        height: 1em;
+        margin: 0 0 rem(-20px) auto;
+        opacity: .21;
+        position: relative;
+        transition: opacity 300ms;
+        width: 1em;
+
+        &::before {
+            border-bottom: (9em / $fs) solid white;
+            border-left: (9em / $fs) solid transparent;
+            border-right: (9em / $fs) solid transparent;
+            content: '';
+            display: block;
+            left: (1em / 2 - 9em / $fs);
+            position: absolute;
+            top: (1em / 2 - 9em / $fs / 2);
+        }
+        
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: 1;
+        }
+    }
     
     //@media (min-width: mqem($header-breakpoint)) {
     //    .home & {

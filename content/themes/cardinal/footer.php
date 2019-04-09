@@ -6,6 +6,11 @@
 <div class="wrapper">
     <main id="main" class="main">
         <?php endif ?>
+        <div class="main__top container">
+            <a href="#main" class="main__top-link">
+                <span class="visually-hidden">Retourner au début du contenu</span>
+            </a>
+        </div>
     </main>
 
     <?php $theme = CardinalTheme::get_instance() ?>
