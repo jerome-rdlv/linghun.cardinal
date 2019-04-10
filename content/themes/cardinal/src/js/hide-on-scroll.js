@@ -41,14 +41,15 @@ function init() {
 
     function onScroll() {
         var scrollTop = window.pageYOffset;
+        body.classList.toggle('scrolled-down', scrollTop > delay);
         var scroll = lastScrollTop - scrollTop;
         var threshold = 120;
         if (Math.abs(scroll) > delta) {
             var hidden = scroll < 0 && scrollTop > threshold && !body.classList.contains('nav-on');
             if (hidden !== wasHidden) {
-                body.classList.toggle('scrolled-down', hidden);
+                body.classList.toggle('scrolling-down', hidden);
                 wasHidden = hidden;
-                trigger.call(document.body, 'scrolled-down', hidden);
+                trigger.call(document.body, 'scrolling-down', hidden);
             }
             lastScrollTop = scrollTop;
         }

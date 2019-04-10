@@ -14,6 +14,18 @@
         //margin-top: 100vh;
     }
 
+    &__top {
+        bottom: 0;
+        position: sticky;
+        transition: opacity 150ms;
+        
+        .js-on & {
+            opacity: 0;
+        }
+        body.scrolled-down & {
+            opacity: 1;
+        }
+    }
     &__top-link {
         $fs: 50;
         @include fs($fs);
