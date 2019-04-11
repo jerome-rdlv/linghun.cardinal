@@ -43,7 +43,7 @@ use Rdlv\WordPress\Theme\MenuBackgroundsWalker;
     </div>
 </script>
 
-<header class="header">
+<header class="header" id="header">
     <div class="header__skips skips print-off">
         <div class="skips__inner">
             <ul class="skips__list">
