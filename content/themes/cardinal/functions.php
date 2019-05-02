@@ -638,7 +638,7 @@ class CardinalTheme
         $buttons = [
             'styleselect',
             'bold',
-//            'italic',
+            'italic',
             'bullist',
             'numlist',
             'link',

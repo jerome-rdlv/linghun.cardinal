@@ -29,6 +29,7 @@
         "yarn": ">= 1.0.0"
     },
     "scripts": {
+        "prod": "yarn install --prod --frozen-lockfile",
         "postinstall": "dir=/tmp/`date +%s`; mkdir $dir; git clone ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git $dir; rsync -a $dir/.git node_modules/gulpfile/; rm -rf $dir;"
     },
     "eslintConfig": {
