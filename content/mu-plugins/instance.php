@@ -80,7 +80,7 @@ add_action('init', function () {
         'show_admin_column' => true,
         'hierarchical'      => true,
         'rewrite'           => [
-            'slug'       => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'category',
+            'slug'       => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'immobilier',
             'with_front' => false,
         ],
     ]);
@@ -135,6 +135,7 @@ add_action('init', function () {
         'supports'    => [
             'title',
             'author',
+            'excerpt',
             'thumbnail',
             'revisions',
         ],
