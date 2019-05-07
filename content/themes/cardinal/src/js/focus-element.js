@@ -6,6 +6,7 @@ export default function (preventScroll) {
         element.removeAttribute('tabindex');
         element.removeEventListener('blur', onBlur);
     });
+    
     element.setAttribute('tabindex', -1);
     
     var scroll = {};

@@ -348,6 +348,19 @@ function init() {
         });
     }
 
+    // touch hover on realisations
+    listen.call(document, 'touchstart', 'a.card-real__link', function (e) {
+        if (!this.classList.contains('hover')) {
+            Array.prototype.forEach.call(document.querySelectorAll('a.card-real__link'), function (link) {
+                // console.log('remove on ', link);
+                link.classList.remove('hover');
+            });
+            this.classList.add('hover');
+            e.preventDefault();
+            return false;
+        }
+    }, {passive: false});
+
     body.classList.remove('loading');
 }
 
