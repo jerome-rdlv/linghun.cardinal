@@ -19,7 +19,7 @@
     ?>
     <?php echo wp_get_attachment_image($thumbnail_id, 'medium', false, [
         'class'           => 'card-real__thumb',
-        'data-object-fit' => 'cover',
+//        'data-object-fit' => 'cover',
         'sizes'           => '(min-width: 1040px) 26.5rem, (min-width: 780px) 33vw, (min-width: 520px) 50vw, 100vw',
     ]) ?>
 </div>

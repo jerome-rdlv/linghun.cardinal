@@ -1,10 +1,10 @@
 <?php $theme = CardinalTheme::get_instance() ?>
 <?php global $wp_query ?>
 <ul id="list-real" class="list-real"
-    data-masonry="<?php echo esc_attr(json_encode([
+    <?php /*data-masonry="<?php echo esc_attr(json_encode([
         'itemSelector' => '.list-real__item',
 //        'stagger' => 30,
-    ])) ?>"
+    ])) ?>" */ ?>
     data-more-pagination=".list-real + .pagination"
     data-more-options="<?php echo esc_attr(json_encode([
         'loadingText'    => __('Chargement des réalisations suivantes.', CardinalTheme::TEXTDOMAIN),

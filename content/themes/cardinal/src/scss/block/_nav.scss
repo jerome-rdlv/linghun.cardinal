@@ -180,6 +180,7 @@
             }
 
             .on {
+                opacity: 1;
                 transform: scale(0);
             }
         }
@@ -296,10 +297,10 @@
 
         .menu {
             border-top: 1px solid white;
-            //bottom: 0;
+            bottom: 0;
             display: flex;
             flex-flow: row nowrap;
-            position: relative;
+            position: absolute;
             width: 100%;
             z-index: $depth-nav;
 

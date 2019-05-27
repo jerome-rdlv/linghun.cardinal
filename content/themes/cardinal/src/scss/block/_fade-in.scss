@@ -1,17 +1,19 @@
 .fade-in {
-    transition-property: opacity, transform;
-    transition-duration: 300ms;
-    transition-timing-function: ease-out;
+    .js-on & {
+        transition-property: opacity, transform;
+        transition-duration: 300ms;
+        transition-timing-function: ease-out;
 
-    &--hidden {
-        opacity: 0;
-        transform: translateY(rem(15px));
-        transition: none;
-    }
-    
-    &__anchor {
-        min-height: 1px;
-        visibility: hidden;
-        min-width: 1px;
+        &--hidden {
+            opacity: 0;
+            transform: translateY(rem(15px));
+            transition: none;
+        }
+
+        &__anchor {
+            min-height: 1px;
+            visibility: hidden;
+            min-width: 1px;
+        }
     }
 }

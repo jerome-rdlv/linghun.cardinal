@@ -1,11 +1,11 @@
 {
     "config": {
         "platform": {
-            "php": "5.6"
+            "php": "7.3"
         }
     },
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.3",
         "ext-dom": "*",
         "johnpbloch/wordpress": ">=4.5",
         "wpackagist-plugin/classic-editor": "^1.4",
@@ -25,7 +25,8 @@
         "scotteh/php-dom-wrapper": ">=0.7",
         "wpackagist-plugin/redirection": ">=3.7",
         "cpt-parent": "dev-master",
-        "wpackagist-plugin/wp-page-duplicator": "^0.1.1"
+        "wpackagist-plugin/wp-page-duplicator": "^0.1.1",
+        "jerome-rdlv/cachebust-assets": "^0.1.4"
     },
     "extra": {
         "wordpress-install-dir": "wp",

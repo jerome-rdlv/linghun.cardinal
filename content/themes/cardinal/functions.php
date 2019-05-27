@@ -143,7 +143,7 @@ class CardinalTheme
 
         // masonry
         wp_deregister_script('masonry');
-        wp_register_script('masonry', $this->theme_url('/node_modules/web/masonry/dist/masonry.pkgd.min.js'), [], false,
+        wp_register_script('masonry', $this->theme_url('/node_modules/web/masonry/dist/masonry.pkgd.min.js'), ['jquery'], false,
             true);
 
         // ePD (tarteaucitron / TaC)

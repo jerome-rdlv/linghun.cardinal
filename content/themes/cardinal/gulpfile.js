@@ -16,5 +16,7 @@ gulpfile({
     inlines: [
         "js/body-top.js",
         "js/init-*.js",
+        "js/request-animation-frame-polyfill.js",
+        "js/object-assign-polyfill.js",
     ]
 });

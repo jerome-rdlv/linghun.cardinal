@@ -49,6 +49,7 @@
     // Polyfills
     (document.head && document.head.after) || document.write('<script src="https://unpkg.com/dom4"><\/script>');
     window.requestAnimationFrame || document.write('<script src="<?php echo $theme->dist_url('/js/request-animation-frame-polyfill.js') ?>"><\/script>');
+    typeof Object.assign == 'function' || document.write('<script src="<?php echo $theme->dist_url('/js/object-assign-polyfill.js') ?>"><\/script>');
     typeof Promise === 'function' || document.write('<script src="https://unpkg.com/promise-polyfill"><\/script>');
 </script>
 

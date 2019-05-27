@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45120c21260005a3010daabe88a23d73",
+    "content-hash": "b9786ba23903061045ba6f8dfbcfb12c",
     "packages": [
         {
             "name": "advanced-custom-fields-pro",
@@ -756,6 +756,40 @@
                 "twitter"
             ],
             "time": "2017-05-08T12:10:56+00:00"
+        },
+        {
+            "name": "jerome-rdlv/cachebust-assets",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/cachebust-assets.git",
+                "reference": "d7a74578ad699df0cdc1dc4a76b6bf45daee3cf3"
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "wordpress-muplugin",
+            "autoload": {
+                "psr-4": {
+                    "Rdlv\\WordPress\\CacheBustAssets\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jérôme Mulsant",
+                    "email": "jerome@rue-de-la-vieille.fr"
+                }
+            ],
+            "description": "Add cache busting fragment to assets URL, in query string or path.",
+            "time": "2019-05-21T08:06:31+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -1955,11 +1989,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6",
+        "php": ">=7.3",
         "ext-dom": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.6"
+        "php": "7.3"
     }
 }

@@ -1,4 +1,10 @@
 @mixin commons {
+    
+    &::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
 
     a {
         color: inherit;
@@ -6,6 +12,11 @@
 
     strong {
         @include font(gobo);
+        font-weight: bold !important;
+    }
+
+    em {
+        font-style: italic !important;
     }
 
     p {
@@ -53,17 +64,18 @@
         @include font(gobo);
         letter-spacing: (-.46em / $fs);
         line-height: (28 / $fs);
-        
+
         p::before {
             content: '« ';
         }
+
         p::after {
             content: ' »';
         }
 
         p {
             margin-bottom: rem(15px);
-           
+
             &:last-child {
                 margin-bottom: 0;
             }
@@ -79,6 +91,21 @@
         text-transform: uppercase;
     }
 
+    .alignleft {
+        float: left;
+        margin-top: 0;
+        margin-right: rem($gap);
+    }
+
+    .alignright {
+        float: right;
+        margin-top: 0;
+        margin-left: rem($gap);
+    }
+
+    .aligncenter {
+        display: block;
+    }
 }
 
 // specific selectors

@@ -8,6 +8,7 @@
     background: black;
     box-sizing: border-box;
     color: white;
+    align-items: center;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -54,6 +55,10 @@
             display: block;
             margin-top: (15em / $body-fs);
         }
+    }
+    
+    &__inner {
+        max-width: none;
     }
 
     &__title {

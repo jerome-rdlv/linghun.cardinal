@@ -106,6 +106,7 @@ function initNavBacks(nav) {
                             promises.push(loadNaturalSize(img));
                         }
                     });
+                    return Promise.all(promises);
                 });
             })
             ;
@@ -254,6 +255,70 @@ function initNavBacks(nav) {
     }
 }
 
+/**
+ * Prevent the polyfill to put improper style on picture element
+ */
+// function initObjectFitPolyfillCorrection() {
+//     var nodes = document.querySelectorAll('picture');
+//     var style = 'position:absolute;width:100%;height:100%;top:0;left:0;';
+//     Array.prototype.forEach.call(nodes, function (node) {
+//         node.setAttribute('style', style);
+//         var observer = new MutationObserver(function (mutationList) {
+//             for (var key in mutationList) {
+//                 if (mutationList[key].type === 'attributes') {
+//                     var target = mutationList[key].target;
+//                     if (target.getAttribute('style') !== style) {
+//                         observer.disconnect();
+//                         target.setAttribute('style', style);
+//                         trigger.call(window, 'resize');
+//                         observer.observe(target, {attributes: true});
+//                     }
+//                 }
+//             }
+//         });
+//         observer.observe(node, {
+//             attributes: true
+//         });
+//     });
+// }
+
+/**
+ * Masonry and ajax load-more
+ */
+function initMasonry() {
+    if (typeof jQuery !== 'function' || typeof imagesLoaded !== 'function') {
+        return;
+    }
+
+    // var grids = document.querySelectorAll('[data-masonry]');
+    var grids = document.querySelectorAll('.list-real');
+
+    function masonryLayout($grid) {
+        $grid.imagesLoaded().progress(function () {
+            $grid.masonry('layout');
+        });
+    }
+
+    Array.prototype.forEach.call(grids, function (grid) {
+        var $grid = jQuery(grid);
+        $grid.masonry({
+            itemSelector: '.list-real__item',
+        });
+        if (typeof $grid.masonry === 'function') {
+            masonryLayout(jQuery(grid));
+        }
+    });
+
+    // loadmore handling
+    listen.call(document, 'moreloaded', '.masonry', function (e) {
+        var $grid = jQuery(e.target);
+        if (typeof $grid.masonry === 'function') {
+            masonryLayout($grid);
+            $grid.masonry('appended', e.detail);
+        }
+    });
+}
+
 function init() {
     // create nav toggle button
     document.querySelector('.header__inner').insertAdjacentHTML(
@@ -316,6 +381,7 @@ function init() {
     });
 
     initSmoothScroll();
+    // initObjectFitPolyfillCorrection();
 
     // init reveal with load-more
     listen.call(document, 'moreloaded', '.list-real,.list-search', function (e) {
@@ -327,26 +393,7 @@ function init() {
         }));
     });
 
-    // masonry and ajax load-more
-    if (typeof jQuery === 'function') {
-        if (typeof imagesLoaded === 'function') {
-            Array.prototype.forEach.call(document.querySelectorAll('[data-masonry]'), function (list) {
-                imagesLoaded(list).on('progress', function () {
-                    jQuery(list).masonry('layout');
-                });
-            });
-        }
-
-        listen.call(document, 'moreloaded', '.masonry', function (e) {
-            imagesLoaded(e.target).on('progress', function () {
-                jQuery(e.target).masonry('layout');
-            });
-            var $list = jQuery(e.target);
-            if (typeof $list.masonry === 'function') {
-                $list.masonry('appended', e.detail);
-            }
-        });
-    }
+    initMasonry();
 
     // touch hover on realisations
     listen.call(document, 'touchstart', 'a.card-real__link', function (e) {

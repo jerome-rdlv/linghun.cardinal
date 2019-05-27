@@ -2,6 +2,6 @@
     <circle class="back" cx="15" cy="15" r="14.5" fill="#fff" stroke="#fff"/>
     <g stroke="currentColor">
         <path class="off" style="transform-origin: 15px 15px;" fill="none" stroke-linecap="square" stroke-width="2" d="M8 10h14M8 15h14M8 20h14"/>
-        <path class="on" style="transform-origin: 15px 15px;" transform="translate(-1,-1)" stroke-width="2" d="M22.744 9.619L9.619 22.744M22.744 22.744L9.619 9.619"/>
+        <path class="on" style="transform-origin: 15px 15px; opacity: 0;" transform="translate(-1,-1)" stroke-width="2" d="M22.744 9.619L9.619 22.744M22.744 22.744L9.619 9.619"/>
     </g>
 </svg>
