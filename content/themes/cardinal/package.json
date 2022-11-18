@@ -2,35 +2,28 @@
     "private": true,
     "license": "UNLICENSED",
     "devDependencies": {
-        "gulpfile": "ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git#master"
+        "bezier-easing": ">=2.1.0",
+        "dynamic-polyfill": ">=1.1.0",
+        "eslint-plugin-compat": ">=3.3.0",
+        "fastdom": ">=1.0.9",
+        "focus-visible": ">=5.0.2",
+        "focusable": ">=2.3.0",
+        "fontfaceobserver": ">=2.1.0",
+        "gulpfile": "git+ssh://git@github.com:jerome-rdlv/gulpfile.git#libsass",
+        "mobile-detect": ">=1.4.4",
+        "object-fit-polyfill": ">=0.1.0"
     },
     "dependencies": {
-        "bezier-easing": "gre/bezier-easing#^2.1",
-        "fastdom": "wilsonpage/fastdom#^1.0",
-        "focusable": "jkup/focusable#>=2.0",
-        "fontfaceobserver": "bramstein/fontfaceobserver#>=2.0",
-        "jquery": "jquery/jquery-dist#>=3.2",
-        "masonry-layout": "desandro/masonry#>=0.0.2",
-        "mobile-detect": "hgoebl/mobile-detect.js",
-        "objectFitPolyfill": "constancecchen/object-fit-polyfill#>=2.1",
-        "tarteaucitronjs": "AmauriC/tarteaucitron.js#*",
-        "web/bezier-easing": "gre/bezier-easing#^2.1",
-        "web/fastdom": "wilsonpage/fastdom#^1.0",
-        "web/focusable": "jkup/focusable#>=2.0",
-        "web/fontfaceobserver": "bramstein/fontfaceobserver#>=2.0",
-        "web/jquery": "jquery/jquery-dist#>=3.2",
-        "web/masonry": "desandro/masonry#>=0.0.2",
-        "web/mobile-detect": "hgoebl/mobile-detect.js",
-        "web/objectFitPolyfill": "constancecchen/object-fit-polyfill#>=2.1",
-        "web/tarteaucitron": "AmauriC/tarteaucitron.js#*"
-    },
-    "engines": {
-        "node": ">= 6.14.3",
-        "yarn": ">= 1.0.0"
+        "objectFitPolyfill": "^2.3.5",
+        "web/gsap": "greensock/GreenSock-JS#^2.0.1",
+        "web/magnific-popup": "dimsemenov/magnific-popup#^1.1",
+        "web/scroll-magic": "janpaepke/ScrollMagic#^2.0",
+        "web/slick": "kenwheeler/slick",
+        "web/tarteaucitron": "AmauriC/tarteaucitron.js"
     },
     "scripts": {
         "prod": "yarn install --prod --frozen-lockfile",
-        "postinstall": "dir=/tmp/`date +%s`; mkdir $dir; git clone ssh://git@gitlab.rue-de-la-vieille.fr:10022/jerome/gulpfile.git $dir; rsync -a $dir/.git node_modules/gulpfile/; rm -rf $dir;"
+        "gulpfile-src": "cd node_modules/gulpfile/; git clone --no-checkout -b libsass ssh://git@github.com:/jerome-rdlv/gulpfile.git .gitclone; mv .gitclone/.git ./; rmdir .gitclone;"
     },
     "eslintConfig": {
         "env": {
@@ -42,11 +35,9 @@
             "eslint:recommended"
         ],
         "plugins": [
-            "react"
+            "compat"
         ],
         "rules": {
-            "react/jsx-uses-react": "error",
-            "react/jsx-uses-vars": "error",
             "no-undef": "warn",
             "no-unused-vars": "warn",
             "no-console": [
@@ -57,28 +48,27 @@
                         "error"
                     ]
                 }
-            ]
+            ],
+            "compat/compat": "warn"
         },
         "parserOptions": {
             "ecmaVersion": 6,
-            "ecmaFeatures": {
-                "jsx": true
-            },
             "sourceType": "module"
+        },
+        "settings": {
+            "polyfills": [
+                "Promise",
+                "window.requestAnimationFrame",
+                "window.cancelAnimationFrame",
+                "window.requestIdleCallback",
+                "MutationObserver",
+                "IntersectionObserver"
+            ]
         }
     },
-    "babel": {
-        "presets": [
-            "env",
-            "react"
-        ],
-        "plugins": [
-            [
-                "transform-react-jsx",
-                {
-                    "pragma": "wp.element.createElement"
-                }
-            ]
-        ]
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
     }
 }

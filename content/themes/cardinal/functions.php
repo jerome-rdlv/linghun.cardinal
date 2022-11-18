@@ -126,7 +126,7 @@ class CardinalTheme
 
         // scripts
         wp_register_script('font-face-observer',
-            $this->theme_url('/node_modules/web/fontfaceobserver/fontfaceobserver.js'), [], false, true);
+            $this->theme_url('/node_modules/fontfaceobserver/fontfaceobserver.js'), [], false, true);
         wp_register_script('fonts', $this->dist_url('/js/fonts.js'), ['font-face-observer'], false, true);
         wp_localize_script('fonts', 'webfonts', [
             ['family' => 'DINProCond'],
@@ -387,12 +387,40 @@ class CardinalTheme
         );
     }
 
+    public function img_symbol($key, $attributes = [])
+    {
+        if (!isset($attributes['alt'])) {
+            $attributes['alt'] = '';
+        }
+
+        $path = sprintf('/svg/%s.svg', $key);
+        $svg = file_get_contents($this->dist_path($path));
+
+        $open_tag = preg_match('/<svg([^>]*)>/', $svg, $matches);
+        if ($open_tag) {
+            preg_match_all('/ +([a-z0-9\-]+)=(["\']?)(.*?)\2/i', $matches[1], $matches, PREG_SET_ORDER);
+            foreach ($matches as $match) {
+                switch ($match[1]) {
+                    case 'width':
+                        $attributes['width'] = $match[3];
+                        break;
+                    case 'height':
+                        $attributes['height'] = $match[3];
+                        break;
+                }
+            }
+        }
+
+        $attributes['src'] = $this->dist_url($path);
+
+        return sprintf('<img%s>', $this->get_atts($attributes));
+    }
+
     public function print_symbols()
     {
         if ($this->symbols) {
             echo '<svg style="display:none;">' . "\n";
             foreach ($this->symbols as $symbol) {
-                /** @noinspection PhpIncludeInspection */
                 include $this->dist_path('/svg/' . $symbol . '.symbol.svg');
                 echo "\n";
             }
@@ -579,8 +607,8 @@ class CardinalTheme
         wp_enqueue_style('main');
         wp_enqueue_style('print');
 
-        wp_deregister_script('jquery');
-        wp_register_script('jquery', $this->theme_url('/node_modules/web/jquery/dist/jquery.min.js'), [], false, true);
+//        wp_deregister_script('jquery');
+//        wp_register_script('jquery', $this->theme_url('/node_modules/web/jquery/dist/jquery.min.js'), [], false, true);
 
         wp_enqueue_script('main');
         wp_enqueue_script('fonts');

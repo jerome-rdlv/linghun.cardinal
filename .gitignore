@@ -12,6 +12,8 @@ yarn-error.log
 !/content/mu-plugins/acf.php
 !/content/mu-plugins/instance.php
 /content/plugins/*
+/content/themes/*
+/content/themes/cardinal
 /content/themes/*/assets/*
 /content/themes/*/node_modules/*
 /content/themes/*/var/*

@@ -24,7 +24,7 @@
             <p>
                 <a href="<?php echo home_url() ?>" class="footer__home"
                    aria-label="<?php _e('Retour à l’accueil', CardinalTheme::TEXTDOMAIN) ?>">
-                    <?php echo $theme->get_symbol('logo', [
+                    <?php echo $theme->img_symbol('logo_footer', [
                         'aria-hidden' => true,
                         'class'       => 'footer__logo',
                     ]) ?>

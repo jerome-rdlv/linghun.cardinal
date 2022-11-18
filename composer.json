@@ -1,7 +1,17 @@
 {
     "config": {
+        "optimize-autoloader": true,
         "platform": {
             "php": "7.3"
+        },
+        "preferred-install": {
+            "jerome-rdlv/*": "source",
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "roots/wordpress-core-installer": true
         }
     },
     "require": {
@@ -15,16 +25,12 @@
         "wpackagist-plugin/flamingo": ">=1.9",
         "wpackagist-plugin/inazo-flamingo-automatically-delete-old-messages": ">=1.0",
         "wpackagist-plugin/w3-total-cache": ">=0.9",
-        "wpackagist-plugin/acf-code-field": ">=1.7",
-        "advanced-custom-fields-pro": "dev-master",
-        "post-order": "dev-master",
-        "social-network": "dev-master",
-        "allow-svg": "dev-master",
+        "jerome-rdlv/advanced-custom-fields-pro": "dev-master",
+        "jerome-rdlv/post-order": "dev-master",
+        "jerome-rdlv/allow-svg": "dev-master",
         "php-instagram-api/php-instagram-api": "@dev",
-        "disable-comments": "dev-master",
         "scotteh/php-dom-wrapper": ">=0.7",
         "wpackagist-plugin/redirection": ">=3.7",
-        "cpt-parent": "dev-master",
         "wpackagist-plugin/wp-page-duplicator": "^0.1.1",
         "jerome-rdlv/cachebust-assets": "^0.1.4"
     },
@@ -42,15 +48,18 @@
             "content/themes/{$name}/": [
                 "type:wordpress-theme"
             ]
-       }
+        }
     },
     "repositories": [
-        { "type": "composer", "url": "https://wpackagist.org" },
-        { "type": "composer", "url": "https://jerome.gitlab.rue-de-la-vieille.fr/satis/" }
+        {
+            "type": "composer",
+            "url": "https://jerome-rdlv.github.io/satis/"
+        },
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
     ],
-    "require-dev": {
-        "sensiolabs/security-checker": ">=5.0"
-    },
     "autoload": {
         "psr-4": {
             "Rdlv\\WordPress\\Theme\\": "content/themes/cardinal/class"
@@ -58,7 +67,6 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "php vendor/sensiolabs/security-checker/security-checker security:check"
         ]
     }
 }

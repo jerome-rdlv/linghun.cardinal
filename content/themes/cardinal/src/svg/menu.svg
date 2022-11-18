@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <script type="application/json" id="svgo-options">
+        [
+        { "removeHiddenElems": false }
+        ]
+    </script>
     <circle class="back" cx="15" cy="15" r="14.5" fill="#fff" stroke="#fff"/>
     <g stroke="currentColor">
         <path class="off" style="transform-origin: 15px 15px;" fill="none" stroke-linecap="square" stroke-width="2" d="M8 10h14M8 15h14M8 20h14"/>

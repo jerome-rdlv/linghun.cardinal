@@ -46,9 +46,9 @@
 
     &__logo {
         display: block;
-        height: (46px);
+        height: auto;
         margin: 0 auto rem($gap / 2);
-        width: rem(165px);
+        width: rem(200px);
     }
     
     @media (min-width: mqem($ws)) {
