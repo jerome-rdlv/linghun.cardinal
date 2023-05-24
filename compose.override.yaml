@@ -1,0 +1,13 @@
+services:
+    php:
+        volumes:
+            - /home/jerome/.ssh:/home/application/.ssh
+            - /home/jerome/.config/composer:/home/application/.composer
+            - ${SSH_AUTH_SOCK}:/ssh-agent.sock
+        environment:
+            SSH_AUTH_SOCK: /ssh-agent.sock
+            XDEBUG_MODE: debug,profile
+            XDEBUG_START_WITH_REQUEST: trigger
+            XDEBUG_CLIENT_HOST: host.docker.internal
+            PHP_POST_MAX_SIZE: 128M
+            PHP_UPLOAD_MAX_FILESIZE: 128M

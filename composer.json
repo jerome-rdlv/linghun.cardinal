@@ -2,7 +2,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.3"
+            "php": "8.0"
         },
         "preferred-install": {
             "jerome-rdlv/*": "source",
@@ -11,36 +11,38 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
-            "roots/wordpress-core-installer": true
+            "roots/wordpress-core-installer": true,
+            "johnpbloch/wordpress-core-installer": true
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "ext-dom": "*",
+        "jerome-rdlv/allow-svg": "dev-master",
+        "jerome-rdlv/cachebust-assets": "^0.1.4",
+        "jerome-rdlv/post-order": "dev-master",
         "johnpbloch/wordpress": ">=4.5",
+        "johnpbloch/wp-cli-phar": "*",
+        "php-instagram-api/php-instagram-api": "@dev",
+        "scotteh/php-dom-wrapper": ">=0.7",
         "wpackagist-plugin/classic-editor": "^1.4",
-        "wpackagist-plugin/wp-sitemap-page": ">=1.5",
-        "wpackagist-plugin/wordpress-seo": ">=7.6",
         "wpackagist-plugin/contact-form-7": ">=4.4",
         "wpackagist-plugin/flamingo": ">=1.9",
         "wpackagist-plugin/inazo-flamingo-automatically-delete-old-messages": ">=1.0",
-        "wpackagist-plugin/w3-total-cache": ">=0.9",
-        "jerome-rdlv/advanced-custom-fields-pro": "dev-master",
-        "jerome-rdlv/post-order": "dev-master",
-        "jerome-rdlv/allow-svg": "dev-master",
-        "php-instagram-api/php-instagram-api": "@dev",
-        "scotteh/php-dom-wrapper": ">=0.7",
         "wpackagist-plugin/redirection": ">=3.7",
+        "wpackagist-plugin/w3-total-cache": ">=0.9",
+        "wpackagist-plugin/wordpress-seo": ">=7.6",
         "wpackagist-plugin/wp-page-duplicator": "^0.1.1",
-        "jerome-rdlv/cachebust-assets": "^0.1.4"
+        "wpackagist-plugin/wp-sitemap-page": ">=1.5",
+        "wpengine/advanced-custom-fields-pro": "*"
     },
     "extra": {
         "wordpress-install-dir": "wp",
         "installer-paths": {
             "content/mu-plugins/{$name}/": [
                 "type:wordpress-muplugin",
-                "wpackagist-plugin/acf-code-field",
-                "wpackagist-plugin/imagefocuspoint"
+                "wpackagist-plugin/imagefocuspoint",
+                "wpengine/advanced-custom-fields-pro"
             ],
             "content/plugins/{$name}/": [
                 "type:wordpress-plugin"
@@ -51,6 +53,10 @@
         }
     },
     "repositories": [
+        {
+            "type": "composer",
+            "url": "https://connect.advancedcustomfields.com"
+        },
         {
             "type": "composer",
             "url": "https://jerome-rdlv.github.io/satis/"
@@ -64,9 +70,5 @@
         "psr-4": {
             "Rdlv\\WordPress\\Theme\\": "content/themes/cardinal/class"
         }
-    },
-    "scripts": {
-        "post-update-cmd": [
-        ]
     }
 }

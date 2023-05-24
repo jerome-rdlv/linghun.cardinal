@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7deb2b9834deb4f7ed0570689d54105",
+    "content-hash": "8748a0cef451648049eebdb3e42ac302",
     "packages": [
         {
             "name": "composer/installers",
@@ -158,45 +158,6 @@
             "time": "2021-09-13T08:19:44+00:00"
         },
         {
-            "name": "jerome-rdlv/advanced-custom-fields-pro",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:jerome-rdlv/advanced-custom-fields-pro.git",
-                "reference": "96e43ab45dc5d36b925d923bd7befd46b05de009"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jerome-rdlv/advanced-custom-fields-pro/zipball/96e43ab45dc5d36b925d923bd7befd46b05de009",
-                "reference": "96e43ab45dc5d36b925d923bd7befd46b05de009",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "default-branch": true,
-            "type": "wordpress-muplugin",
-            "extra": {
-                "installer-name": "acf-pro"
-            },
-            "license": [
-                "private"
-            ],
-            "authors": [
-                {
-                    "name": "Elliot Condon",
-                    "homepage": "http://www.elliotcondon.com/"
-                }
-            ],
-            "description": "Fully customise WordPress edit screens with powerful fields.",
-            "homepage": "http://www.advancedcustomfields.com/",
-            "support": {
-                "source": "https://github.com/jerome-rdlv/advanced-custom-fields-pro/tree/6.0.4",
-                "issues": "https://github.com/jerome-rdlv/advanced-custom-fields-pro/issues"
-            },
-            "time": "2022-11-09T07:25:19+00:00"
-        },
-        {
             "name": "jerome-rdlv/allow-svg",
             "version": "dev-master",
             "source": {
@@ -314,20 +275,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.1.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8"
+                "reference": "236680349aff347c8bac55665245d3b347d162f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8",
-                "reference": "d9ee7d6193781c9ee6288be6ca5681ee0c3f85b8",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/236680349aff347c8bac55665245d3b347d162f0",
+                "reference": "236680349aff347c8bac55665245d3b347d162f0",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.1.1",
+                "johnpbloch/wordpress-core": "6.2.2",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=5.6.20"
             },
@@ -356,20 +317,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2022-11-15T19:12:03+00:00"
+            "time": "2023-05-20T04:40:46+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.1.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "c9688597721b8579f3c29028e572a7b9753db893"
+                "reference": "5ed6d4a0469ff42d7ec4a1f72558be8f897a6e18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/c9688597721b8579f3c29028e572a7b9753db893",
-                "reference": "c9688597721b8579f3c29028e572a7b9753db893",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/5ed6d4a0469ff42d7ec4a1f72558be8f897a6e18",
+                "reference": "5ed6d4a0469ff42d7ec4a1f72558be8f897a6e18",
                 "shasum": ""
             },
             "require": {
@@ -377,7 +338,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "6.1.1"
+                "wordpress/core-implementation": "6.2.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -404,7 +365,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2022-11-15T19:11:58+00:00"
+            "time": "2023-05-20T04:40:42+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -459,6 +420,42 @@
                 "source": "https://github.com/johnpbloch/wordpress-core-installer/tree/master"
             },
             "time": "2020-04-16T21:44:57+00:00"
+        },
+        {
+            "name": "johnpbloch/wp-cli-phar",
+            "version": "v2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wp-cli-phar.git",
+                "reference": "4ff78d5985e71979832027823745e2d3dec36fda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wp-cli-phar/zipball/4ff78d5985e71979832027823745e2d3dec36fda",
+                "reference": "4ff78d5985e71979832027823745e2d3dec36fda",
+                "shasum": ""
+            },
+            "replace": {
+                "wp-cli/wp-cli": "self.version"
+            },
+            "require-dev": {
+                "czproject/git-php": "^3.9",
+                "guzzlehttp/guzzle": "^6.3",
+                "tightenco/collect": "^5.4"
+            },
+            "bin": [
+                "wp"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/johnpbloch/wp-cli-phar/issues",
+                "source": "https://github.com/johnpbloch/wp-cli-phar/tree/v2.7.1"
+            },
+            "time": "2022-10-21T19:14:52+00:00"
         },
         {
             "name": "php-instagram-api/php-instagram-api",
@@ -569,16 +566,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.4.11",
+            "version": "v5.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "c1681789f059ab756001052164726ae88512ae3d"
+                "reference": "95f3c7468db1da8cc360b24fa2a26e7cefcb355d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/c1681789f059ab756001052164726ae88512ae3d",
-                "reference": "c1681789f059ab756001052164726ae88512ae3d",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/95f3c7468db1da8cc360b24fa2a26e7cefcb355d",
+                "reference": "95f3c7468db1da8cc360b24fa2a26e7cefcb355d",
                 "shasum": ""
             },
             "require": {
@@ -615,7 +612,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v5.4.11"
+                "source": "https://github.com/symfony/css-selector/tree/v5.4.21"
             },
             "funding": [
                 {
@@ -631,7 +628,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-27T16:58:25+00:00"
+            "time": "2023-02-14T08:03:56+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -718,15 +715,15 @@
         },
         {
             "name": "wpackagist-plugin/classic-editor",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/classic-editor/",
-                "reference": "tags/1.6.2"
+                "reference": "tags/1.6.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.6.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.6.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -736,15 +733,15 @@
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
-            "version": "5.6.4",
+            "version": "5.7.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/5.6.4"
+                "reference": "tags/5.7.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.6.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.7.6.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -754,15 +751,15 @@
         },
         {
             "name": "wpackagist-plugin/flamingo",
-            "version": "2.3",
+            "version": "2.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/flamingo/",
-                "reference": "tags/2.3"
+                "reference": "tags/2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/flamingo.2.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/flamingo.2.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -790,15 +787,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "5.3.5",
+            "version": "5.3.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/5.3.5"
+                "reference": "tags/5.3.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.5.3.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/redirection.5.3.10.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -808,15 +805,15 @@
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
-            "version": "2.2.7",
+            "version": "2.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
-                "reference": "tags/2.2.7"
+                "reference": "tags/2.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.2.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.3.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -826,15 +823,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "19.10",
+            "version": "20.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/19.10"
+                "reference": "tags/20.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.19.10.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.20.8.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -877,26 +874,40 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-sitemap-page/"
+        },
+        {
+            "name": "wpengine/advanced-custom-fields-pro",
+            "version": "6.1.6",
+            "dist": {
+                "type": "zip",
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?p=pro&t=6.1.6"
+            },
+            "require": {
+                "composer/installers": "~1.0 || ~2.0"
+            },
+            "replace": {
+                "wpackagist-plugin/advanced-custom-fields": "self.version"
+            },
+            "type": "wordpress-plugin"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "jerome-rdlv/advanced-custom-fields-pro": 20,
-        "jerome-rdlv/post-order": 20,
         "jerome-rdlv/allow-svg": 20,
+        "jerome-rdlv/post-order": 20,
         "php-instagram-api/php-instagram-api": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "ext-dom": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.3"
+        "php": "8.0"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
