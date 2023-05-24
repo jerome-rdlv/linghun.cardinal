@@ -29,6 +29,7 @@
         outline: none;
         padding-left: rem($gap / 2);
         padding-right: rem($gap / 2);
+        width: 100%;
     }
 
     @media (min-width: mqem($item-min-width * 2)) {

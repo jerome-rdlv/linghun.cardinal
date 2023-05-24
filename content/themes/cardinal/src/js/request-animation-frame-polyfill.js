@@ -4,7 +4,7 @@ http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-a
 requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
 MIT license
  */
-// import 'web/promise-polyfill/src/polyfill';
+// import 'promise-polyfill/src/polyfill';
 
 var lastTime = 0;
 var vendors = ['ms', 'moz', 'webkit', 'o'];

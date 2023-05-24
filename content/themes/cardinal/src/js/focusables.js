@@ -1,4 +1,4 @@
-import selector from 'web/focusable/index.js';
+import selector from 'focusable/index.js';
 
 export default function getFocusables(container) {
     return Array.prototype.filter.call(container.querySelectorAll(selector), function (node) {

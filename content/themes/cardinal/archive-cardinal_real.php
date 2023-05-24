@@ -1,4 +1,2 @@
-<?php wp_enqueue_script('jquery') ?>
-<?php wp_enqueue_script('imagesloaded') ?>
-<?php wp_enqueue_script('jquery-masonry') ?>
+<?php wp_enqueue_script('masonry') ?>
 <?php get_template_part('index') ?>

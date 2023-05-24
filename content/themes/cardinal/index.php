@@ -1,5 +1,8 @@
-<?php $theme = CardinalTheme::get_instance() ?>
-<?php $template_name = $theme->get_template_name() ?>
+<?php
+
+$theme = CardinalTheme::get_instance();
+$template_name = $theme->get_template_name();
+?>
 <?php get_header($template_name) ?>
 
 <?php get_template_part('partial/splash', $template_name) ?>

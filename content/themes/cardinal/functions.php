@@ -29,8 +29,8 @@ class CardinalTheme
     const MENU_FOR_EDIT_LINK = 'aside';
 
     private static $scriptIncs = [
-        self::SCRIPT_INC_HEAD        => 'Entête',
-        self::SCRIPT_INC_BODY_TOP    => 'Juste après &lt;body&gt;',
+        self::SCRIPT_INC_HEAD => 'Entête',
+        self::SCRIPT_INC_BODY_TOP => 'Juste après &lt;body&gt;',
         self::SCRIPT_INC_BODY_BOTTOM => 'Juste avant &lt;/body&gt;',
     ];
 
@@ -81,9 +81,9 @@ class CardinalTheme
 
         // menu
         register_nav_menus([
-            self::MENU_MAIN  => 'Principal',
-            self::MENU_ASIDE => 'Secondaire',
-        ]);
+                               self::MENU_MAIN => 'Principal',
+                               self::MENU_ASIDE => 'Secondaire',
+                           ]);
         add_filter('nav_menu_item_title', [$this, 'prefix_current_menu_item'], 10, 2);
         add_filter('nav_menu_item_title', [$this, 'add_menu_item_picto'], 10, 3);
         add_filter('nav_menu_link_attributes', [$this, 'main_menu_add_item_id'], 10, 4);
@@ -126,7 +126,7 @@ class CardinalTheme
 
         // scripts
         wp_register_script('font-face-observer',
-            $this->theme_url('/node_modules/fontfaceobserver/fontfaceobserver.js'), [], false, true);
+                           $this->theme_url('/node_modules/fontfaceobserver/fontfaceobserver.js'), [], false, true);
         wp_register_script('fonts', $this->dist_url('/js/fonts.js'), ['font-face-observer'], false, true);
         wp_localize_script('fonts', 'webfonts', [
             ['family' => 'DINProCond'],
@@ -137,27 +137,21 @@ class CardinalTheme
         ]);
         wp_scripts()->add_data('fonts', 'critical', true);
 
-        // slick
-//        wp_register_script('slick', $this->theme_url('/node_modules/web/slick/slick/slick.min.js'), ['jquery'], false, true);
-//        wp_register_script('slider', $this->dist_url('/js/slider.js'), ['slick'], false, true);
-
-        // masonry
-        wp_deregister_script('masonry');
-        wp_register_script('masonry', $this->theme_url('/node_modules/web/masonry/dist/masonry.pkgd.min.js'), ['jquery'], false,
-            true);
-
         // ePD (tarteaucitron / TaC)
-        wp_register_script('tac', $this->theme_url('/node_modules/web/tarteaucitron/tarteaucitron.js'), [], false,
-            true);
-        wp_add_inline_script('tac', sprintf('tarteaucitron.init(%s);', json_encode([
-            'privacyUrl'     => get_privacy_policy_url(),
-            'orientation'    => 'bottom',
-            'adblocker'      => false,
-            'showAlertSmall' => false,
-            'cooieslist'     => false,
-            'removeCredit'   => true,
-            'moreInfoLink'   => false,
-        ])));
+        wp_register_script('tac', $this->theme_url('/node_modules/tarteaucitronjs/tarteaucitron.js'), [], false,
+                           true);
+        wp_add_inline_script('tac', sprintf('tarteaucitron.init(%s);', json_encode(
+            [
+                'privacyUrl' => get_privacy_policy_url(),
+                'orientation' => 'bottom',
+                'adblocker' => false,
+                'showAlertSmall' => false,
+                'showIcon' => false,
+                'cooieslist' => false,
+                'removeCredit' => true,
+                'moreInfoLink' => false,
+            ]
+        )));
         wp_register_script('tac-overrides', $this->dist_url('/js/tac-overrides.js'), ['tac'], false, true);
 
         wp_register_script('main', $this->dist_url('/js/main.js'), ['jquery', 'tac-overrides'], false, true);
@@ -185,7 +179,7 @@ class CardinalTheme
         // includes
         add_action('wp_head', function () {
             $this->scripts_inc(self::SCRIPT_INC_HEAD);
-        }, 0);
+        },         0);
         add_action('body_top', function () {
             $this->body_top_script();
             $this->scripts_inc(self::SCRIPT_INC_BODY_TOP);
@@ -193,7 +187,7 @@ class CardinalTheme
         });
         add_action('wp_footer', function () {
             $this->scripts_inc(self::SCRIPT_INC_BODY_BOTTOM);
-        }, 100);
+        },         100);
         add_filter('acf/load_field/name=scripts', [$this, 'scripts_insert_position']);
     }
 
@@ -351,7 +345,7 @@ class CardinalTheme
             $picto = get_field('picto', $item)['url'];
             $title = $this->inline_svg($picto, [
                     'aria-hidden' => 'true',
-                    'class'       => 'menu-item-picto',
+                    'class' => 'menu-item-picto',
                 ]) . $title;
         }
         return $title;
@@ -476,7 +470,7 @@ class CardinalTheme
                             $atts = array_merge($oatts, $atts);
                         }
                         return '<svg' . $this->get_atts($atts) . '>';
-                    }, $contents);
+                    },                                $contents);
                 }
                 return $contents;
             }
@@ -511,7 +505,7 @@ class CardinalTheme
     public function video_options($video, $options, $async = false)
     {
         $src = preg_replace('/.* src=(["\'])(.*?)\1.*/', '\2', $video);
-        list($url, $query) = explode('?', $src);
+        [$url, $query] = explode('?', $src);
 
         foreach ($options as $option => $value) {
             if ($query) {
@@ -634,7 +628,6 @@ class CardinalTheme
 
     public function splash_img()
     {
-
     }
 
     public function form_render($form_id)
@@ -692,17 +685,17 @@ class CardinalTheme
         if (get_field('display_selection') === 'selection') {
             $actu_id = get_field('selection', false, false);
             query_posts([
-                'post__in'       => [$actu_id],
-                'post_type'      => 'any',
-                'posts_per_page' => 1,
-            ]);
+                            'post__in' => [$actu_id],
+                            'post_type' => 'any',
+                            'posts_per_page' => 1,
+                        ]);
         } else {
             query_posts([
-                'order'          => 'DESC',
-                'orderby'        => 'post_date',
-                'post_type'      => 'post',
-                'posts_per_page' => 1,
-            ]);
+                            'order' => 'DESC',
+                            'orderby' => 'post_date',
+                            'post_type' => 'post',
+                            'posts_per_page' => 1,
+                        ]);
         }
     }
 
@@ -716,10 +709,10 @@ class CardinalTheme
         $archive_page_id = get_option('page_for_' . $post_type);
         if ($archive_page_id) {
             query_posts([
-                'post__in'       => [$archive_page_id],
-                'post_type'      => 'any',
-                'posts_per_page' => 1,
-            ]);
+                            'post__in' => [$archive_page_id],
+                            'post_type' => 'any',
+                            'posts_per_page' => 1,
+                        ]);
             if (have_posts()) {
                 the_post();
                 return true;
@@ -779,39 +772,39 @@ class CardinalTheme
         // formats
         $formats = [
             [
-                'title'   => 'Titre niveau 2',
-                'block'   => 'h2',
+                'title' => 'Titre niveau 2',
+                'block' => 'h2',
                 'classes' => 'content__title',
                 'wrapper' => false,
             ],
             [
-                'title'   => 'Titre niveau 3',
-                'block'   => 'h3',
+                'title' => 'Titre niveau 3',
+                'block' => 'h3',
                 'classes' => 'content__subtitle',
                 'wrapper' => false,
             ],
             [
-                'title'   => 'Titre niveau 4',
-                'block'   => 'h4',
+                'title' => 'Titre niveau 4',
+                'block' => 'h4',
                 'classes' => 'content__subsubtitle',
                 'wrapper' => false,
             ],
             [
-                'title'   => 'Emphase',
-                'block'   => 'p',
+                'title' => 'Emphase',
+                'block' => 'p',
                 'classes' => 'content__em',
                 'wrapper' => false,
             ],
             [
-                'title'   => 'Lien CTA',
-                'block'   => 'p',
+                'title' => 'Lien CTA',
+                'block' => 'p',
                 'classes' => 'content__cta',
                 'wrapper' => false,
             ],
         ];
 
         $init['style_formats'] = json_encode($formats);
-        
+
         $init['textcolor_map'] = '["B81918", "Rouge", "FF6600", "Orange"]';
         $init['textcolor_rows'] = 1;
         $init['theme_advanced_more_colors'] = true;
@@ -861,7 +854,7 @@ class CardinalTheme
         if (!is_front_page() && function_exists('yoast_breadcrumb')) {
             yoast_breadcrumb(
                 '<nav class="Breadcrumbs"><span class="visually-hidden">' . __('Vous êtes ici :',
-                    self::TEXTDOMAIN) . '</span> ',
+                                                                               self::TEXTDOMAIN) . '</span> ',
                 '</nav>'
             );
         }
@@ -903,6 +896,6 @@ class CardinalTheme
             } else {
                 return $matches[0];
             }
-        }, $format);
+        },                           $format);
     }
 }

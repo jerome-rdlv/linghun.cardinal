@@ -4,8 +4,9 @@
 namespace Rdlv\WordPress\Theme;
 
 use Walker;
+use Walker_Nav_Menu;
 
-class MenuBackgroundsWalker extends Walker
+class MenuBackgroundsWalker extends Walker_Nav_Menu
 {
     public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output)
     {
@@ -15,7 +16,7 @@ class MenuBackgroundsWalker extends Walker
         }
 
         $background = '';
-        
+
 //        $portraits = [];
 //        foreach (wp_get_additional_image_sizes() as $key => $size) {
 //            if (preg_match('/p-([0-9]+)-x1/', $key)) {
@@ -31,11 +32,11 @@ class MenuBackgroundsWalker extends Walker
 //        ksort($portraits);
 //        $background .= implode("\n", $portraits);
         $background .= wp_get_attachment_image($thumb_id, 'large', false, [
-            'aria-hidden'     => 'true',
-            'alt'             => '',
+            'aria-hidden' => 'true',
+            'alt' => '',
             'data-object-fit' => 'cover',
-            'id'              => 'item-back-' . $element->object_id,
-            'sizes'           => '(min-width: 920px) 100vw, 920px',
+            'id' => 'item-back-' . $element->object_id,
+            'sizes' => '(min-width: 920px) 100vw, 920px',
         ]);
 
         $mobile_image = get_field('splash_mobile', $element->object_id, false);

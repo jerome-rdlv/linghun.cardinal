@@ -2,28 +2,22 @@
     "private": true,
     "license": "UNLICENSED",
     "devDependencies": {
-        "bezier-easing": ">=2.1.0",
-        "dynamic-polyfill": ">=1.1.0",
-        "eslint-plugin-compat": ">=3.3.0",
-        "fastdom": ">=1.0.9",
-        "focus-visible": ">=5.0.2",
-        "focusable": ">=2.3.0",
-        "fontfaceobserver": ">=2.1.0",
+        "bezier-easing": "^2.1",
+        "dynamic-polyfill": "^1.1",
+        "eslint-plugin-compat": "^3.3",
+        "fastdom": "^1.0",
+        "focus-visible": "^5.0",
+        "focusable": "^2.3",
         "gulpfile": "git+ssh://git@github.com:jerome-rdlv/gulpfile.git#libsass",
-        "mobile-detect": ">=1.4.4",
-        "object-fit-polyfill": ">=0.1.0"
+        "mobile-detect": "^1.4",
+        "objectFitPolyfill": "^2.3"
     },
     "dependencies": {
-        "objectFitPolyfill": "^2.3.5",
-        "web/gsap": "greensock/GreenSock-JS#^2.0.1",
-        "web/magnific-popup": "dimsemenov/magnific-popup#^1.1",
-        "web/scroll-magic": "janpaepke/ScrollMagic#^2.0",
-        "web/slick": "kenwheeler/slick",
-        "web/tarteaucitron": "AmauriC/tarteaucitron.js"
+        "fontfaceobserver": "^2.1",
+        "tarteaucitronjs": "^1.11.0"
     },
     "scripts": {
-        "prod": "yarn install --prod --frozen-lockfile",
-        "gulpfile-src": "cd node_modules/gulpfile/; git clone --no-checkout -b libsass ssh://git@github.com:/jerome-rdlv/gulpfile.git .gitclone; mv .gitclone/.git ./; rmdir .gitclone;"
+        "prod": "yarn install --prod --frozen-lockfile"
     },
     "eslintConfig": {
         "env": {

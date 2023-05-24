@@ -1,6 +1,6 @@
 'use strict';
 
-import easing from 'web/bezier-easing/src/index';
+import easing from 'bezier-easing/src/index';
 import loop from './render-loop';
 
 var defaults = {

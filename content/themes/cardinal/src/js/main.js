@@ -1,7 +1,7 @@
-/* global fallback, jQuery, imagesLoaded */
+/* global fallback  */
 'use strict';
 
-import 'web/objectFitPolyfill';
+import 'objectFitPolyfill';
 
 import './skip-links';
 import './edit-key';
@@ -286,35 +286,35 @@ function initNavBacks(nav) {
  * Masonry and ajax load-more
  */
 function initMasonry() {
-    if (typeof jQuery !== 'function' || typeof imagesLoaded !== 'function') {
-        return;
-    }
+    // if (typeof jQuery !== 'function' || typeof imagesLoaded !== 'function') {
+    //     return;
+    // }
 
     // var grids = document.querySelectorAll('[data-masonry]');
     var grids = document.querySelectorAll('.list-real');
 
-    function masonryLayout($grid) {
-        $grid.imagesLoaded().progress(function () {
-            $grid.masonry('layout');
+    function listenLoadingImages(grid) {
+        grid.querySelectorAll('img').forEach(function (img) {
+            img.complete || img.addEventListener('load', function loaded(e) {
+                e.target.removeEventListener('load', loaded);
+                grid._masonry.layout();
+            });
         });
     }
 
     Array.prototype.forEach.call(grids, function (grid) {
-        var $grid = jQuery(grid);
-        $grid.masonry({
+        grid._masonry = new window.Masonry(grid, {
             itemSelector: '.list-real__item',
         });
-        if (typeof $grid.masonry === 'function') {
-            masonryLayout(jQuery(grid));
-        }
+        listenLoadingImages(grid);
     });
 
-    // loadmore handling
-    listen.call(document, 'moreloaded', '.masonry', function (e) {
-        var $grid = jQuery(e.target);
-        if (typeof $grid.masonry === 'function') {
-            masonryLayout($grid);
-            $grid.masonry('appended', e.detail);
+    // load more handling
+    listen.call(document, 'moreloaded', '.list-real', function (e) {
+        var grid = e.target;
+        if (grid._masonry) {
+            grid._masonry.appended(e.detail);
+            listenLoadingImages(grid);
         }
     });
 }

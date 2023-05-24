@@ -3,12 +3,7 @@
  * Plugin Name: ACF Configuration
  */
 
-include_once __DIR__ . '/acf-pro/acf.php';
 add_action('acf/init', function () {
-
-    acf_update_setting('path', __DIR__ . '/acf-pro/');
-    acf_update_setting('dir', plugins_url('acf-pro', __FILE__) . '/');
-
     if (function_exists('pll_default_language')) {
         acf_update_setting('default_language', pll_default_language('locale'));
     }

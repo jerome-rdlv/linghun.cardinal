@@ -3,10 +3,11 @@
     $fs: 24;
     $tr-dur: 300ms;
     //@include ffs($fs);
-    background-color: $c-dark;
+    background-color: #ddd;
     //overflow: hidden;
     position: relative;
     text-align: center;
+    width: 100%;
     z-index: 0;
 
     .fade-in__anchor {

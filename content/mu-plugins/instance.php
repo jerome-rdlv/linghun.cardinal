@@ -6,13 +6,11 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 $loads = [
-//    __DIR__ .'/post-order/post-order.php',
-//    __DIR__ .'/social-network/social-network.php',
+    __DIR__ . '/advanced-custom-fields-pro/acf.php',
     __DIR__ . '/disable-comments/disable-comments.php',
     __DIR__ . '/allow-svg/allow-svg.php',
     __DIR__ . '/acf-code-field/acf-code-field.php',
     __DIR__ . '/cpt-parent/cpt-parent.php',
-//    __DIR__ .'/acf-options-for-polylang/bea-acf-options-for-polylang.php',
 ];
 
 foreach ($loads as $load) {
@@ -32,10 +30,9 @@ add_action('plugin_row_meta', function ($plugin_meta, $plugin_file, $plugin_data
         );
     }
     return $plugin_meta;
-}, 10, 4);
+},         10, 4);
 
 add_action('init', function () {
-
     if (!is_admin()) {
         // needed by Gutenberg on admin screens
         wp_deregister_script('wp-embed');
@@ -47,13 +44,13 @@ add_action('init', function () {
 //    unregister_taxonomy_for_object_type('category', 'post');
 
     if (function_exists('acf_add_options_page')) {
-        acf_add_options_page(array(
-            'page_title'  => 'Paramètres d’instance',
-            'menu_title'  => 'Instance',
-            'menu_slug'   => 'instance-options',
-            'capability'  => 'edit_posts',
-            'parent_slug' => 'options-general.php',
-        ));
+        acf_add_options_page([
+                                 'page_title' => 'Paramètres d’instance',
+                                 'menu_title' => 'Instance',
+                                 'menu_slug' => 'instance-options',
+                                 'capability' => 'edit_posts',
+                                 'parent_slug' => 'options-general.php',
+                             ]);
     }
 
     // search in custom fields (joker % authorized)
@@ -67,31 +64,31 @@ add_action('init', function () {
             'cardinal_presse',
             'cardinal_real',
         ]) !== false ? true : $has_parent;
-    }, 10, 2);
+    },         10, 2);
 
     // CPT
     $presse_page = get_option('page_for_cardinal_presse');
     register_taxonomy('cardinal_presse_cat', 'cardinal_presse', [
-        'labels'            => [
-            'name'          => 'Catégories',
+        'labels' => [
+            'name' => 'Catégories',
             'singular_name' => 'Catégorie',
         ],
-        'meta_box_cb'       => 'post_categories_meta_box',
+        'meta_box_cb' => 'post_categories_meta_box',
         'show_admin_column' => true,
-        'hierarchical'      => true,
-        'rewrite'           => [
-            'slug'       => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'immobilier',
+        'hierarchical' => true,
+        'rewrite' => [
+            'slug' => ($presse_page ? get_page_uri($presse_page) . '/' : '') . 'immobilier',
             'with_front' => false,
         ],
     ]);
     register_post_type('cardinal_presse', [
-        'labels'      => [
-            'name'          => 'Presse',
+        'labels' => [
+            'name' => 'Presse',
             'singular_name' => 'Presse',
         ],
-        'public'      => true,
+        'public' => true,
         'has_archive' => true,
-        'supports'    => [
+        'supports' => [
             'title',
             'editor',
             'excerpt',
@@ -99,12 +96,12 @@ add_action('init', function () {
             'thumbnail',
             'revisions',
         ],
-        'rewrite'     => [
-            'slug'       => 'presse',
+        'rewrite' => [
+            'slug' => 'presse',
             'with_front' => false,
-            'pages'      => true,
+            'pages' => true,
         ],
-        'taxonomies'  => [
+        'taxonomies' => [
             'cardinal_presse_cat',
         ],
     ]);
@@ -113,38 +110,38 @@ add_action('init', function () {
     $reals_slug = $reals_page ? get_page_uri($reals_page) : 'realisations';
     $reals_permalink_struct = '/' . $reals_slug . '/%cardinal_real_cat%/%postname%';
     register_taxonomy('cardinal_real_cat', 'cardinal_real', [
-        'labels'            => [
-            'name'          => 'Catégories',
+        'labels' => [
+            'name' => 'Catégories',
             'singular_name' => 'Catégorie',
         ],
-        'meta_box_cb'       => 'post_categories_meta_box',
+        'meta_box_cb' => 'post_categories_meta_box',
         'show_admin_column' => true,
-        'hierarchical'      => true,
-        'rewrite'           => [
-            'slug'       => ($reals_page ? get_page_uri($reals_page) . '/' : '') . 'categorie',
+        'hierarchical' => true,
+        'rewrite' => [
+            'slug' => ($reals_page ? get_page_uri($reals_page) . '/' : '') . 'categorie',
             'with_front' => false,
         ],
     ]);
     register_post_type('cardinal_real', [
-        'labels'      => [
-            'name'          => 'Réalisations',
+        'labels' => [
+            'name' => 'Réalisations',
             'singular_name' => 'Réalisation',
         ],
-        'public'      => true,
+        'public' => true,
         'has_archive' => true,
-        'supports'    => [
+        'supports' => [
             'title',
             'author',
             'excerpt',
             'thumbnail',
             'revisions',
         ],
-        'rewrite'     => [
-            'slug'       => 'realisations',
+        'rewrite' => [
+            'slug' => 'realisations',
             'with_front' => false,
-            'pages'      => true,
+            'pages' => true,
         ],
-        'taxonomies'  => [
+        'taxonomies' => [
             'cardinal_real_cat',
         ],
     ]);
@@ -181,7 +178,7 @@ add_action('init', function () {
             }
         }
         return $permalink;
-    }, 10, 2);
+    },         10, 2);
 });
 
 /**
@@ -202,7 +199,6 @@ add_filter('acf_form', function ($html) {
 });
 
 add_filter('get_the_excerpt', function ($text) {
-
     /* This filter is documented in wp-includes/formatting.php */
     $excerpt_length = apply_filters('excerpt_length', 55);
 
@@ -227,7 +223,7 @@ add_filter('wpcf7_skip_mail', function ($skip_mail, $form) {
         return true;
     }
     return $skip_mail;
-}, 10, 2);
+},         10, 2);
 
 /**
  * @see wp/wp-includes/general-template.php:2840
@@ -240,27 +236,35 @@ add_filter('get_site_icon_url', function ($url, $size) {
         }
     }
     return $url;
-}, 10, 4);
+},         10, 4);
 
 add_action('wp_footer', function () {
     echo sprintf('<script type="application/ld+json">%s</script>', json_encode([
-        '@context'  => 'http://schema.org/',
-        '@type'     => 'Organization',
-        'name'      => get_field('coord_name', 'options'),
-        'url'       => get_home_url(),
-        'address'   => [
-            '@type'           => 'PostalAddress',
-            'streetAddress'   => get_field('coord_street', 'options'),
-            'postalCode'      => get_field('coord_zip', 'options'),
-            'addressLocality' => get_field('coord_city', 'options'),
-            'addressCountry'  => 'France',
+                                                                                   '@context' => 'http://schema.org/',
+                                                                                   '@type' => 'Organization',
+                                                                                   'name' => get_field('coord_name',
+                                                                                                       'options'),
+                                                                                   'url' => get_home_url(),
+                                                                                   'address' => [
+                                                                                       '@type' => 'PostalAddress',
+                                                                                       'streetAddress' => get_field('coord_street',
+                                                                                                                    'options'),
+                                                                                       'postalCode' => get_field('coord_zip',
+                                                                                                                 'options'),
+                                                                                       'addressLocality' => get_field('coord_city',
+                                                                                                                      'options'),
+                                                                                       'addressCountry' => 'France',
 
-        ],
-        'telephone' => get_field('coord_tel', 'options'),
-        'faxNumber' => get_field('coord_fax', 'options'),
-        'email'     => get_field('coord_email', 'options'),
-        'logo'      => get_field('logo', 'options')['url'],
-    ]));
+                                                                                   ],
+                                                                                   'telephone' => get_field('coord_tel',
+                                                                                                            'options'),
+                                                                                   'faxNumber' => get_field('coord_fax',
+                                                                                                            'options'),
+                                                                                   'email' => get_field('coord_email',
+                                                                                                        'options'),
+                                                                                   'logo' => get_field('logo',
+                                                                                                       'options')['url'],
+                                                                               ]));
 });
 
 add_filter('paginate_links', function ($link) {
@@ -275,4 +279,4 @@ add_filter('paginate_links', function ($link) {
 add_filter('wp_get_attachment_image_attributes', function ($attr, $attachment, $size) {
     $attr['title'] = $attachment->post_title;
     return $attr;
-}, 10, 3);
+},         10, 3);

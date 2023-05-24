@@ -106,7 +106,7 @@
 }
 
 @each $fit in (cover, contain) {
-    &[data-object-fit="#{$fit}"] {
+    [data-object-fit="#{$fit}"] {
         object-fit: $fit;
         -o-object-fit: $fit;
         font-family: 'object-fit: #{$fit};';
@@ -114,7 +114,7 @@
 }
 
 @each $pos in ('center center', 'center top', 'right top', 'right center', 'right bottom', 'center bottom', 'left bottom', 'left center', 'left top') {
-    &[data-object-position="#{$pos}"] {
+    [data-object-position="#{$pos}"] {
         object-position: unquote($pos);
         -o-object-position: unquote($pos);
     }
